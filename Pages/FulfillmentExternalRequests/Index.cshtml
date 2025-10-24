@@ -1,0 +1,38 @@
+@page "/"
+@model Pages.FulfillmentExternalRequests.IndexModel
+
+<h1>Fulfillment External Requests</h1>
+
+@if (Model.Requests.Count == 0)
+{
+    <p>No requests found.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>ClientID</th>
+                <th>FedExID</th>
+                <th>TransactionDate</th>
+                <th>InsuredType</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        @for (int i = 0; i < Model.Requests.Count; i++)
+        {
+            var r = Model.Requests[i];
+            <tr>
+                <td>@i</td>
+                <td>@r.ClientID</td>
+                <td>@r.FedExID</td>
+                <td>@r.TransactionDate</td>
+                <td>@r.InsuredType</td>
+                <td><a asp-page="./Edit" asp-route-id="@i">Edit</a></td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
