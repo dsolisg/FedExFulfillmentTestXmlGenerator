@@ -3,6 +3,41 @@
 
 <h1>Fulfillment External Requests</h1>
 
+@if (!string.IsNullOrEmpty(Model.StatusMessage))
+{
+    <div class="alert alert-info">@Model.StatusMessage</div>
+}
+
+<div class="mb-3 d-flex gap-2 align-items-center">
+    <form method="post" asp-page-handler="CreateNew" class="d-inline">
+        <button type="submit" class="btn btn-outline-secondary">Create New FulfillmentExternalRequests</button>
+    </form>
+
+    <form method="post" asp-page-handler="Export" class="d-inline">
+        <button type="submit" class="btn btn-outline-primary">Export Saved XML</button>
+    </form>
+
+    <form method="post" asp-page-handler="Upload" enctype="multipart/form-data" class="d-inline">
+        <input type="file" name="xmlFile" accept=".xml" class="form-control form-control-sm d-inline-block" style="width:auto;" />
+        <button type="submit" class="btn btn-outline-success btn-sm">Load from XML File</button>
+    </form>
+</div>
+
+@if (!ViewData.ModelState.IsValid)
+{
+    <div class="text-danger">
+        <ul>
+            @foreach (var kv in ViewData.ModelState)
+            {
+                foreach (var error in kv.Value.Errors)
+                {
+                    <li>@error.ErrorMessage</li>
+                }
+            }
+        </ul>
+    </div>
+}
+
 @if (Model.Requests.Count == 0)
 {
     <p>No requests found.</p>
@@ -30,7 +65,14 @@ else
                 <td>@r.FedExID</td>
                 <td>@r.TransactionDate</td>
                 <td>@r.InsuredType</td>
-                <td><a asp-page="./Edit" asp-route-id="@i">Edit</a></td>
+                <td class="d-flex gap-2">
+                    <a asp-page="./Edit" asp-route-id="@i" class="btn btn-sm btn-outline-secondary">Edit</a>
+
+                    <form method="post" asp-page-handler="Delete" onsubmit="return confirm('Delete request @i ?');" class="d-inline">
+                        <input type="hidden" name="id" value="@i" />
+                        <button type="submit" class="btn btn-sm btn-outline-danger">Delete</button>
+                    </form>
+                </td>
             </tr>
         }
         </tbody>

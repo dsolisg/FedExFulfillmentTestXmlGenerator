@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Xml.Serialization;
+using System.ComponentModel.DataAnnotations;
 
 namespace Models
 {
@@ -37,7 +38,10 @@ namespace Models
     public class ISPInformation
     {
         public string CustomerSeqNumber { get; set; }
+
+        [Required(ErrorMessage = "BusinessName is required")]
         public string BusinessName { get; set; }
+
         public string BusNameChgEffDte { get; set; }
         public Address Address { get; set; }
         public string TaxIDNo { get; set; }
@@ -78,8 +82,12 @@ namespace Models
 
     public class BusinessInfo
     {
+        [Required(ErrorMessage = "CustomerSeqNumber is required")]
         public string CustomerSeqNumber { get; set; }
+
+        [Required(ErrorMessage = "BusinessName is required")]
         public string BusinessName { get; set; }
+
         public string BusNameChgEffDate { get; set; }
         public Address Address { get; set; }
         public string TaxID { get; set; }
@@ -108,8 +116,13 @@ namespace Models
     public class VehicleInfo
     {
         public string Vehicle_SequenceNo { get; set; }
+
+        [Required(ErrorMessage = "VIN is required")]
         public string VIN { get; set; }
+
+        [RegularExpression(@"^\d{4}$", ErrorMessage = "Year must be 4 digits")]
         public string Year { get; set; }
+
         public string Make { get; set; }
         public string Model { get; set; }
         public string Type { get; set; }

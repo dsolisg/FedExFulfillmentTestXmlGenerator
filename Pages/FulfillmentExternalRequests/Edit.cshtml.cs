@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Text.Json;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -19,11 +20,9 @@ namespace FulfillmentTestXmlGenerator.Pages.FulfillmentExternalRequests
         [BindProperty(SupportsGet = true)]
         public int Id { get; set; }
 
-        // JSON representation used by the client-side JSON editor
+        // Bind the full object for form-based editing
         [BindProperty]
-        public string JsonPayload { get; set; }
-
-        public FulfillmentExternalRequest Item { get; private set; }
+        public FulfillmentExternalRequest Item { get; set; }
 
         public IActionResult OnGet(int? id)
         {
@@ -36,9 +35,8 @@ namespace FulfillmentTestXmlGenerator.Pages.FulfillmentExternalRequests
             Id = id.Value;
             Item = root.FulfillmentExternalRequest[Id];
 
-            // Provide pretty-printed JSON for the client editor
-            JsonPayload = JsonSerializer.Serialize(Item, new JsonSerializerOptions { WriteIndented = true });
-            
+            // Ensure nested objects / lists are non-null so razor helpers don't throw
+            EnsureNested(Item);
             return Page();
         }
 
@@ -47,32 +45,69 @@ namespace FulfillmentTestXmlGenerator.Pages.FulfillmentExternalRequests
             if (Id < 0)
                 return BadRequest();
 
-            if (string.IsNullOrWhiteSpace(JsonPayload))
+            if (Item == null)
             {
-                ModelState.AddModelError(nameof(JsonPayload), "JSON payload is required.");
+                ModelState.AddModelError(nameof(Item), "Item data is required.");
                 return Page();
             }
 
-            FulfillmentExternalRequest updated;
-            try
-            {
-                updated = JsonSerializer.Deserialize<FulfillmentExternalRequest>(JsonPayload, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
-                if (updated == null) throw new JsonException("Deserialized to null");
-            }
-            catch (Exception ex)
-            {
-                ModelState.AddModelError(nameof(JsonPayload), $"Invalid JSON: {ex.Message}");
+            // Validate basic model state (you can add more validation attributes if needed)
+            if (!ModelState.IsValid)
                 return Page();
-            }
 
             var root = _repo.Load();
             if (root?.FulfillmentExternalRequest == null || Id < 0 || Id >= root.FulfillmentExternalRequest.Count)
                 return NotFound();
 
-            root.FulfillmentExternalRequest[Id] = updated;
+            root.FulfillmentExternalRequest[Id] = Item;
             _repo.Save(root);
 
             return RedirectToPage("./Index");
+        }
+
+        private void EnsureNested(FulfillmentExternalRequest item)
+        {
+            if (item == null) return;
+
+            if (item.PrimaryInfo == null) item.PrimaryInfo = new PrimaryInfo();
+            if (item.PrimaryInfo.ISPInformation == null) item.PrimaryInfo.ISPInformation = new ISPInformation();
+            if (item.PrimaryInfo.ISPInformation.Address == null) item.PrimaryInfo.ISPInformation.Address = new Address();
+
+            if (item.Vehicles == null) item.Vehicles = new Vehicles();
+            if (item.Vehicles.VehicleInfo == null) item.Vehicles.VehicleInfo = new List<VehicleInfo>();
+
+            if (item.Registrants == null) item.Registrants = new Registrants();
+            if (item.Registrants.Registrant == null) item.Registrants.Registrant = new List<Registrant>();
+
+            if (item.AdditionalInsureds == null) item.AdditionalInsureds = new AdditionalInsureds();
+            if (item.AdditionalInsureds.AdditionalInsured == null) item.AdditionalInsureds.AdditionalInsured = new List<AdditionalInsured>();
+
+            if (item.Terminals == null) item.Terminals = new Terminals();
+            if (item.Terminals.TerminalInfo == null) item.Terminals.TerminalInfo = new List<TerminalInfo>();
+
+            if (item.AdditionalInterests == null) item.AdditionalInterests = new AdditionalInterests();
+            if (item.AdditionalInterests.AdditionalInterest == null) item.AdditionalInterests.AdditionalInterest = new List<AdditionalInterest>();
+
+            if (item.Policies == null) item.Policies = new Policies();
+            if (item.Policies.Policy == null) item.Policies.Policy = new List<Policy>();
+
+            // Ensure nested objects within each policy
+            foreach (var policy in item.Policies.Policy)
+            {
+                if (policy.Coverage == null) policy.Coverage = new List<Coverage>();
+                if (policy.InsurePay == null) policy.InsurePay = new InsurePay();
+
+                foreach (var cov in policy.Coverage)
+                {   
+                    if (cov.NTL == null) cov.NTL = new NTL();
+                    if (cov.NTL.Exposures == null) cov.NTL.Exposures = new Exposures();
+                    if (cov.NTL.Exposures.Vehicle == null) cov.NTL.Exposures.Vehicle = new List<ExposureVehicle>();
+
+                    if (cov.WorkComp == null) cov.WorkComp = new WorkComp();
+                    if (cov.WorkComp.StateExposures == null) cov.WorkComp.StateExposures = new StateExposures();
+                    if (cov.WorkComp.StateExposures.State == null) cov.WorkComp.StateExposures.State = new List<State>();
+                }
+            }
         }
     }
 }

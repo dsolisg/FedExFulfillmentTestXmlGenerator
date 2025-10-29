@@ -1,0 +1,48 @@
+﻿@page
+@model FulfillmentTestXmlGenerator.Pages.FulfillmentExternalRequests.UpsertModel
+@{
+    ViewData["Title"] = "Create / Edit FulfillmentExternalRequest";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<!-- Quick loader: choose an existing item and reload -->
+<form method="get" class="mb-3">
+    <div>
+        <label for="idSelect">Load existing:</label>
+        <select id="idSelect" name="id" class="form-select" style="max-width:480px;display:inline-block;margin-left:8px;">
+            <option value="">(start new)</option>
+            @for (int i = 0; i < Model.AllItems.Count; i++)
+            {
+                var it = Model.AllItems[i];
+                var label = $"{i} - {it.FileName ?? it.FedExID ?? it.ClientID ?? "Item"}";
+                <option value="@i" selected="@(Model.Id.HasValue && Model.Id.Value == i ? "selected" : null)">@label</option>
+            }
+        </select>
+        <button type="submit" class="btn btn-secondary" style="margin-left:8px;">Load</button>
+    </div>
+</form>
+
+<!-- Main editor form: edit the full JSON representation -->
+<form method="post" asp-page-handler="Save">
+    <input type="hidden" asp-for="Id" />
+
+    <div class="mb-3">
+        <label for="jsonPayload" class="form-label">FulfillmentExternalRequest (JSON)</label>
+        <textarea id="jsonPayload" asp-for="JsonPayload" class="form-control" rows="20" style="font-family:consolas,monospace;"></textarea>
+        <span asp-validation-for="JsonPayload" class="text-danger"></span>
+    </div>
+
+    <div>
+        <button type="submit" class="btn btn-primary">Save</button>
+        <a asp-page="./Index" class="btn btn-link">Back to list</a>
+    </div>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        // optional: focus textarea for convenience
+        document.getElementById('jsonPayload')?.focus();
+    </script>
+}
