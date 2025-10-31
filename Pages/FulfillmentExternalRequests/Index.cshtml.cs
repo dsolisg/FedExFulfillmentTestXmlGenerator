@@ -16,10 +16,15 @@ namespace FulfillmentTestXmlGenerator.Pages.FulfillmentExternalRequests
     public class IndexModel : PageModel
     {
         private readonly FulfillmentXmlRepository _repo;
+        //private readonly string _dataFolder;
+        //private readonly string _filepath;
+        public bool isFirstload = true;
 
         public IndexModel(IWebHostEnvironment env)
         {
             _repo = new FulfillmentXmlRepository(env);
+            //var _dataFolder = Path.Combine(env.ContentRootPath, "TestData");
+            //_filepath = Path.Combine(_dataFolder, "tmp");
         }
 
         public List<FulfillmentExternalRequest> Requests { get; private set; } = new();
@@ -29,7 +34,8 @@ namespace FulfillmentTestXmlGenerator.Pages.FulfillmentExternalRequests
 
         public void OnGet()
         {
-            var root = _repo.Load(); //new Models.FulfillmentExternalRequests(); // 
+            var root = isFirstload ? _repo.LoadBase() : _repo.Load();
+            isFirstload = false;
             Requests = root?.FulfillmentExternalRequest ?? new List<FulfillmentExternalRequest>();
         }
 
@@ -53,7 +59,7 @@ namespace FulfillmentTestXmlGenerator.Pages.FulfillmentExternalRequests
             };
 
             root.FulfillmentExternalRequest.Add(newItem);
-            //_repo.Save(root);
+            _repo.SaveAs(root, "tmp");
 
             var newIndex = root.FulfillmentExternalRequest.Count - 1;
             return RedirectToPage("./Edit", new { id = newIndex });
@@ -69,7 +75,7 @@ namespace FulfillmentTestXmlGenerator.Pages.FulfillmentExternalRequests
                 return NotFound();
 
             root.FulfillmentExternalRequest.RemoveAt(id);
-           // _repo.Save(root);
+            _repo.SaveAs(root,"tmp");
 
             return RedirectToPage();
         }
@@ -82,7 +88,7 @@ namespace FulfillmentTestXmlGenerator.Pages.FulfillmentExternalRequests
         }
 
 
-         public Models.FulfillmentExternalRequests newFulfillmentRequest()
+        public Models.FulfillmentExternalRequests newFulfillmentRequest()
         {
             var newRoot = new Models.FulfillmentExternalRequests()
             {
@@ -102,7 +108,7 @@ namespace FulfillmentTestXmlGenerator.Pages.FulfillmentExternalRequests
 
             newRoot.FulfillmentExternalRequest.Add(newItem);
 
-            // _repo.Save(newRoot);
+            _repo.SaveAs(newRoot,"tmp");
             StatusMessage = "Created new empty FulfillmentExternalRequests.";
             return newRoot;
         }
@@ -138,7 +144,7 @@ namespace FulfillmentTestXmlGenerator.Pages.FulfillmentExternalRequests
                 var obj = xs.Deserialize(stream);
                 if (obj is Models.FulfillmentExternalRequests root)
                 {
-                    _repo.Save(root);
+                    _repo.SaveAs(root,"tmp");
                     StatusMessage = "Uploaded and saved XML successfully.";
                     return RedirectToPage();
                 }

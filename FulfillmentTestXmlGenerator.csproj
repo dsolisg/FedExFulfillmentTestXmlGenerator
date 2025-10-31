@@ -11,6 +11,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="TestData\tmp.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="TestData\Basexmltest.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

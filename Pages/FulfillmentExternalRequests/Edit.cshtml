@@ -3,6 +3,11 @@
 
 <h1>Edit FulfillmentExternalRequest (@Model.Id)</h1>
 
+<div class="mb-3">
+    <button type="button" class="btn btn-sm btn-outline-primary me-2" onclick="expandAll()">Expand all</button>
+    <button type="button" class="btn btn-sm btn-outline-secondary" onclick="collapseAll()">Collapse all</button>
+</div>
+
 <form method="post" id="editForm" class="mb-4" novalidate>
     <input type="hidden" asp-for="Id" />
 
@@ -45,7 +50,7 @@
         <legend>
             Primary Info
             <button class="btn btn-outline-secondary btn-sm rounded-circle collapse-toggle ms-2 d-inline-flex align-items-center justify-content-center" style="width:30px;height:30px;padding:0;" type="button" data-bs-toggle="collapse" data-bs-target="#primaryinfo-collapse" aria-expanded="true" aria-controls="primaryinfo-collapse">
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="6 9 12 15 18 9"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="6 9 12 15 18 9" /></svg>
             </button>
         </legend>
 
@@ -164,8 +169,8 @@
     <fieldset class="mb-3">
         <legend>
             Vehicles
-            <button class="btn btn-outline-secondary btn-sm rounded-circle collapse-toggle ms-2 d-inline-flex align-items-center justify-content-center" style="width:30px;height:30px;padding:0;" type="button" data-bs-toggle="collapse" data-bs-target="#vehicles-section-collapse" aria-expanded="true" aria-controls="#vehicles-section-collapse">
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="6 9 12 15 18 9"/></svg>
+            <button class="btn btn-outline-secondary btn-sm rounded-circle collapse-toggle ms-2 d-inline-flex align-items-center justify-content-center" style="width:30px;height:30px;padding:0;" type="button" data-bs-toggle="collapse" data-bs-target="#vehicles-section-collapse" aria-expanded="true" aria-controls="vehicles-section-collapse">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="6 9 12 15 18 9" /></svg>
             </button>
         </legend>
 
@@ -187,7 +192,7 @@
                                 </div>
                             </div>
 
-                           
+
 
                             <div>
                                 <div class="row mt-2">
@@ -195,13 +200,13 @@
                                         <label class="form-label">Vehicle_SequenceNo</label>
                                         <input name="Item.Vehicles.VehicleInfo[@i].Vehicle_SequenceNo" value="@Model.Item.Vehicles.VehicleInfo[i].Vehicle_SequenceNo" class="form-control" required />
                                         <span class="text-danger" data-valmsg-for="Item.Vehicles.VehicleInfo[@i].Vehicle_SequenceNo" data-valmsg-replace="true"></span>
-                                        </div>
+                                    </div>
 
                                     <div class="col-md-8">
-                                    <label class="form-label">VIN</label>
-                                    <input name="Item.Vehicles.VehicleInfo[@i].VIN" value="@Model.Item.Vehicles.VehicleInfo[i].VIN" class="form-control" required />
-                                    <span class="text-danger" data-valmsg-for="Item.Vehicles.VehicleInfo[@i].VIN" data-valmsg-replace="true"></span>
-                                </div>
+                                        <label class="form-label">VIN</label>
+                                        <input name="Item.Vehicles.VehicleInfo[@i].VIN" value="@Model.Item.Vehicles.VehicleInfo[i].VIN" class="form-control" required />
+                                        <span class="text-danger" data-valmsg-for="Item.Vehicles.VehicleInfo[@i].VIN" data-valmsg-replace="true"></span>
+                                    </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-2">
@@ -371,11 +376,11 @@
         <legend>
             Registrants
             <button class="btn btn-outline-secondary btn-sm rounded-circle collapse-toggle ms-2 d-inline-flex align-items-center justify-content-center" style="width:30px;height:30px;padding:0;" type="button" data-bs-toggle="collapse" data-bs-target="#registrants-section-collapse" aria-expanded="true" aria-controls="#registrants-section-collapse">
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="6 9 12 15 18 9"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="6 9 12 15 18 9" /></svg>
             </button>
         </legend>
 
-        <div class="collapse show" id="#registrants-section-collapse">
+        <div class="collapse show" id="registrants-section-collapse">
             <div class="mb-2">
                 <button type="button" class="btn btn-sm btn-outline-primary" onclick="addRegistrant()">Add Registrant</button>
             </div>
@@ -501,12 +506,12 @@
     <fieldset class="mb-3">
         <legend>
             Policies
-            <button class="btn btn-outline-secondary btn-sm rounded-circle collapse-toggle ms-2 d-inline-flex align-items-center justify-content-center" style="width:30px;height:30px;padding:0;" type="button" data-bs-toggle="collapse" data-bs-target="#policies-section-collapse" aria-expanded="true" aria-controls="#policies-section-collapse">
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="6 9 12 15 18 9"/></svg>
+            <button class="btn btn-outline-secondary btn-sm rounded-circle collapse-toggle ms-2 d-inline-flex align-items-center justify-content-center" style="width:30px;height:30px;padding:0;" type="button" data-bs-toggle="collapse" data-bs-target="#policies-section-collapse" aria-expanded="true" aria-controls="policies-section-collapse">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="6 9 12 15 18 9" /></svg>
             </button>
         </legend>
 
-        <div class="collapse show" id="#policies-section-collapse">
+        <div class="collapse show" id="policies-section-collapse">
             <div class="mb-2">
                 <button type="button" class="btn btn-sm btn-outline-primary" onclick="addPolicy()">Add Policy</button>
             </div>
@@ -545,6 +550,35 @@
                                     <input name="Item.Policies.Policy[@i].UWCompany" value="@Model.Item.Policies.Policy[i].UWCompany" class="form-control" />
                                 </div>
 
+                                <div class="row mb-2">
+                                    <div class="col-md-6">
+                                        <label class="form-label">AdditionalInsured_SequenceNo</label>
+                                        <input name="Item.Policies.Policy[@i].AdditionalInsured_SequenceNo" value="@Model.Item.Policies.Policy[i].AdditionalInsured_SequenceNo" class="form-control" />
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">EmployerLiabilityLimit</label>
+                                        <input name="Item.Policies.Policy[@i].EmployerLiabilityLimit" value="@Model.Item.Policies.Policy[i].EmployerLiabilityLimit" class="form-control" />
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">InsurePay</label>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <input name="Item.Policies.Policy[@i].InsurePay.BillMethod" value="@Model.Item.Policies.Policy[i].InsurePay?.BillMethod" placeholder="BillMethod" class="form-control" />
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input name="Item.Policies.Policy[@i].InsurePay.BillMethodEffectiveDate" value="@Model.Item.Policies.Policy[i].InsurePay?.BillMethodEffectiveDate" placeholder="BillMethodEffectiveDate" class="form-control" />
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input name="Item.Policies.Policy[@i].InsurePay.PayGoStatus" value="@Model.Item.Policies.Policy[i].InsurePay?.PayGoStatus" placeholder="PayGoStatus" class="form-control" />
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input name="Item.Policies.Policy[@i].InsurePay.PayGoRegisterByDate" value="@Model.Item.Policies.Policy[i].InsurePay?.PayGoRegisterByDate" placeholder="PayGoRegisterByDate" class="form-control" />
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <!-- Coverage list for this policy -->
                                 <div class="mb-2">
                                     <label class="form-label">Coverage</label>
@@ -555,6 +589,13 @@
                                             for (int c = 0; c < Model.Item.Policies.Policy[i].Coverage.Count; c++)
                                             {
                                                 <div class="border rounded p-2 mb-2 coverage-item">
+                                                    <div class="d-flex justify-content-between align-items-start mb-2">
+                                                        <h6 class="mb-0">Coverage @c</h6>
+                                                        <div>
+                                                            <button type="button" class="btn btn-sm btn-danger" onclick="removeCoverage(this)">Remove</button>
+                                                        </div>
+                                                    </div>
+
                                                     <div class="mb-2 row">
                                                         <div class="col">
                                                             <label class="form-label">CoverageCode</label>
@@ -568,343 +609,281 @@
                                                             <label class="form-label">Commission%</label>
                                                             <input name="Item.Policies.Policy[@i].Coverage[@c].CommissionPercent" value="@Model.Item.Policies.Policy[i].Coverage[c].CommissionPercent" class="form-control" />
                                                         </div>
-                                                        <div class="col-1 d-flex align-items-end">
-                                                            <button type="button" class="btn btn-sm btn-danger mb-2" onclick="removeCoverage(this)">Remove</button>
-                                                        </div>
                                                     </div>
 
-                                                    <!-- Exposures for this coverage (Vehicle list) -->
+                                                    <!-- Collapsible subsections for coverage details -->
                                                     <div class="mb-2">
-                                                        <label class="form-label">Exposures (Vehicles)</label>
-                                                        <div class="mb-1"><button type="button" class="btn btn-sm btn-outline-primary" onclick="addExposure(this)">Add Exposure</button></div>
-                                                        <div class="exposures-container">
-                                                            @if (Model.Item.Policies.Policy[i].Coverage[c].NTL.Exposures != null && Model.Item.Policies.Policy[i].Coverage[c].NTL.Exposures.Vehicle != null && Model.Item.Policies.Policy[i].Coverage[c].NTL.Exposures.Vehicle.Count > 0)
-                                                            {
-                                                                for (int v = 0; v < Model.Item.Policies.Policy[i].Coverage[c].NTL.Exposures.Vehicle.Count; v++)
-                                                                {
-                                                                    <div class="border rounded p-2 mb-2 exposure-item">
-                                                                        <div class="row">
-                                                                            <div class="col">
-                                                                                <label class="form-label">VehicleSeqNo</label>
-                                                                                <input name="Item.Policies.Policy[@i].Coverage[@c].Exposures.Vehicle[@v].Vehicle_SequenceNo" value="@Model.Item.Policies.Policy[i].Coverage[c].NTL.Exposures.Vehicle[v].Vehicle_SequenceNo" class="form-control" />
-                                                                            </div>
-                                                                            <div class="col">
-                                                                                <label class="form-label">EffectiveDate</label>
-                                                                                <input name="Item.Policies.Policy[@i].Coverage[@c].Exposures.Vehicle[@v].EffectiveDate" value="@Model.Item.Policies.Policy[i].Coverage[c].NTL.Exposures.Vehicle[v].EffectiveDate" class="form-control" />
-                                                                            </div>
-                                                                            <div class="col-2">
-                                                                                <label class="form-label">Premium</label>
-                                                                                <input name="Item.Policies.Policy[@i].Coverage[@c].Exposures.Vehicle[@v].Premium" value="@Model.Item.Policies.Policy[i].Coverage[c].NTL.Exposures.Vehicle[v].Premium" class="form-control" />
-                                                                            </div>
-                                                                            <div class="col-1 d-flex align-items-end">
-                                                                                <button type="button" class="btn btn-sm btn-danger mb-2" onclick="removeExposure(this)">Remove</button>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                }
-                                                            }
+                                                        <div class="d-flex gap-2 flex-wrap">
+                                                            <button class="btn btn-sm btn-outline-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#epli-@(i)-@(c)" aria-expanded="false">EPLI</button>
+                                                            <button class="btn btn-sm btn-outline-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#ntl-@(i)-@(c)" aria-expanded="false">NTL</button>
+                                                            <button class="btn btn-sm btn-outline-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#ntlexcess-@(i)-@(c)" aria-expanded="false">NTLExcess</button>
+                                                            <button class="btn btn-sm btn-outline-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#pd-@(i)-@(c)" aria-expanded="false">PhysicalDamage</button>
+                                                            <button class="btn btn-sm btn-outline-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#wc-@(i)-@(c)" aria-expanded="false">WorkComp</button>
                                                         </div>
 
-                                                        <template class="exposure-template">
-                                                            <div class="border rounded p-2 mb-2 exposure-item">
-                                                                <div class="row">
-                                                                    <div class="col">
-                                                                        <label class="form-label">VehicleSeqNo</label>
-                                                                        <input name="Item.Policies.Policy[__pindex__].Coverage[__cindex__].Exposures.Vehicle[__vindex__].Vehicle_SequenceNo" value="" class="form-control" />
-                                                                    </div>
-                                                                    <div class="col">
-                                                                        <label class="form-label">EffectiveDate</label>
-                                                                        <input name="Item.Policies.Policy[__pindex__].Coverage[__cindex__].Exposures.Vehicle[__vindex__].EffectiveDate" value="" class="form-control" />
-                                                                    </div>
-                                                                    <div class="col-2">
-                                                                        <label class="form-label">Premium</label>
-                                                                        <input name="Item.Policies.Policy[__pindex__].Coverage[__cindex__].Exposures.Vehicle[__vindex__].Premium" value="" class="form-control" />
-                                                                    </div>
-                                                                    <div class="col-1 d-flex align-items-end">
-                                                                        <button type="button" class="btn btn-sm btn-danger mb-2" onclick="removeExposure(this)">Remove</button>
+                                                        <div class="collapse mt-2" id="epli-@(i)-@(c)">
+                                                            <div class="card card-body">
+                                                                <div class="row g-2">
+                                                                    <div class="col-md-4"><label class="form-label">EdgewaterCommissionPercent</label><input name="Item.Policies.Policy[@i].Coverage[@c].EPLI.EdgewaterCommissionPercent" value="@Model.Item.Policies.Policy[i].Coverage[c].EPLI?.EdgewaterCommissionPercent" class="form-control" /></div>
+                                                                    <div class="col-md-4"><label class="form-label">RetroActiveDate</label><input name="Item.Policies.Policy[@i].Coverage[@c].EPLI.RetroActiveDate" value="@Model.Item.Policies.Policy[i].Coverage[c].EPLI?.RetroActiveDate" class="form-control" /></div>
+                                                                    <div class="col-md-4"><label class="form-label">AggregateLimitAmount</label><input name="Item.Policies.Policy[@i].Coverage[@c].EPLI.AggregateLimitAmount" value="@Model.Item.Policies.Policy[i].Coverage[c].EPLI?.AggregateLimitAmount" class="form-control" /></div>
+                                                                </div>
+                                                                <div class="row g-2 mt-2">
+                                                                    <div class="col-md-4"><label class="form-label">ClaimLimitAmount</label><input name="Item.Policies.Policy[@i].Coverage[@c].EPLI.ClaimLimitAmount" value="@Model.Item.Policies.Policy[i].Coverage[c].EPLI?.ClaimLimitAmount" class="form-control" /></div>
+                                                                    <div class="col-md-4"><label class="form-label">ThirdPartyLimitAmount</label><input name="Item.Policies.Policy[@i].Coverage[@c].EPLI.ThirdPartyLimitAmount" value="@Model.Item.Policies.Policy[i].Coverage[c].EPLI?.ThirdPartyLimitAmount" class="form-control" /></div>
+                                                                    <div class="col-md-4"><label class="form-label">WageandHourLimitAmount</label><input name="Item.Policies.Policy[@i].Coverage[@c].EPLI.WageandHourLimitAmount" value="@Model.Item.Policies.Policy[i].Coverage[c].EPLI?.WageandHourLimitAmount" class="form-control" /></div>
+                                                                </div>
+                                                                <div class="row g-2 mt-2">
+                                                                    <div class="col-md-4"><label class="form-label">IRCALimitAmount</label><input name="Item.Policies.Policy[@i].Coverage[@c].EPLI.IRCALimitAmount" value="@Model.Item.Policies.Policy[i].Coverage[c].EPLI?.IRCALimitAmount" class="form-control" /></div>
+                                                                    <div class="col-md-4"><label class="form-label">DeductibleAmount</label><input name="Item.Policies.Policy[@i].Coverage[@c].EPLI.DeductibleAmount" value="@Model.Item.Policies.Policy[i].Coverage[c].EPLI?.DeductibleAmount" class="form-control" /></div>
+                                                                    <div class="col-md-4"><label class="form-label">DeductibleDiscountPercent</label><input name="Item.Policies.Policy[@i].Coverage[@c].EPLI.DeductibleDiscountPercent" value="@Model.Item.Policies.Policy[i].Coverage[c].EPLI?.DeductibleDiscountPercent" class="form-control" /></div>
+                                                                </div>
+                                                                <div class="row g-2 mt-2">
+                                                                    <div class="col-md-4"><label class="form-label">IsMinimumPremiumPolicy</label><input name="Item.Policies.Policy[@i].Coverage[@c].EPLI.IsMinimumPremiumPolicy" value="@Model.Item.Policies.Policy[i].Coverage[c].EPLI?.IsMinimumPremiumPolicy" class="form-control" /></div>
+                                                                    <div class="col-md-4"><label class="form-label">EPLIState</label><input name="Item.Policies.Policy[@i].Coverage[@c].EPLI.EPLIState" value="@Model.Item.Policies.Policy[i].Coverage[c].EPLI?.EPLIState" class="form-control" /></div>
+                                                                </div>
+
+                                                                <div class="mt-3">
+                                                                    <label class="form-label">EPLI - RatingInfo</label>
+                                                                    <div class="row g-2">
+                                                                        <div class="col-md-3"><input name="Item.Policies.Policy[@i].Coverage[@c].EPLI.CoverageQuestions.RatingInfo.IsReferral" value="@Model.Item.Policies.Policy[i].Coverage[c].EPLI?.CoverageQuestions?.RatingInfo?.IsReferral" placeholder="IsReferral" class="form-control" /></div>
+                                                                        <div class="col-md-3"><input name="Item.Policies.Policy[@i].Coverage[@c].EPLI.CoverageQuestions.RatingInfo.RatingEffDate" value="@Model.Item.Policies.Policy[i].Coverage[c].EPLI?.CoverageQuestions?.RatingInfo?.RatingEffDate" placeholder="RatingEffDate" class="form-control" /></div>
+                                                                        <div class="col-md-3"><input name="Item.Policies.Policy[@i].Coverage[@c].EPLI.CoverageQuestions.RatingInfo.RateFactor" value="@Model.Item.Policies.Policy[i].Coverage[c].EPLI?.CoverageQuestions?.RatingInfo?.RateFactor" placeholder="RateFactor" class="form-control" /></div>
+                                                                        <div class="col-md-3"><input name="Item.Policies.Policy[@i].Coverage[@c].EPLI.CoverageQuestions.RatingInfo.RatingGUID" value="@Model.Item.Policies.Policy[i].Coverage[c].EPLI?.CoverageQuestions?.RatingInfo?.RatingGUID" placeholder="RatingGUID" class="form-control" /></div>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </template>
-                                                    </div>
-
-                                                    <!-- WorkComp states for this coverage -->
-                                                    <div class="mb-2">
-                                                        <label class="form-label">WorkComp - State Exposures</label>
-                                                        <div class="mb-1"><button type="button" class="btn btn-sm btn-outline-primary" onclick="addState(this)">Add State</button></div>
-                                                        <div class="stateexposures-container">
-                                                            @if (Model.Item.Policies.Policy[i].Coverage[c].WorkComp != null && Model.Item.Policies.Policy[i].Coverage[c].WorkComp.StateExposures != null && Model.Item.Policies.Policy[i].Coverage[c].WorkComp.StateExposures.State != null && Model.Item.Policies.Policy[i].Coverage[c].WorkComp.StateExposures.State.Count > 0)
-                                                            {
-                                                                for (int s = 0; s < Model.Item.Policies.Policy[i].Coverage[c].WorkComp.StateExposures.State.Count; s++)
-                                                                {
-                                                                    <div class="border rounded p-2 mb-2 state-item">
-                                                                        <div class="row">
-                                                                            <div class="col">
-                                                                                <label class="form-label">StateName</label>
-                                                                                <input name="Item.Policies.Policy[@i].Coverage[@c].WorkComp.StateExposures.State[@s].StateName" value="@Model.Item.Policies.Policy[i].Coverage[c].WorkComp.StateExposures.State[s].StateName" class="form-control" />
-                                                                            </div>
-                                                                            <div class="col">
-                                                                                <label class="form-label">EffectiveDate</label>
-                                                                                <input name="Item.Policies.Policy[@i].Coverage[@c].WorkComp.StateExposures.State[@s].EffectiveDate" value="@Model.Item.Policies.Policy[i].Coverage[c].WorkComp.StateExposures.State[s].EffectiveDate" class="form-control" />
-                                                                            </div>
-                                                                            <div class="col-1 d-flex align-items-end">
-                                                                                <button type="button" class="btn btn-sm btn-danger mb-2" onclick="removeState(this)">Remove</button>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                }
-                                                            }
                                                         </div>
 
-                                                        <template class="state-template">
-                                                            <div class="border rounded p-2 mb-2 state-item">
-                                                                <div class="row">
-                                                                    <div class="col">
-                                                                        <label class="form-label">StateName</label>
-                                                                        <input name="Item.Policies.Policy[__pindex__].Coverage[__cindex__].WorkComp.StateExposures.State[__sindex__].StateName" value="" class="form-control" />
-                                                                    </div>
-                                                                    <div class="col">
-                                                                        <label class="form-label">EffectiveDate</label>
-                                                                        <input name="Item.Policies.Policy[__pindex__].Coverage[__cindex__].WorkComp.StateExposures.State[__sindex__].EffectiveDate" value="" class="form-control" />
-                                                                    </div>
-                                                                    <div class="col-1 d-flex align-items-end">
-                                                                        <button type="button" class="btn btn-sm btn-danger mb-2" onclick="removeState(this)">Remove</button>
+                                                        <div class="collapse mt-2" id="ntl-@(i)-@(c)">
+                                                            <div class="card card-body">
+                                                                <div class="row g-2">
+                                                                    <div class="col-md-4"><label class="form-label">Limits</label><input name="Item.Policies.Policy[@i].Coverage[@c].NTL.CoverageQuestions.Limits" value="@Model.Item.Policies.Policy[i].Coverage[c].NTL?.CoverageQuestions?.Limits" class="form-control" /></div>
+                                                                    <div class="col-md-4"><label class="form-label">PackagePolicyDiscountPercent</label><input name="Item.Policies.Policy[@i].Coverage[@c].NTL.CoverageQuestions.PackagePolicyDiscountPercent" value="@Model.Item.Policies.Policy[i].Coverage[c].NTL?.CoverageQuestions?.PackagePolicyDiscountPercent" class="form-control" /></div>
+                                                                    <div class="col-md-4"><label class="form-label">PackagePolicyDiscountEffectiveDate</label><input name="Item.Policies.Policy[@i].Coverage[@c].NTL.CoverageQuestions.PackagePolicyDiscountEffectiveDate" value="@Model.Item.Policies.Policy[i].Coverage[c].NTL?.CoverageQuestions?.PackagePolicyDiscountEffectiveDate" class="form-control" /></div>
+                                                                </div>
+
+                                                                <div class="mt-3">
+                                                                    <label class="form-label">NTL - Exposures (listed below)</label>
+                                                                    <!-- exposures rendered elsewhere -->
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="collapse mt-2" id="ntlexcess-@(i)-@(c)">
+                                                            <div class="card card-body">
+                                                                <div class="row g-2">
+                                                                    <div class="col-md-4"><label class="form-label">Limits</label><input name="Item.Policies.Policy[@i].Coverage[@c].NTLExcess.CoverageQuestions.Limits" value="@Model.Item.Policies.Policy[i].Coverage[c].NTLExcess?.CoverageQuestions?.Limits" class="form-control" /></div>
+                                                                    <div class="col-md-4"><label class="form-label">PackagePolicyDiscountPercent</label><input name="Item.Policies.Policy[@i].Coverage[@c].NTLExcess.CoverageQuestions.PackagePolicyDiscountPercent" value="@Model.Item.Policies.Policy[i].Coverage[c].NTLExcess?.CoverageQuestions?.PackagePolicyDiscountPercent" class="form-control" /></div>
+                                                                    <div class="col-md-4"><label class="form-label">PackagePolicyDiscountEffectiveDate</label><input name="Item.Policies.Policy[@i].Coverage[@c].NTLExcess.CoverageQuestions.PackagePolicyDiscountEffectiveDate" value="@Model.Item.Policies.Policy[i].Coverage[c].NTLExcess?.CoverageQuestions?.PackagePolicyDiscountEffectiveDate" class="form-control" /></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="collapse mt-2" id="pd-@(i)-@(c)">
+                                                            <div class="card card-body">
+                                                                <div class="row g-2">
+                                                                    <div class="col-md-4"><label class="form-label">Deductible</label><input name="Item.Policies.Policy[@i].Coverage[@c].PhysicalDamage.CoverageQuestions.Deductible" value="@Model.Item.Policies.Policy[i].Coverage[c].PhysicalDamage?.CoverageQuestions?.Deductible" class="form-control" /></div>
+                                                                    <div class="col-md-4"><label class="form-label">DeductibleChgEffDte</label><input name="Item.Policies.Policy[@i].Coverage[@c].PhysicalDamage.CoverageQuestions.DeductibleChgEffDte" value="@Model.Item.Policies.Policy[i].Coverage[c].PhysicalDamage?.CoverageQuestions?.DeductibleChgEffDte" class="form-control" /></div>
+                                                                    <div class="col-md-4"><label class="form-label">PDAdjustmentFactorRatingGUID</label><input name="Item.Policies.Policy[@i].Coverage[@c].PhysicalDamage.CoverageQuestions.PDAdjustmentFactorRatingGUID" value="@Model.Item.Policies.Policy[i].Coverage[c].PhysicalDamage?.CoverageQuestions?.PDAdjustmentFactorRatingGUID" class="form-control" /></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="collapse mt-2" id="wc-@(i)-@(c)">
+                                                            <div class="card card-body">
+                                                                <div class="row g-2">
+                                                                    <div class="col-md-3"><label class="form-label">IsReferral</label><input name="Item.Policies.Policy[@i].Coverage[@c].WorkComp.RatingInfo.IsReferral" value="@Model.Item.Policies.Policy[i].Coverage[c].WorkComp?.RatingInfo?.IsReferral" class="form-control" /></div>
+                                                                    <div class="col-md-3"><label class="form-label">RatingEffDate</label><input name="Item.Policies.Policy[@i].Coverage[@c].WorkComp.RatingInfo.RatingEffDate" value="@Model.Item.Policies.Policy[i].Coverage[c].WorkComp?.RatingInfo?.RatingEffDate" class="form-control" /></div>
+                                                                    <div class="col-md-3"><label class="form-label">RateFactor</label><input name="Item.Policies.Policy[@i].Coverage[@c].WorkComp.RatingInfo.RateFactor" value="@Model.Item.Policies.Policy[i].Coverage[c].WorkComp?.RatingInfo?.RateFactor" class="form-control" /></div>
+                                                                    <div class="col-md-3"><label class="form-label">RatingGUID</label><input name="Item.Policies.Policy[@i].Coverage[@c].WorkComp.RatingInfo.RatingGUID" value="@Model.Item.Policies.Policy[i].Coverage[c].WorkComp?.RatingInfo?.RatingGUID" class="form-control" /></div>
+                                                                </div>
+
+                                                                <div class="row g-2 mt-2">
+                                                                    <div class="col-md-3"><label class="form-label">RatingGUIDEffDte</label><input name="Item.Policies.Policy[@i].Coverage[@c].WorkComp.RatingInfo.RatingGUIDEffDte" value="@Model.Item.Policies.Policy[i].Coverage[c].WorkComp?.RatingInfo?.RatingGUIDEffDte" class="form-control" /></div>
+                                                                    <div class="col-md-3"><label class="form-label">SchemaVersion</label><input name="Item.Policies.Policy[@i].Coverage[@c].WorkComp.RatingInfo.SchemaVersion" value="@Model.Item.Policies.Policy[i].Coverage[c].WorkComp?.RatingInfo?.SchemaVersion" class="form-control" /></div>
+                                                                </div>
+
+                                                                <div class="mt-3">
+                                                                    <label class="form-label">Experience Information</label>
+                                                                    <div class="row g-2">
+                                                                        <div class="col-md-4"><label class="form-label">ExperienceModifier</label><input name="Item.Policies.Policy[@i].Coverage[@c].WorkComp.CoverageQuestions.ExperienceInformation.ExperienceModifier" value="@Model.Item.Policies.Policy[i].Coverage[c].WorkComp?.CoverageQuestions?.ExperienceInformation?.ExperienceModifier" class="form-control" /></div>
+                                                                        <div class="col-md-4"><label class="form-label">ExpModEffDte</label><input name="Item.Policies.Policy[@i].Coverage[@c].WorkComp.CoverageQuestions.ExperienceInformation.ExpModEffDte" value="@Model.Item.Policies.Policy[i].Coverage[c].WorkComp?.CoverageQuestions?.ExperienceInformation?.ExpModEffDte" class="form-control" /></div>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </template>
+                                                        </div>
 
                                                     </div>
-
                                                 </div>
-                                            }
-                                        }
-                                    </div>
-
-                                    <template id="policy-template">
-                                        <div class="border rounded p-2 mb-2 policy-item" data-index="__index__">
-                                            <div class="d-flex justify-content-between align-items-start mb-2">
-                                                <h6 class="mb-0">Policy __index__</h6>
-                                                <div>
-                                                    <button type="button" class="btn btn-sm btn-danger" onclick="removePolicy(this)">Remove</button>
-                                                </div>
+                                              }
+                                          }
+                                                
                                             </div>
-
-                                            <div>
-                                                <div class="mb-2 row">
-                                                    <div class="col">
-                                                        <label class="form-label">PolicyNum</label>
-                                                        <input name="Item.Policies.Policy[__index__].PolicyNum" value="" class="form-control" />
-                                                    </div>
-                                                    <div class="col">
-                                                        <label class="form-label">PolEffective</label>
-                                                        <input name="Item.Policies.Policy[__index__].PolEffective" value="" class="form-control" />
-                                                    </div>
-                                                    <div class="col">
-                                                        <label class="form-label">PolExpire</label>
-                                                        <input name="Item.Policies.Policy[__index__].PolExpire" value="" class="form-control" />
-                                                    </div>
-                                                </div>
-
-                                                <div class="mb-2">
-                                                    <label class="form-label">UWCompany</label>
-                                                    <input name="Item.Policies.Policy[__index__].UWCompany" value="" class="form-control" />
-                                                </div>
-
-                                                <!-- Coverage list for this policy -->
-                                                <div class="mb-2">
-                                                    <label class="form-label">Coverage</label>
-                                                    <div class="mb-1"><button type="button" class="btn btn-sm btn-outline-primary" onclick="addCoverage(this)">Add Coverage</button></div>
-                                                    <div class="coverage-container"></div>
-
-                                                    <template class="coverage-template">
-                                                        <div class="border rounded p-2 mb-2 coverage-item">
-                                                            <div class="mb-2 row">
-                                                                <div class="col">
-                                                                    <label class="form-label">CoverageCode</label>
-                                                                    <input name="Item.Policies.Policy[__pindex__].Coverage[__index__].CoverageCode" value="" class="form-control" />
-                                                                </div>
-                                                                <div class="col">
-                                                                    <label class="form-label">CoverageDescription</label>
-                                                                    <input name="Item.Policies.Policy[__pindex__].Coverage[__index__].CoverageDescription" value="" class="form-control" />
-                                                                </div>
-                                                                <div class="col-2">
-                                                                    <label class="form-label">Commission%</label>
-                                                                    <input name="Item.Policies.Policy[__pindex__].Coverage[__index__].CommissionPercent" value="" class="form-control" />
-                                                                </div>
-                                                                <div class="col-1 d-flex align-items-end">
-                                                                    <button type="button" class="btn btn-sm btn-danger mb-2" onclick="removeCoverage(this)">Remove</button>
-                                                                </div>
-                                                            </div>
-
-                                                            <!-- Exposures template -->
-                                                            <div class="mb-2">
-                                                                <label class="form-label">Exposures (Vehicles)</label>
-                                                                <div class="mb-1"><button type="button" class="btn btn-sm btn-outline-primary" onclick="addExposure(this)">Add Exposure</button></div>
-                                                                <div class="exposures-container"></div>
-
-                                                                <template class="exposure-template">
-                                                                    <div class="border rounded p-2 mb-2 exposure-item">
-                                                                        <div class="row">
-                                                                            <div class="col">
-                                                                                <label class="form-label">VehicleSeqNo</label>
-                                                                                <input name="Item.Policies.Policy[__pindex__].Coverage[__index__].Exposures.Vehicle[__vindex__].Vehicle_SequenceNo" value="" class="form-control" />
-                                                                            </div>
-                                                                            <div class="col">
-                                                                                <label class="form-label">EffectiveDate</label>
-                                                                                <input name="Item.Policies.Policy[__pindex__].Coverage[__index__].Exposures.Vehicle[__vindex__].EffectiveDate" value="" class="form-control" />
-                                                                            </div>
-                                                                            <div class="col-2">
-                                                                                <label class="form-label">Premium</label>
-                                                                                <input name="Item.Policies.Policy[__pindex__].Coverage[__index__].Exposures.Vehicle[__vindex__].Premium" value="" class="form-control" />
-                                                                            </div>
-                                                                            <div class="col-1 d-flex align-items-end">
-                                                                                <button type="button" class="btn btn-sm btn-danger mb-2" onclick="removeExposure(this)">Remove</button>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </template>
-                                                            </div>
-
-                                                            <!-- WorkComp state template -->
-                                                            <div class="mb-2">
-                                                                <label class="form-label">WorkComp - State Exposures</label>
-                                                                <div class="mb-1"><button type="button" class="btn btn-sm btn-outline-primary" onclick="addState(this)">Add State</button></div>
-                                                                <div class="stateexposures-container"></div>
-
-                                                                <template class="state-template">
-                                                                    <div class="border rounded p-2 mb-2 state-item">
-                                                                        <div class="row">
-                                                                            <div class="col">
-                                                                                <label class="form-label">StateName</label>
-                                                                                <input name="Item.Policies.Policy[__pindex__].Coverage[__index__].WorkComp.StateExposures.State[__sindex__].StateName" value="" class="form-control" />
-                                                                            </div>
-                                                                            <div class="col">
-                                                                                <label class="form-label">EffectiveDate</label>
-                                                                                <input name="Item.Policies.Policy[__pindex__].Coverage[__index__].WorkComp.StateExposures.State[__sindex__].EffectiveDate" value="" class="form-control" />
-                                                                            </div>
-                                                                            <div class="col-1 d-flex align-items-end">
-                                                                                <button type="button" class="btn btn-sm btn-danger mb-2" onclick="removeState(this)">Remove</button>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </template>
-
-                                                            </div>
-
-                                                        </div>
-                                                    </template>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </template>
                                 </div>
                             </div>
-                        </div>
-                     }
+                         </div>
+                    }
                 }
                 else
                 {
                     <div class="text-muted">No policies present.</div>
                 }
-                            
-                        </div>
+
                     </div>
-             
-    </fieldset>
+                </div>
+        </fieldset>
 
-    <fieldset class="mb-3">
-        <legend>
-            Additional Insureds
-            <button class="btn btn-outline-secondary btn-sm rounded-circle collapse-toggle ms-2 d-inline-flex align-items-center justify-content-center" style="width:30px;height:30px;padding:0;" type="button" data-bs-toggle="collapse" data-bs-target="#additionalinsureds-section-collapse" aria-expanded="true" aria-controls="#additionalinsureds-section-collapse">
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="6 9 12 15 18 9"/></svg>
-            </button>
-        </legend>
+            <fieldset class="mb-3">
+                <legend>
+                    Additional Insureds
+                    <button class="btn btn-outline-secondary btn-sm rounded-circle collapse-toggle ms-2 d-inline-flex align-items-center justify-content-center" style="width:30px;height:30px;padding:0;" type="button" data-bs-toggle="collapse" data-bs-target="#additionalinsureds-section-collapse" aria-expanded="true" aria-controls="additionalinsureds-section-collapse">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="6 9 12 15 18 9" /></svg>
+                    </button>
+                </legend>
 
-        <div class="collapse show" id="#additionalinsureds-section-collapse">
-            <div class="mb-2">
-                <button type="button" class="btn btn-sm btn-outline-primary" onclick="addAdditionalInsured()">Add Additional Insured</button>
-            </div>
+                <div class="collapse show" id="additionalinsureds-section-collapse">
+                    <div class="mb-2">
+                        <button type="button" class="btn btn-sm btn-outline-primary" onclick="addAdditionalInsured()">Add Additional Insured</button>
+                    </div>
 
-            <div id="additionalinsuredsContainer">
-                @if (Model.Item?.AdditionalInsureds?.AdditionalInsured != null && Model.Item.AdditionalInsureds.AdditionalInsured.Count > 0)
-                {
-                    for (int i = 0; i < Model.Item.AdditionalInsureds.AdditionalInsured.Count; i++)
-                    {
-                        <div class="border rounded p-2 mb-2 additionalinsured-item" data-index="@i">
+                    <div id="additionalinsuredsContainer">
+                        @if (Model.Item?.AdditionalInsureds?.AdditionalInsured != null && Model.Item.AdditionalInsureds.AdditionalInsured.Count > 0)
+                        {
+                            for (int i = 0; i < Model.Item.AdditionalInsureds.AdditionalInsured.Count; i++)
+                            {
+                                <div class="border rounded p-2 mb-2 additionalinsured-item" data-index="@i">
+                                    <div class="d-flex justify-content-between align-items-start mb-2">
+                                        <h6 class="mb-0">AdditionalInsured @i</h6>
+                                        <div>
+                                            <button type="button" class="btn btn-sm btn-danger" onclick="removeAdditionalInsured(this)">Remove</button>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <div class="row mb-2">
+                                            <div class="col-md-4">
+                                                <label class="form-label">AdditionalInsured_SequenceNo</label>
+                                                <input name="Item.AdditionalInsureds.AdditionalInsured[@i].AdditionalInsured_SequenceNo" value="@Model.Item.AdditionalInsureds.AdditionalInsured[i].AdditionalInsured_SequenceNo" class="form-control" />
+                                            </div>
+                                            <div class="col-md-8">
+                                                <label class="form-label">BusinessName</label>
+                                                <input name="Item.AdditionalInsureds.AdditionalInsured[@i].BusinessName" value="@Model.Item.AdditionalInsureds.AdditionalInsured[i].BusinessName" class="form-control" />
+                                            </div>
+                                        </div>
+
+                                        <div class="mb-2">
+                                            <label class="form-label">Address</label>
+                                            <input name="Item.AdditionalInsureds.AdditionalInsured[@i].Address.AddressLine1" value="@Model.Item.AdditionalInsureds.AdditionalInsured[i].Address?.AddressLine1" placeholder="AddressLine1" class="form-control mb-1" />
+                                            <input name="Item.AdditionalInsureds.AdditionalInsured[@i].Address.City" value="@Model.Item.AdditionalInsureds.AdditionalInsured[i].Address?.City" placeholder="City" class="form-control mb-1" />
+                                            <input name="Item.AdditionalInsureds.AdditionalInsured[@i].Address.State" value="@Model.Item.AdditionalInsureds.AdditionalInsured[i].Address?.State" placeholder="State" class="form-control mb-1" />
+                                            <input name="Item.AdditionalInsureds.AdditionalInsured[@i].Address.PostalCode" value="@Model.Item.AdditionalInsureds.AdditionalInsured[i].Address?.PostalCode" placeholder="PostalCode" class="form-control mb-1" />
+                                            <input name="Item.AdditionalInsureds.AdditionalInsured[@i].Address.Country" value="@Model.Item.AdditionalInsureds.AdditionalInsured[i].Address?.Country" placeholder="Country" class="form-control" />
+                                            <label class="form-label mt-2">AddressChgEffDte</label>
+                                            <input name="Item.AdditionalInsureds.AdditionalInsured[@i].Address.AddressChgEffDte" value="@Model.Item.AdditionalInsureds.AdditionalInsured[i].Address?.AddressChgEffDte" class="form-control" />
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        }
+                        else
+                        {
+                            <div class="text-muted">No additional insureds present.</div>
+                        }
+                    </div>
+
+                    <template id="additionalinsured-template">
+                        <div class="border rounded p-2 mb-2 additionalinsured-item" data-index="__index__">
                             <div class="d-flex justify-content-between align-items-start mb-2">
-                                <h6 class="mb-0">AdditionalInsured @i</h6>
+                                <h6 class="mb-0">AdditionalInsured __index__</h6>
                                 <div>
                                     <button type="button" class="btn btn-sm btn-danger" onclick="removeAdditionalInsured(this)">Remove</button>
                                 </div>
                             </div>
 
                             <div>
-                                <div class="mb-2">
-                                    <label class="form-label">BusinessName</label>
-                                    <input name="Item.AdditionalInsureds.AdditionalInsured[@i].BusinessName" value="@Model.Item.AdditionalInsureds.AdditionalInsured[i].BusinessName" class="form-control" />
+                                <div class="row mb-2">
+                                    <div class="col-md-4">
+                                        <label class="form-label">AdditionalInsured_SequenceNo</label>
+                                        <input name="Item.AdditionalInsureds.AdditionalInsured[__index__].AdditionalInsured_SequenceNo" value="" class="form-control" />
+                                    </div>
+                                    <div class="col-md-8">
+                                        <label class="form-label">BusinessName</label>
+                                        <input name="Item.AdditionalInsureds.AdditionalInsured[__index__].BusinessName" value="" class="form-control" />
+                                    </div>
                                 </div>
 
                                 <div class="mb-2">
-                                    <label class="form-label">Address Line1</label>
-                                    <input name="Item.AdditionalInsureds.AdditionalInsured[@i].Address.AddressLine1" value="@Model.Item.AdditionalInsureds.AdditionalInsured[i].Address?.AddressLine1" class="form-control" />
+                                    <label class="form-label">Address</label>
+                                    <input name="Item.AdditionalInsureds.AdditionalInsured[__index__].Address.AddressLine1" value="" placeholder="AddressLine1" class="form-control mb-1" />
+                                    <input name="Item.AdditionalInsureds.AdditionalInsured[__index__].Address.City" value="" placeholder="City" class="form-control mb-1" />
+                                    <input name="Item.AdditionalInsureds.AdditionalInsured[__index__].Address.State" value="" placeholder="State" class="form-control mb-1" />
+                                    <input name="Item.AdditionalInsureds.AdditionalInsured[__index__].Address.PostalCode" value="" placeholder="PostalCode" class="form-control mb-1" />
+                                    <input name="Item.AdditionalInsureds.AdditionalInsured[__index__].Address.Country" value="" placeholder="Country" class="form-control" />
                                 </div>
+
                             </div>
                         </div>
-                    }
-                }
-                else
-                {
-                    <div class="text-muted">No additional insureds present.</div>
-                }
-            </div>
-
-            <template id="additionalinsured-template">
-                <div class="border rounded p-2 mb-2 additionalinsured-item" data-index="__index__">
-                    <div class="d-flex justify-content-between align-items-start mb-2">
-                        <h6 class="mb-0">AdditionalInsured __index__</h6>
-                        <div>
-                            <button type="button" class="btn btn-sm btn-danger" onclick="removeAdditionalInsured(this)">Remove</button>
-                        </div>
-                    </div>
-
-                    <div>
-                        <div class="mb-2">
-                            <label class="form-label">BusinessName</label>
-                            <input name="Item.AdditionalInsureds.AdditionalInsured[__index__].BusinessName" value="" class="form-control" />
-                        </div>
-
-                        <div class="mb-2">
-                            <label class="form-label">Address Line1</label>
-                            <input name="Item.AdditionalInsureds.AdditionalInsured[__index__].Address.AddressLine1" value="" class="form-control" />
-                        </div>
-                    </div>
+                    </template>
                 </div>
-            </template>
-        </div>
-    </fieldset>
+            </fieldset>
 
-    <fieldset class="mb-3">
-        <legend>
-            Terminals
-            <button class="btn btn-outline-secondary btn-sm rounded-circle collapse-toggle ms-2 d-inline-flex align-items-center justify-content-center" style="width:30px;height:30px;padding:0;" type="button" data-bs-toggle="collapse" data-bs-target="#terminals-section-collapse" aria-expanded="true" aria-controls="#terminals-section-collapse">
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="6 9 12 15 18 9"/></svg>
-            </button>
-        </legend>
+            <fieldset class="mb-3">
+                <legend>
+                    Terminals
+                    <button class="btn btn-outline-secondary btn-sm rounded-circle collapse-toggle ms-2 d-inline-flex align-items-center justify-content-center" style="width:30px;height:30px;padding:0;" type="button" data-bs-toggle="collapse" data-bs-target="#terminals-section-collapse" aria-expanded="true" aria-controls="#terminals-section-collapse">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="6 9 12 15 18 9" /></svg>
+                    </button>
+                </legend>
 
-        <div class="collapse show" id="#terminals-section-collapse">
-            <div class="mb-2">
-                <button type="button" class="btn btn-sm btn-outline-primary" onclick="addTerminal()">Add Terminal</button>
-            </div>
+                <div class="collapse show" id="terminals-section-collapse">
+                    <div class="mb-2">
+                        <button type="button" class="btn btn-sm btn-outline-primary" onclick="addTerminal()">Add Terminal</button>
+                    </div>
 
-            <div id="terminalsContainer">
-                @if (Model.Item?.Terminals?.TerminalInfo != null && Model.Item.Terminals.TerminalInfo.Count > 0)
-                {
-                    for (int i = 0; i < Model.Item.Terminals.TerminalInfo.Count; i++)
-                    {
-                        <div class="border rounded p-2 mb-2 terminal-item" data-index="@i">
+                    <div id="terminalsContainer">
+                        @if (Model.Item?.Terminals?.TerminalInfo != null && Model.Item.Terminals.TerminalInfo.Count > 0)
+                        {
+                            for (int i = 0; i < Model.Item.Terminals.TerminalInfo.Count; i++)
+                            {
+                                <div class="border rounded p-2 mb-2 terminal-item" data-index="@i">
+                                    <div class="d-flex justify-content-between align-items-start mb-2">
+                                        <h6 class="mb-0">Terminal @i</h6>
+                                        <div>
+                                            <button type="button" class="btn btn-sm btn-danger" onclick="removeTerminal(this)">Remove</button>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <div class="mb-2">
+                                            <label class="form-label">TerminalNumber</label>
+                                            <input name="Item.Terminals.TerminalInfo[@i].TerminalNumber" value="@Model.Item.Terminals.TerminalInfo[i].TerminalNumber" class="form-control" />
+                                        </div>
+
+                                        <div class="mb-2">
+                                            <label class="form-label">Address</label>
+                                            <input name="Item.Terminals.TerminalInfo[@i].TerminalAddress.AddressLine1" value="@Model.Item.Terminals.TerminalInfo[i].TerminalAddress?.AddressLine1" placeholder="AddressLine1" class="form-control mb-1" />
+                                            <input name="Item.Terminals.TerminalInfo[@i].TerminalAddress.City" value="@Model.Item.Terminals.TerminalInfo[i].TerminalAddress?.City" placeholder="City" class="form-control mb-1" />
+                                            <input name="Item.Terminals.TerminalInfo[@i].TerminalAddress.State" value="@Model.Item.Terminals.TerminalInfo[i].TerminalAddress?.State" placeholder="State" class="form-control mb-1" />
+                                            <input name="Item.Terminals.TerminalInfo[@i].TerminalAddress.PostalCode" value="@Model.Item.Terminals.TerminalInfo[i].TerminalAddress?.PostalCode" placeholder="PostalCode" class="form-control mb-1" />
+                                            <input name="Item.Terminals.TerminalInfo[@i].TerminalAddress.Country" value="@Model.Item.Terminals.TerminalInfo[i].TerminalAddress?.Country" placeholder="Country" class="form-control" />
+                                            <label class="form-label mt-2">AddressChgEffDte</label>
+                                            <input name="Item.Terminals.TerminalInfo[@i].TerminalAddress.AddressChgEffDte" value="@Model.Item.Terminals.TerminalInfo[i].TerminalAddress?.AddressChgEffDte" class="form-control" />
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        }
+                        else
+                        {
+                            <div class="text-muted">No terminals present.</div>
+                        }
+                    </div>
+
+                    <template id="terminal-template">
+                        <div class="border rounded p-2 mb-2 terminal-item" data-index="__index__">
                             <div class="d-flex justify-content-between align-items-start mb-2">
-                                <h6 class="mb-0">Terminal @i</h6>
+                                <h6 class="mb-0">Terminal __index__</h6>
                                 <div>
                                     <button type="button" class="btn btn-sm btn-danger" onclick="removeTerminal(this)">Remove</button>
                                 </div>
@@ -913,454 +892,906 @@
                             <div>
                                 <div class="mb-2">
                                     <label class="form-label">TerminalNumber</label>
-                                    <input name="Item.Terminals.TerminalInfo[@i].TerminalNumber" value="@Model.Item.Terminals.TerminalInfo[i].TerminalNumber" class="form-control" />
+                                    <input name="Item.Terminals.TerminalInfo[__index__].TerminalNumber" value="" class="form-control" />
                                 </div>
 
                                 <div class="mb-2">
-                                    <label class="form-label">City</label>
-                                    <input name="Item.Terminals.TerminalInfo[@i].TerminalAddress.City" value="@Model.Item.Terminals.TerminalInfo[i].TerminalAddress?.City" class="form-control" />
+                                    <label class="form-label">Address</label>
+                                    <input name="Item.Terminals.TerminalInfo[__index__].TerminalAddress.AddressLine1" value="" placeholder="AddressLine1" class="form-control mb-1" />
+                                    <input name="Item.Terminals.TerminalInfo[__index__].TerminalAddress.City" value="" placeholder="City" class="form-control mb-1" />
+                                    <input name="Item.Terminals.TerminalInfo[__index__].TerminalAddress.State" value="" placeholder="State" class="form-control mb-1" />
+                                    <input name="Item.Terminals.TerminalInfo[__index__].TerminalAddress.PostalCode" value="" placeholder="PostalCode" class="form-control mb-1" />
+                                    <input name="Item.Terminals.TerminalInfo[__index__].TerminalAddress.Country" value="" placeholder="Country" class="form-control" />
+                                    <label class="form-label mt-2">AddressChgEffDte</label>
+                                    <input name="Item.Terminals.TerminalInfo[__index__].TerminalAddress.AddressChgEffDte" value="" class="form-control" />
                                 </div>
                             </div>
                         </div>
-                    }
-                }
-                else
-                {
-                    <div class="text-muted">No terminals present.</div>
-                }
-            </div>
-
-            <template id="terminal-template">
-                <div class="border rounded p-2 mb-2 terminal-item" data-index="__index__">
-                    <div class="d-flex justify-content-between align-items-start mb-2">
-                        <h6 class="mb-0">Terminal __index__</h6>
-                        <div>
-                            <button type="button" class="btn btn-sm btn-danger" onclick="removeTerminal(this)">Remove</button>
-                        </div>
-                    </div>
-
-                    <div>
-                        <div class="mb-2">
-                            <label class="form-label">TerminalNumber</label>
-                            <input name="Item.Terminals.TerminalInfo[__index__].TerminalNumber" value="" class="form-control" />
-                        </div>
-
-                        <div class="mb-2">
-                            <label class="form-label">City</label>
-                            <input name="Item.Terminals.TerminalInfo[__index__].TerminalAddress.City" value="" class="form-control" />
-                        </div>
-                    </div>
+                    </template>
                 </div>
-            </template>
-        </div>
-    </fieldset>
+            </fieldset>
 
-    <fieldset class="mb-3">
-        <legend>
-            Additional Interests
-            <button class="btn btn-outline-secondary btn-sm rounded-circle collapse-toggle ms-2 d-inline-flex align-items-center justify-content-center" style="width:30px;height:30px;padding:0;" type="button" data-bs-toggle="collapse" data-bs-target="#additionalinterests-section-collapse" aria-expanded="true" aria-controls="#additionalinterests-section-collapse">
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="6 9 12 15 18 9"/></svg>
-            </button>
-        </legend>
+            <fieldset class="mb-3">
+                <legend>
+                    Additional Interests
+                    <button class="btn btn-outline-secondary btn-sm rounded-circle collapse-toggle ms-2 d-inline-flex align-items-center justify-content-center" style="width:30px;height:30px;padding:0;" type="button" data-bs-toggle="collapse" data-bs-target="#additionalinterests-section-collapse" aria-expanded="true" aria-controls="#additionalinterests-section-collapse">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="6 9 12 15 18 9" /></svg>
+                    </button>
+                </legend>
 
-        <div class="collapse show" id="#additionalinterests-section-collapse">
-            <div class="mb-2">
-                <button type="button" class="btn btn-sm btn-outline-primary" onclick="addAdditionalInterest()">Add Additional Interest</button>
-            </div>
+                <div class="collapse show" id="additionalinterests-section-collapse">
+                    <div class="mb-2">
+                        <button type="button" class="btn btn-sm btn-outline-primary" onclick="addAdditionalInterest()">Add Additional Interest</button>
+                    </div>
 
-            <div id="additionalinterestsContainer">
-                @if (Model.Item?.AdditionalInterests?.AdditionalInterest != null && Model.Item.AdditionalInterests.AdditionalInterest.Count > 0)
-                {
-                    for (int j = 0; j < Model.Item.AdditionalInterests.AdditionalInterest.Count; j++)
-                    {
-                        <div class="border rounded p-2 mb-2 additionalinterest-item" data-index="@j">
+                    <div id="additionalinterestsContainer">
+                        @if (Model.Item?.AdditionalInterests?.AdditionalInterest != null && Model.Item.AdditionalInterests.AdditionalInterest.Count > 0)
+                        {
+                            for (int j = 0; j < Model.Item.AdditionalInterests.AdditionalInterest.Count; j++)
+                            {
+                                <div class="border rounded p-2 mb-2 additionalinterest-item" data-index="@j">
+                                    <div class="d-flex justify-content-between align-items-start mb-2">
+                                        <h6 class="mb-0">AdditionalInterest @j</h6>
+                                        <div>
+                                            <button type="button" class="btn btn-sm btn-danger" onclick="removeAdditionalInterest(this)">Remove</button>
+                                        </div>
+                                    </div>
+
+                                    <div>
+
+                                        <div class="mb-2 row">
+                                            <div class="col-md-4">
+                                                <label class="form-label">AdditionalInterest_SequenceNo</label>
+                                                <input name="Item.AdditionalInterests.AdditionalInterest[@j].AdditionalInterest_SequenceNo" value="@Model.Item.AdditionalInterests.AdditionalInterest[j].AdditionalInterest_SequenceNo" class="form-control" />
+                                            </div>
+                                            <div class="col-md-8">
+                                                <label class="form-label">Name</label>
+                                                <input name="Item.AdditionalInterests.AdditionalInterest[@j].Name" value="@Model.Item.AdditionalInterests.AdditionalInterest[j].Name" class="form-control" />
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-2">
+                                            <div class="col-md-4">
+                                                <label class="form-label">NameChgEffDte</label>
+                                                <input name="Item.AdditionalInterests.AdditionalInterest[@j].NameChgEffDte" value="@Model.Item.AdditionalInterests.AdditionalInterest[j].NameChgEffDte" class="form-control" />
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label class="form-label">AdditionalInterestType</label>
+                                                <input name="Item.AdditionalInterests.AdditionalInterest[@j].AdditionalInterestType" value="@Model.Item.AdditionalInterests.AdditionalInterest[j].AdditionalInterestType" class="form-control" />
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label class="form-label">AdditionalInterestTypeChgDate</label>
+                                                <input name="Item.AdditionalInterests.AdditionalInterest[@j].AdditionalInterestTypeChgDate" value="@Model.Item.AdditionalInterests.AdditionalInterest[j].AdditionalInterestTypeChgDate" class="form-control" />
+                                            </div>
+                                        </div>
+
+                                        <div class="mb-2">
+                                            <label class="form-label">Address</label>
+                                            <input name="Item.AdditionalInterests.AdditionalInterest[@j].Address.AddressLine1" value="@Model.Item.AdditionalInterests.AdditionalInterest[j].Address?.AddressLine1" placeholder="AddressLine1" class="form-control mb-1" />
+                                            <input name="Item.AdditionalInterests.AdditionalInterest[@j].Address.City" value="@Model.Item.AdditionalInterests.AdditionalInterest[j].Address?.City" placeholder="City" class="form-control mb-1" />
+                                            <input name="Item.AdditionalInterests.AdditionalInterest[@j].Address.State" value="@Model.Item.AdditionalInterests.AdditionalInterest[j].Address?.State" placeholder="State" class="form-control mb-1" />
+                                            <input name="Item.AdditionalInterests.AdditionalInterest[@j].Address.PostalCode" value="@Model.Item.AdditionalInterests.AdditionalInterest[j].Address?.PostalCode" placeholder="PostalCode" class="form-control mb-1" />
+                                            <input name="Item.AdditionalInterests.AdditionalInterest[@j].Address.Country" value="@Model.Item.AdditionalInterests.AdditionalInterest[j].Address?.Country" placeholder="Country" class="form-control" />
+                                            <label class="form-label mt-2">AddressChgEffDte</label>
+                                            <input name="Item.AdditionalInterests.AdditionalInterest[@j].Address.AddressChgEffDte" value="@Model.Item.AdditionalInterests.AdditionalInterest[j].Address?.AddressChgEffDte" class="form-control" />
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        }
+                        else
+                        {
+                            <div class="text-muted">No additional interests present.</div>
+                        }
+                    </div>
+
+                    <template id="additionalinterest-template">
+                        <div class="border rounded p-2 mb-2 additionalinterest-item" data-index="__index__">
                             <div class="d-flex justify-content-between align-items-start mb-2">
-                                <h6 class="mb-0">AdditionalInterest @j</h6>
+                                <h6 class="mb-0">AdditionalInterest __index__</h6>
                                 <div>
                                     <button type="button" class="btn btn-sm btn-danger" onclick="removeAdditionalInterest(this)">Remove</button>
                                 </div>
                             </div>
 
                             <div>
-                                <div class="mb-2">
-                                    <label class="form-label">Name</label>
-                                    <input name="Item.AdditionalInterests.AdditionalInterest[@j].Name" value="@Model.Item.AdditionalInterests.AdditionalInterest[j].Name" class="form-control" />
+                                <div class="row mb-2">
+                                    <div class="col-md-4">
+                                        <label class="form-label">AdditionalInterest_SequenceNo</label>
+                                        <input name="Item.AdditionalInterests.AdditionalInterest[__index__].AdditionalInterest_SequenceNo" value="" class="form-control" />
+                                    </div>
+                                    <div class="col-md-8">
+                                        <label class="form-label">Name</label>
+                                        <input name="Item.AdditionalInterests.AdditionalInterest[__index__].Name" value="" class="form-control" />
+                                    </div>
                                 </div>
 
                                 <div class="mb-2">
-                                    <label class="form-label">AdditionalInterestType</label>
-                                    <input name="Item.AdditionalInterests.AdditionalInterest[@j].AdditionalInterestType" value="@Model.Item.AdditionalInterests.AdditionalInterest[j].AdditionalInterestType" class="form-control" />
+                                    <label class="form-label">Address</label>
+                                    <input name="Item.AdditionalInterests.AdditionalInterest[__index__].Address.AddressLine1" value="" placeholder="AddressLine1" class="form-control mb-1" />
+                                    <input name="Item.AdditionalInterests.AdditionalInterest[__index__].Address.City" value="" placeholder="City" class="form-control mb-1" />
+                                    <input name="Item.AdditionalInterests.AdditionalInterest[__index__].Address.State" value="" placeholder="State" class="form-control mb-1" />
+                                    <input name="Item.AdditionalInterests.AdditionalInterest[__index__].Address.PostalCode" value="" placeholder="PostalCode" class="form-control mb-1" />
+                                    <input name="Item.AdditionalInterests.AdditionalInterest[__index__].Address.Country" value="" placeholder="Country" class="form-control" />
+                                </div>
+
+                            </div>
+                        </div>
+                    </template>
+                </div>
+            </fieldset>
+
+            <fieldset class="mb-3">
+                <legend>
+                    Terminals
+                    <button class="btn btn-outline-secondary btn-sm rounded-circle collapse-toggle ms-2 d-inline-flex align-items-center justify-content-center" style="width:30px;height:30px;padding:0;" type="button" data-bs-toggle="collapse" data-bs-target="#terminals-section-collapse" aria-expanded="true" aria-controls="#terminals-section-collapse">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="6 9 12 15 18 9" /></svg>
+                    </button>
+                </legend>
+
+                <div class="collapse show" id="terminals-section-collapse">
+                    <div class="mb-2">
+                        <button type="button" class="btn btn-sm btn-outline-primary" onclick="addTerminal()">Add Terminal</button>
+                    </div>
+
+                    <div id="terminalsContainer">
+                        @if (Model.Item?.Terminals?.TerminalInfo != null && Model.Item.Terminals.TerminalInfo.Count > 0)
+                        {
+                            for (int i = 0; i < Model.Item.Terminals.TerminalInfo.Count; i++)
+                            {
+                                <div class="border rounded p-2 mb-2 terminal-item" data-index="@i">
+                                    <div class="d-flex justify-content-between align-items-start mb-2">
+                                        <h6 class="mb-0">Terminal @i</h6>
+                                        <div>
+                                            <button type="button" class="btn btn-sm btn-danger" onclick="removeTerminal(this)">Remove</button>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <div class="mb-2">
+                                            <label class="form-label">TerminalNumber</label>
+                                            <input name="Item.Terminals.TerminalInfo[@i].TerminalNumber" value="@Model.Item.Terminals.TerminalInfo[i].TerminalNumber" class="form-control" />
+                                        </div>
+
+                                        <div class="mb-2">
+                                            <label class="form-label">Address</label>
+                                            <input name="Item.Terminals.TerminalInfo[@i].TerminalAddress.AddressLine1" value="@Model.Item.Terminals.TerminalInfo[i].TerminalAddress?.AddressLine1" placeholder="AddressLine1" class="form-control mb-1" />
+                                            <input name="Item.Terminals.TerminalInfo[@i].TerminalAddress.City" value="@Model.Item.Terminals.TerminalInfo[i].TerminalAddress?.City" placeholder="City" class="form-control mb-1" />
+                                            <input name="Item.Terminals.TerminalInfo[@i].TerminalAddress.State" value="@Model.Item.Terminals.TerminalInfo[i].TerminalAddress?.State" placeholder="State" class="form-control mb-1" />
+                                            <input name="Item.Terminals.TerminalInfo[@i].TerminalAddress.PostalCode" value="@Model.Item.Terminals.TerminalInfo[i].TerminalAddress?.PostalCode" placeholder="PostalCode" class="form-control mb-1" />
+                                            <input name="Item.Terminals.TerminalInfo[@i].TerminalAddress.Country" value="@Model.Item.Terminals.TerminalInfo[i].TerminalAddress?.Country" placeholder="Country" class="form-control" />
+                                            <label class="form-label mt-2">AddressChgEffDte</label>
+                                            <input name="Item.Terminals.TerminalInfo[@i].TerminalAddress.AddressChgEffDte" value="@Model.Item.Terminals.TerminalInfo[i].TerminalAddress?.AddressChgEffDte" class="form-control" />
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        }
+                        else
+                        {
+                            <div class="text-muted">No terminals present.</div>
+                        }
+                    </div>
+
+                    <template id="terminal-template">
+                        <div class="border rounded p-2 mb-2 terminal-item" data-index="__index__">
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <h6 class="mb-0">Terminal __index__</h6>
+                                <div>
+                                    <button type="button" class="btn btn-sm btn-danger" onclick="removeTerminal(this)">Remove</button>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="mb-2">
+                                    <label class="form-label">TerminalNumber</label>
+                                    <input name="Item.Terminals.TerminalInfo[__index__].TerminalNumber" value="" class="form-control" />
+                                </div>
+
+                                <div class="mb-2">
+                                    <label class="form-label">Address</label>
+                                    <input name="Item.Terminals.TerminalInfo[__index__].TerminalAddress.AddressLine1" value="" placeholder="AddressLine1" class="form-control mb-1" />
+                                    <input name="Item.Terminals.TerminalInfo[__index__].TerminalAddress.City" value="" placeholder="City" class="form-control mb-1" />
+                                    <input name="Item.Terminals.TerminalInfo[__index__].TerminalAddress.State" value="" placeholder="State" class="form-control mb-1" />
+                                    <input name="Item.Terminals.TerminalInfo[__index__].TerminalAddress.PostalCode" value="" placeholder="PostalCode" class="form-control mb-1" />
+                                    <input name="Item.Terminals.TerminalInfo[__index__].TerminalAddress.Country" value="" placeholder="Country" class="form-control" />
+                                    <label class="form-label mt-2">AddressChgEffDte</label>
+                                    <input name="Item.Terminals.TerminalInfo[__index__].TerminalAddress.AddressChgEffDte" value="" class="form-control" />
                                 </div>
                             </div>
                         </div>
-                    }
-                }
-                else
-                {
-                    <div class="text-muted">No additional interests present.</div>
-                }
-            </div>
-
-            <template id="additionalinterest-template">
-                <div class="border rounded p-2 mb-2 additionalinterest-item" data-index="__index__">
-                    <div class="d-flex justify-content-between align-items-start mb-2">
-                        <h6 class="mb-0">AdditionalInterest __index__</h6>
-                        <div>
-                            <button type="button" class="btn btn-sm btn-danger" onclick="removeAdditionalInterest(this)">Remove</button>
-                        </div>
-                    </div>
-
-                    <div>
-                        <div class="mb-2">
-                            <label class="form-label">Name</label>
-                            <input name="Item.AdditionalInterests.AdditionalInterest[__index__].Name" value="" class="form-control" />
-                        </div>
-
-                        <div class="mb-2">
-                            <label class="form-label">AdditionalInterestType</label>
-                            <input name="Item.AdditionalInterests.AdditionalInterest[__index__].AdditionalInterestType" value="" class="form-control" />
-                        </div>
-                    </div>
+                    </template>
                 </div>
-            </template>
-        </div>
-    </fieldset>
+            </fieldset>
 
-    <div class="d-flex gap-2">
-        <button type="submit" class="btn btn-primary">Save</button>
-        <a asp-page="./Index" class="btn btn-secondary">Cancel</a>
-    </div>
-</form>
+            <fieldset class="mb-3">
+                <legend>
+                    Additional Interests
+                    <button class="btn btn-outline-secondary btn-sm rounded-circle collapse-toggle ms-2 d-inline-flex align-items-center justify-content-center" style="width:30px;height:30px;padding:0;" type="button" data-bs-toggle="collapse" data-bs-target="#additionalinterests-section-collapse" aria-expanded="true" aria-controls="#additionalinterests-section-collapse">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="6 9 12 15 18 9" /></svg>
+                    </button>
+                </legend>
 
-@section Scripts {
-    <partial name="_ValidationScriptsPartial" />
+                <div class="collapse show" id="additionalinterests-section-collapse">
+                    <div class="mb-2">
+                        <button type="button" class="btn btn-sm btn-outline-primary" onclick="addAdditionalInterest()">Add Additional Interest</button>
+                    </div>
 
-    <script>
-        function renderTemplate(templateId, index) {
-            const tpl = document.getElementById(templateId);
-            const html = tpl.innerHTML.replace(/__index__/g, index);
-            const wrapper = document.createElement('div');
-            wrapper.innerHTML = html;
-            return wrapper.firstElementChild;
-        }
+                    <div id="additionalinterestsContainer">
+                        @if (Model.Item?.AdditionalInterests?.AdditionalInterest != null && Model.Item.AdditionalInterests.AdditionalInterest.Count > 0)
+                        {
+                            for (int j = 0; j < Model.Item.AdditionalInterests.AdditionalInterest.Count; j++)
+                            {
+                                <div class="border rounded p-2 mb-2 additionalinterest-item" data-index="@j">
+                                    <div class="d-flex justify-content-between align-items-start mb-2">
+                                        <h6 class="mb-0">AdditionalInterest @j</h6>
+                                        <div>
+                                            <button type="button" class="btn btn-sm btn-danger" onclick="removeAdditionalInterest(this)">Remove</button>
+                                        </div>
+                                    </div>
 
-        // Utility to render template and replace multiple placeholders
-        function renderTemplateMulti(templateElem, replacements) {
-            let html = templateElem.innerHTML;
-            for (const key in replacements) {
-                const re = new RegExp(key, 'g');
-                html = html.replace(re, replacements[key]);
-            }
-            const wrapper = document.createElement('div');
-            wrapper.innerHTML = html;
-            return wrapper.firstElementChild;
-        }
+                                    <div>
 
-        // Vehicles
-        function addVehicle() {
-            const container = document.getElementById('vehiclesContainer');
-            const nextIndex = container.querySelectorAll('.vehicle-item').length;
-            const node = renderTemplate('vehicle-template', nextIndex);
-            container.appendChild(node);
-            reindexItems(container, 'Item.Vehicles.VehicleInfo');
-        }
+                                        <div class="mb-2 row">
+                                            <div class="col-md-4">
+                                                <label class="form-label">AdditionalInterest_SequenceNo</label>
+                                                <input name="Item.AdditionalInterests.AdditionalInterest[@j].AdditionalInterest_SequenceNo" value="@Model.Item.AdditionalInterests.AdditionalInterest[j].AdditionalInterest_SequenceNo" class="form-control" />
+                                            </div>
+                                            <div class="col-md-8">
+                                                <label class="form-label">Name</label>
+                                                <input name="Item.AdditionalInterests.AdditionalInterest[@j].Name" value="@Model.Item.AdditionalInterests.AdditionalInterest[j].Name" class="form-control" />
+                                            </div>
+                                        </div>
 
-        function removeVehicle(buttonOrElem) {
-            const item = buttonOrElem.closest ? buttonOrElem.closest('.vehicle-item') : null;
-            if (item) item.remove();
-            const container = document.getElementById('vehiclesContainer');
-            reindexItems(container, 'Item.Vehicles.VehicleInfo');
-        }
+                                        <div class="row mb-2">
+                                            <div class="col-md-4">
+                                                <label class="form-label">NameChgEffDte</label>
+                                                <input name="Item.AdditionalInterests.AdditionalInterest[@j].NameChgEffDte" value="@Model.Item.AdditionalInterests.AdditionalInterest[j].NameChgEffDte" class="form-control" />
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label class="form-label">AdditionalInterestType</label>
+                                                <input name="Item.AdditionalInterests.AdditionalInterest[@j].AdditionalInterestType" value="@Model.Item.AdditionalInterests.AdditionalInterest[j].AdditionalInterestType" class="form-control" />
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label class="form-label">AdditionalInterestTypeChgDate</label>
+                                                <input name="Item.AdditionalInterests.AdditionalInterest[@j].AdditionalInterestTypeChgDate" value="@Model.Item.AdditionalInterests.AdditionalInterest[j].AdditionalInterestTypeChgDate" class="form-control" />
+                                            </div>
+                                        </div>
 
-        // Registrants
-        function addRegistrant() {
-            const container = document.getElementById('registrantsContainer');
-            const nextIndex = container.querySelectorAll('.registrant-item').length;
-            const node = renderTemplate('registrant-template', nextIndex);
-            container.appendChild(node);
-            reindexItems(container, 'Item.Registrants.Registrant');
-        }
+                                        <div class="mb-2">
+                                            <label class="form-label">Address</label>
+                                            <input name="Item.AdditionalInterests.AdditionalInterest[@j].Address.AddressLine1" value="@Model.Item.AdditionalInterests.AdditionalInterest[j].Address?.AddressLine1" placeholder="AddressLine1" class="form-control mb-1" />
+                                            <input name="Item.AdditionalInterests.AdditionalInterest[@j].Address.City" value="@Model.Item.AdditionalInterests.AdditionalInterest[j].Address?.City" placeholder="City" class="form-control mb-1" />
+                                            <input name="Item.AdditionalInterests.AdditionalInterest[@j].Address.State" value="@Model.Item.AdditionalInterests.AdditionalInterest[j].Address?.State" placeholder="State" class="form-control mb-1" />
+                                            <input name="Item.AdditionalInterests.AdditionalInterest[@j].Address.PostalCode" value="@Model.Item.AdditionalInterests.AdditionalInterest[j].Address?.PostalCode" placeholder="PostalCode" class="form-control mb-1" />
+                                            <input name="Item.AdditionalInterests.AdditionalInterest[@j].Address.Country" value="@Model.Item.AdditionalInterests.AdditionalInterest[j].Address?.Country" placeholder="Country" class="form-control" />
+                                            <label class="form-label mt-2">AddressChgEffDte</label>
+                                            <input name="Item.AdditionalInterests.AdditionalInterest[@j].Address.AddressChgEffDte" value="@Model.Item.AdditionalInterests.AdditionalInterest[j].Address?.AddressChgEffDte" class="form-control" />
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        }
+                        else
+                        {
+                            <div class="text-muted">No additional interests present.</div>
+                        }
+                    </div>
 
-        function removeRegistrant(buttonOrElem) {
-            const item = buttonOrElem.closest ? buttonOrElem.closest('.registrant-item') : null;
-            if (item) item.remove();
-            const container = document.getElementById('registrantsContainer');
-            reindexItems(container, 'Item.Registrants.Registrant');
-        }
+                    <template id="additionalinterest-template">
+                        <div class="border rounded p-2 mb-2 additionalinterest-item" data-index="__index__">
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <h6 class="mb-0">AdditionalInterest __index__</h6>
+                                <div>
+                                    <button type="button" class="btn btn-sm btn-danger" onclick="removeAdditionalInterest(this)">Remove</button>
+                                </div>
+                            </div>
 
-        // Policies
-        function addPolicy() {
-            const container = document.getElementById('policiesContainer');
-            const nextIndex = container.querySelectorAll('.policy-item').length;
-            const node = renderTemplate('policy-template', nextIndex);
-            container.appendChild(node);
-            reindexItems(container, 'Item.Policies.Policy');
-        }
+                            <div>
+                                <div class="row mb-2">
+                                    <div class="col-md-4">
+                                        <label class="form-label">AdditionalInterest_SequenceNo</label>
+                                        <input name="Item.AdditionalInterests.AdditionalInterest[__index__].AdditionalInterest_SequenceNo" value="" class="form-control" />
+                                    </div>
+                                    <div class="col-md-8">
+                                        <label class="form-label">Name</label>
+                                        <input name="Item.AdditionalInterests.AdditionalInterest[__index__].Name" value="" class="form-control" />
+                                    </div>
+                                </div>
 
-        function removePolicy(buttonOrElem) {
-            const item = buttonOrElem.closest ? buttonOrElem.closest('.policy-item') : null;
-            if (item) item.remove();
-            const container = document.getElementById('policiesContainer');
-            reindexItems(container, 'Item.Policies.Policy');
-        }
+                                <div class="mb-2">
+                                    <label class="form-label">Address</label>
+                                    <input name="Item.AdditionalInterests.AdditionalInterest[__index__].Address.AddressLine1" value="" placeholder="AddressLine1" class="form-control mb-1" />
+                                    <input name="Item.AdditionalInterests.AdditionalInterest[__index__].Address.City" value="" placeholder="City" class="form-control mb-1" />
+                                    <input name="Item.AdditionalInterests.AdditionalInterest[__index__].Address.State" value="" placeholder="State" class="form-control mb-1" />
+                                    <input name="Item.AdditionalInterests.AdditionalInterest[__index__].Address.PostalCode" value="" placeholder="PostalCode" class="form-control mb-1" />
+                                    <input name="Item.AdditionalInterests.AdditionalInterest[__index__].Address.Country" value="" placeholder="Country" class="form-control" />
+                                </div>
 
-        // Coverage inside a policy
-        function addCoverage(buttonOrElem) {
-            const policyEl = buttonOrElem.closest('.policy-item');
-            if (!policyEl) return;
-            const policyIdx = Array.from(document.getElementById('policiesContainer').querySelectorAll('.policy-item')).indexOf(policyEl);
-            const container = policyEl.querySelector('.coverage-container');
-            const nextIndex = container.querySelectorAll('.coverage-item').length;
-            const tpl = policyEl.querySelector('.coverage-template');
-            const node = renderTemplateMulti(tpl, { '__pindex__': policyIdx, '__index__': nextIndex });
-            container.appendChild(node);
-            reindexCoverage(policyEl, policyIdx);
-        }
+                            </div>
+                        </div>
+                    </template>
+                </div>
+            </fieldset>
 
-        function removeCoverage(buttonOrElem) {
-            const item = buttonOrElem.closest ? buttonOrElem.closest('.coverage-item') : null;
-            if (item) item.remove();
-            const policyEl = buttonOrElem.closest('.policy-item');
-            if (!policyEl) return;
-            const policyIdx = Array.from(document.getElementById('policiesContainer').querySelectorAll('.policy-item')).indexOf(policyEl);
-            reindexCoverage(policyEl, policyIdx);
-        }
+            <fieldset class="mb-3">
+                <legend>
+                    Terminals
+                    <button class="btn btn-outline-secondary btn-sm rounded-circle collapse-toggle ms-2 d-inline-flex align-items-center justify-content-center" style="width:30px;height:30px;padding:0;" type="button" data-bs-toggle="collapse" data-bs-target="#terminals-section-collapse" aria-expanded="true" aria-controls="#terminals-section-collapse">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="6 9 12 15 18 9" /></svg>
+                    </button>
+                </legend>
 
-        function reindexCoverage(policyEl, policyIdx) {
-            const container = policyEl.querySelector('.coverage-container');
-            const items = container.querySelectorAll('.coverage-item');
-            items.forEach((el, cIdx) => {
-                // update name attributes for inputs in coverage
-                const inputs = el.querySelectorAll('input, select, textarea');
-                inputs.forEach(input => {
-                    if (!input.name) return;
-                    input.name = input.name.replace(/Item\.Policies\.Policy\[[0-9]+\]/, `Item.Policies.Policy[${policyIdx}]`);
-                    input.name = input.name.replace(/Coverage\[[0-9]+\]/, `Coverage[${cIdx}]`);
-                });
-                // update validation spans if any
-                const spans = el.querySelectorAll('span[data-valmsg-for]');
-                spans.forEach(span => {
-                    const attr = span.getAttribute('data-valmsg-for') || '';
-                    let updated = attr.replace(/Item\.Policies\.Policy\[[0-9]+\]/, `Item.Policies.Policy[${policyIdx}]`);
-                    updated = updated.replace(/Coverage\[[0-9]+\]/, `Coverage[${cIdx}]`);
-                    span.setAttribute('data-valmsg-for', updated);
-                });
+                <div class="collapse show" id="terminals-section-collapse">
+                    <div class="mb-2">
+                        <button type="button" class="btn btn-sm btn-outline-primary" onclick="addTerminal()">Add Terminal</button>
+                    </div>
 
-                // reindex nested exposures and states
-                reindexExposures(el, policyIdx, cIdx);
-                reindexStates(el, policyIdx, cIdx);
-            });
-        }
+                    <div id="terminalsContainer">
+                        @if (Model.Item?.Terminals?.TerminalInfo != null && Model.Item.Terminals.TerminalInfo.Count > 0)
+                        {
+                            for (int i = 0; i < Model.Item.Terminals.TerminalInfo.Count; i++)
+                            {
+                                <div class="border rounded p-2 mb-2 terminal-item" data-index="@i">
+                                    <div class="d-flex justify-content-between align-items-start mb-2">
+                                        <h6 class="mb-0">Terminal @i</h6>
+                                        <div>
+                                            <button type="button" class="btn btn-sm btn-danger" onclick="removeTerminal(this)">Remove</button>
+                                        </div>
+                                    </div>
 
-        // Exposures (Vehicle list) inside a coverage
-        function addExposure(buttonOrElem) {
-            const coverageEl = buttonOrElem.closest('.coverage-item');
-            if (!coverageEl) return;
-            const policyEl = coverageEl.closest('.policy-item');
-            const policyIdx = Array.from(document.getElementById('policiesContainer').querySelectorAll('.policy-item')).indexOf(policyEl);
-            const coverageItems = Array.from(policyEl.querySelectorAll('.coverage-item'));
-            const cIdx = coverageItems.indexOf(coverageEl);
-            const container = coverageEl.querySelector('.exposures-container');
-            const nextIndex = container.querySelectorAll('.exposure-item').length;
-            const tpl = coverageEl.querySelector('.exposure-template');
-            const node = renderTemplateMulti(tpl, { '__pindex__': policyIdx, '__cindex__': cIdx, '__vindex__': nextIndex });
-            container.appendChild(node);
-            reindexExposures(coverageEl, policyIdx, cIdx);
-        }
+                                    <div>
+                                        <div class="mb-2">
+                                            <label class="form-label">TerminalNumber</label>
+                                            <input name="Item.Terminals.TerminalInfo[@i].TerminalNumber" value="@Model.Item.Terminals.TerminalInfo[i].TerminalNumber" class="form-control" />
+                                        </div>
 
-        function removeExposure(buttonOrElem) {
-            const item = buttonOrElem.closest ? buttonOrElem.closest('.exposure-item') : null;
-            if (item) item.remove();
-            const coverageEl = buttonOrElem.closest('.coverage-item');
-            if (!coverageEl) return;
-            const policyEl = coverageEl.closest('.policy-item');
-            const policyIdx = Array.from(document.getElementById('policiesContainer').querySelectorAll('.policy-item')).indexOf(policyEl);
-            const coverageItems = Array.from(policyEl.querySelectorAll('.coverage-item'));
-            const cIdx = coverageItems.indexOf(coverageEl);
-            reindexExposures(coverageEl, policyIdx, cIdx);
-        }
+                                        <div class="mb-2">
+                                            <label class="form-label">Address</label>
+                                            <input name="Item.Terminals.TerminalInfo[@i].TerminalAddress.AddressLine1" value="@Model.Item.Terminals.TerminalInfo[i].TerminalAddress?.AddressLine1" placeholder="AddressLine1" class="form-control mb-1" />
+                                            <input name="Item.Terminals.TerminalInfo[@i].TerminalAddress.City" value="@Model.Item.Terminals.TerminalInfo[i].TerminalAddress?.City" placeholder="City" class="form-control mb-1" />
+                                            <input name="Item.Terminals.TerminalInfo[@i].TerminalAddress.State" value="@Model.Item.Terminals.TerminalInfo[i].TerminalAddress?.State" placeholder="State" class="form-control mb-1" />
+                                            <input name="Item.Terminals.TerminalInfo[@i].TerminalAddress.PostalCode" value="@Model.Item.Terminals.TerminalInfo[i].TerminalAddress?.PostalCode" placeholder="PostalCode" class="form-control mb-1" />
+                                            <input name="Item.Terminals.TerminalInfo[@i].TerminalAddress.Country" value="@Model.Item.Terminals.TerminalInfo[i].TerminalAddress?.Country" placeholder="Country" class="form-control" />
+                                            <label class="form-label mt-2">AddressChgEffDte</label>
+                                            <input name="Item.Terminals.TerminalInfo[@i].TerminalAddress.AddressChgEffDte" value="@Model.Item.Terminals.TerminalInfo[i].TerminalAddress?.AddressChgEffDte" class="form-control" />
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        }
+                        else
+                        {
+                            <div class="text-muted">No terminals present.</div>
+                        }
+                    </div>
 
-        function reindexExposures(coverageEl, policyIdx, cIdx) {
-            const container = coverageEl.querySelector('.exposures-container');
-            if (!container) return;
-            const items = container.querySelectorAll('.exposure-item');
-            items.forEach((el, vIdx) => {
-                const inputs = el.querySelectorAll('input, select, textarea');
-                inputs.forEach(input => {
-                    if (!input.name) return;
-                    input.name = input.name.replace(/Item\.Policies\.Policy\[[0-9]+\]/, `Item.Policies.Policy[${policyIdx}]`);
-                    input.name = input.name.replace(/Coverage\[[0-9]+\]/, `Coverage[${cIdx}]`);
-                    input.name = input.name.replace(/Exposures\.Vehicle\[[0-9]+\]/, `Exposures.Vehicle[${vIdx}]`);
-                    input.name = input.name.replace(/Vehicle\[[0-9]+\]/, `Vehicle[${vIdx}]`);
-                    input.name = input.name.replace(/\[__vindex__\]/g, `[${vIdx}]`);
-                    // fallback replace any numeric index in Vehicle[...] occurrences
-                    input.name = input.name.replace(/Vehicle\[[0-9]+\]/, `Vehicle[${vIdx}]`);
-                });
-                const spans = el.querySelectorAll('span[data-valmsg-for]');
-                spans.forEach(span => {
-                    const attr = span.getAttribute('data-valmsg-for') || '';
-                    let updated = attr.replace(/Item\.Policies\.Policy\[[0-9]+\]/, `Item.Policies.Policy[${policyIdx}]`);
-                    updated = updated.replace(/Coverage\[[0-9]+\]/, `Coverage[${cIdx}]`);
-                    updated = updated.replace(/Exposures\.Vehicle\[[0-9]+\]/, `Exposures.Vehicle[${vIdx}]`);
-                    span.setAttribute('data-valmsg-for', updated);
-                });
-            });
-        }
+                    <template id="terminal-template">
+                        <div class="border rounded p-2 mb-2 terminal-item" data-index="__index__">
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <h6 class="mb-0">Terminal __index__</h6>
+                                <div>
+                                    <button type="button" class="btn btn-sm btn-danger" onclick="removeTerminal(this)">Remove</button>
+                                </div>
+                            </div>
 
-        // WorkComp StateExposures inside a coverage
-        function addState(buttonOrElem) {
-            const coverageEl = buttonOrElem.closest('.coverage-item');
-            if (!coverageEl) return;
-            const policyEl = coverageEl.closest('.policy-item');
-            const policyIdx = Array.from(document.getElementById('policiesContainer').querySelectorAll('.policy-item')).indexOf(policyEl);
-            const coverageItems = Array.from(policyEl.querySelectorAll('.coverage-item'));
-            const cIdx = coverageItems.indexOf(coverageEl);
-            const container = coverageEl.querySelector('.stateexposures-container');
-            const nextIndex = container.querySelectorAll('.state-item').length;
-            const tpl = coverageEl.querySelector('.state-template');
-            const node = renderTemplateMulti(tpl, { '__pindex__': policyIdx, '__cindex__': cIdx, '__sindex__': nextIndex });
-            container.appendChild(node);
-            reindexStates(coverageEl, policyIdx, cIdx);
-        }
+                            <div>
+                                <div class="mb-2">
+                                    <label class="form-label">TerminalNumber</label>
+                                    <input name="Item.Terminals.TerminalInfo[__index__].TerminalNumber" value="" class="form-control" />
+                                </div>
 
-        function removeState(buttonOrElem) {
-            const item = buttonOrElem.closest ? buttonOrElem.closest('.state-item') : null;
-            if (item) item.remove();
-            const coverageEl = buttonOrElem.closest('.coverage-item');
-            if (!coverageEl) return;
-            const policyEl = coverageEl.closest('.policy-item');
-            const policyIdx = Array.from(document.getElementById('policiesContainer').querySelectorAll('.policy-item')).indexOf(policyEl);
-            const coverageItems = Array.from(policyEl.querySelectorAll('.coverage-item'));
-            const cIdx = coverageItems.indexOf(coverageEl);
-            reindexStates(coverageEl, policyIdx, cIdx);
-        }
+                                <div class="mb-2">
+                                    <label class="form-label">Address</label>
+                                    <input name="Item.Terminals.TerminalInfo[__index__].TerminalAddress.AddressLine1" value="" placeholder="AddressLine1" class="form-control mb-1" />
+                                    <input name="Item.Terminals.TerminalInfo[__index__].TerminalAddress.City" value="" placeholder="City" class="form-control mb-1" />
+                                    <input name="Item.Terminals.TerminalInfo[__index__].TerminalAddress.State" value="" placeholder="State" class="form-control mb-1" />
+                                    <input name="Item.Terminals.TerminalInfo[__index__].TerminalAddress.PostalCode" value="" placeholder="PostalCode" class="form-control mb-1" />
+                                    <input name="Item.Terminals.TerminalInfo[__index__].TerminalAddress.Country" value="" placeholder="Country" class="form-control" />
+                                    <label class="form-label mt-2">AddressChgEffDte</label>
+                                    <input name="Item.Terminals.TerminalInfo[__index__].TerminalAddress.AddressChgEffDte" value="" class="form-control" />
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+            </fieldset>
 
-        function reindexStates(coverageEl, policyIdx, cIdx) {
-            const container = coverageEl.querySelector('.stateexposures-container');
-            if (!container) return;
-            const items = container.querySelectorAll('.state-item');
-            items.forEach((el, sIdx) => {
-                const inputs = el.querySelectorAll('input, select, textarea');
-                inputs.forEach(input => {
-                    if (!input.name) return;
-                    input.name = input.name.replace(/Item\.Policies\.Policy\[[0-9]+\]/, `Item.Policies.Policy[${policyIdx}]`);
-                    input.name = input.name.replace(/Coverage\[[0-9]+\]/, `Coverage[${cIdx}]`);
-                    input.name = input.name.replace(/WorkComp\.StateExposures\.State\[[0-9]+\]/, `WorkComp.StateExposures.State[${sIdx}]`);
-                    input.name = input.name.replace(/State\[[0-9]+\]/, `State[${sIdx}]`);
-                });
-                const spans = el.querySelectorAll('span[data-valmsg-for]');
-                spans.forEach(span => {
-                    const attr = span.getAttribute('data-valmsg-for') || '';
-                    let updated = attr.replace(/Item\.Policies\.Policy\[[0-9]+\]/, `Item.Policies.Policy[${policyIdx}]`);
-                    updated = updated.replace(/Coverage\[[0-9]+\]/, `Coverage[${cIdx}]`);
-                    updated = updated.replace(/WorkComp\.StateExposures\.State\[[0-9]+\]/, `WorkComp.StateExposures.State[${sIdx}]`);
-                    span.setAttribute('data-valmsg-for', updated);
-                });
-            });
-        }
+            <fieldset class="mb-3">
+                <legend>
+                    Additional Interests
+                    <button class="btn btn-outline-secondary btn-sm rounded-circle collapse-toggle ms-2 d-inline-flex align-items-center justify-content-center" style="width:30px;height:30px;padding:0;" type="button" data-bs-toggle="collapse" data-bs-target="#additionalinterests-section-collapse" aria-expanded="true" aria-controls="#additionalinterests-section-collapse">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="6 9 12 15 18 9" /></svg>
+                    </button>
+                </legend>
 
-        // Keep name indexes contiguous so model binding works
-        function reindexItems(container, prefix) {
-            // mapping prefix -> item CSS class
-            const mapping = {
-                'Item.Vehicles.VehicleInfo': 'vehicle-item',
-                'Item.Registrants.Registrant': 'registrant-item',
-                'Item.Policies.Policy': 'policy-item',
-                'Item.AdditionalInsureds.AdditionalInsured': 'additionalinsured-item',
-                'Item.Terminals.TerminalInfo': 'terminal-item',
-                'Item.AdditionalInterests.AdditionalInterest': 'additionalinterest-item'
-            };
-            const cssClass = mapping[prefix] || 'item';
-            const items = container.querySelectorAll('.' + cssClass);
-            items.forEach((el, idx) => {
-                el.setAttribute('data-index', idx);
-                // update heading text
-                const h = el.querySelector('h6');
-                if (h) h.textContent = h.textContent.replace(/\d+$/, '') + idx;
+                <div class="collapse show" id="additionalinterests-section-collapse">
+                    <div class="mb-2">
+                        <button type="button" class="btn btn-sm btn-outline-primary" onclick="addAdditionalInterest()">Add Additional Interest</button>
+                    </div>
 
-                // update name attributes
-                const inputs = el.querySelectorAll('input, select, textarea');
-                inputs.forEach(input => {
-                    if (input.name) {
-                        input.name = input.name.replace(/\[[0-9]+\]/, '[' + idx + ']');
+                    <div id="additionalinterestsContainer">
+                        @if (Model.Item?.AdditionalInterests?.AdditionalInterest != null && Model.Item.AdditionalInterests.AdditionalInterest.Count > 0)
+                        {
+                            for (int j = 0; j < Model.Item.AdditionalInterests.AdditionalInterest.Count; j++)
+                            {
+                                <div class="border rounded p-2 mb-2 additionalinterest-item" data-index="@j">
+                                    <div class="d-flex justify-content-between align-items-start mb-2">
+                                        <h6 class="mb-0">AdditionalInterest @j</h6>
+                                        <div>
+                                            <button type="button" class="btn btn-sm btn-danger" onclick="removeAdditionalInterest(this)">Remove</button>
+                                        </div>
+                                    </div>
+
+                                    <div>
+
+                                        <div class="mb-2 row">
+                                            <div class="col-md-4">
+                                                <label class="form-label">AdditionalInterest_SequenceNo</label>
+                                                <input name="Item.AdditionalInterests.AdditionalInterest[@j].AdditionalInterest_SequenceNo" value="@Model.Item.AdditionalInterests.AdditionalInterest[j].AdditionalInterest_SequenceNo" class="form-control" />
+                                            </div>
+                                            <div class="col-md-8">
+                                                <label class="form-label">Name</label>
+                                                <input name="Item.AdditionalInterests.AdditionalInterest[@j].Name" value="@Model.Item.AdditionalInterests.AdditionalInterest[j].Name" class="form-control" />
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-2">
+                                            <div class="col-md-4">
+                                                <label class="form-label">NameChgEffDte</label>
+                                                <input name="Item.AdditionalInterests.AdditionalInterest[@j].NameChgEffDte" value="@Model.Item.AdditionalInterests.AdditionalInterest[j].NameChgEffDte" class="form-control" />
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label class="form-label">AdditionalInterestType</label>
+                                                <input name="Item.AdditionalInterests.AdditionalInterest[@j].AdditionalInterestType" value="@Model.Item.AdditionalInterests.AdditionalInterest[j].AdditionalInterestType" class="form-control" />
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label class="form-label">AdditionalInterestTypeChgDate</label>
+                                                <input name="Item.AdditionalInterests.AdditionalInterest[@j].AdditionalInterestTypeChgDate" value="@Model.Item.AdditionalInterests.AdditionalInterest[j].AdditionalInterestTypeChgDate" class="form-control" />
+                                            </div>
+                                        </div>
+
+                                        <div class="mb-2">
+                                            <label class="form-label">Address</label>
+                                            <input name="Item.AdditionalInterests.AdditionalInterest[@j].Address.AddressLine1" value="@Model.Item.AdditionalInterests.AdditionalInterest[j].Address?.AddressLine1" placeholder="AddressLine1" class="form-control mb-1" />
+                                            <input name="Item.AdditionalInterests.AdditionalInterest[@j].Address.City" value="@Model.Item.AdditionalInterests.AdditionalInterest[j].Address?.City" placeholder="City" class="form-control mb-1" />
+                                            <input name="Item.AdditionalInterests.AdditionalInterest[@j].Address.State" value="@Model.Item.AdditionalInterests.AdditionalInterest[j].Address?.State" placeholder="State" class="form-control mb-1" />
+                                            <input name="Item.AdditionalInterests.AdditionalInterest[@j].Address.PostalCode" value="@Model.Item.AdditionalInterests.AdditionalInterest[j].Address?.PostalCode" placeholder="PostalCode" class="form-control mb-1" />
+                                            <input name="Item.AdditionalInterests.AdditionalInterest[@j].Address.Country" value="@Model.Item.AdditionalInterests.AdditionalInterest[j].Address?.Country" placeholder="Country" class="form-control" />
+                                            <label class="form-label mt-2">AddressChgEffDte</label>
+                                            <input name="Item.AdditionalInterests.AdditionalInterest[@j].Address.AddressChgEffDte" value="@Model.Item.AdditionalInterests.AdditionalInterest[j].Address?.AddressChgEffDte" class="form-control" />
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        }
+                        else
+                        {
+                            <div class="text-muted">No additional interests present.</div>
+                        }
+                    </div>
+
+                    <template id="additionalinterest-template">
+                        <div class="border rounded p-2 mb-2 additionalinterest-item" data-index="__index__">
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <h6 class="mb-0">AdditionalInterest __index__</h6>
+                                <div>
+                                    <button type="button" class="btn btn-sm btn-danger" onclick="removeAdditionalInterest(this)">Remove</button>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="row mb-2">
+                                    <div class="col-md-4">
+                                        <label class="form-label">AdditionalInterest_SequenceNo</label>
+                                        <input name="Item.AdditionalInterests.AdditionalInterest[__index__].AdditionalInterest_SequenceNo" value="" class="form-control" />
+                                    </div>
+                                    <div class="col-md-8">
+                                        <label class="form-label">Name</label>
+                                        <input name="Item.AdditionalInterests.AdditionalInterest[__index__].Name" value="" class="form-control" />
+                                    </div>
+                                </div>
+
+                                <div class="mb-2">
+                                    <label class="form-label">Address</label>
+                                    <input name="Item.AdditionalInterests.AdditionalInterest[__index__].Address.AddressLine1" value="" placeholder="AddressLine1" class="form-control mb-1" />
+                                    <input name="Item.AdditionalInterests.AdditionalInterest[__index__].Address.City" value="" placeholder="City" class="form-control mb-1" />
+                                    <input name="Item.AdditionalInterests.AdditionalInterest[__index__].Address.State" value="" placeholder="State" class="form-control mb-1" />
+                                    <input name="Item.AdditionalInterests.AdditionalInterest[__index__].Address.PostalCode" value="" placeholder="PostalCode" class="form-control mb-1" />
+                                    <input name="Item.AdditionalInterests.AdditionalInterest[__index__].Address.Country" value="" placeholder="Country" class="form-control" />
+                                </div>
+
+                            </div>
+                        </div>
+                    </template>
+                </div>
+            </fieldset>
+
+            <div class="d-flex gap-2">
+                <button type="submit" class="btn btn-primary">Save</button>
+                <a asp-page="./Index" class="btn btn-secondary">Cancel</a>
+            </div>
+        </form>
+
+        @section Scripts {
+            <partial name="_ValidationScriptsPartial" />
+
+            <script>
+                function renderTemplate(templateId, index) {
+                    const tpl = document.getElementById(templateId);
+                    const html = tpl.innerHTML.replace(/__index__/g, index);
+                    const wrapper = document.createElement('div');
+                    wrapper.innerHTML = html;
+                    return wrapper.firstElementChild;
+                }
+
+                // Utility to render template and replace multiple placeholders
+                function renderTemplateMulti(templateElem, replacements) {
+                    let html = templateElem.innerHTML;
+                    for (const key in replacements) {
+                        const re = new RegExp(key, 'g');
+                        html = html.replace(re, replacements[key]);
+                    }
+                    const wrapper = document.createElement('div');
+                    wrapper.innerHTML = html;
+                    return wrapper.firstElementChild;
+                }
+
+                // Expand / Collapse all collapse elements on the page
+                function expandAll() {
+                    document.querySelectorAll('.collapse').forEach(function (el) {
+                        el.classList.add('show');
+                        try {
+                            const btn = document.querySelector(`[data-bs-target="#${el.id}"]`);
+                            if (btn) {
+                                btn.setAttribute('aria-expanded', 'true');
+                                const svg = btn.querySelector('svg');
+                                if (svg) svg.classList.add('rotated');
+                            }
+                        } catch (e) { /* ignore */ }
+                    });
+                }
+
+                function collapseAll() {
+                    document.querySelectorAll('.collapse').forEach(function (el) {
+                        el.classList.remove('show');
+                        try {
+                            const btn = document.querySelector(`[data-bs-target="#${el.id}"]`);
+                            if (btn) {
+                                btn.setAttribute('aria-expanded', 'false');
+                                const svg = btn.querySelector('svg');
+                                if (svg) svg.classList.remove('rotated');
+                            }
+                        } catch (e) { /* ignore */ }
+                    });
+                }
+
+                // Vehicles
+                function addVehicle() {
+                    const container = document.getElementById('vehiclesContainer');
+                    const nextIndex = container.querySelectorAll('.vehicle-item').length;
+                    const node = renderTemplate('vehicle-template', nextIndex);
+                    container.appendChild(node);
+                    reindexItems(container, 'Item.Vehicles.VehicleInfo');
+                }
+
+                function removeVehicle(buttonOrElem) {
+                    const item = buttonOrElem.closest ? buttonOrElem.closest('.vehicle-item') : null;
+                    if (item) item.remove();
+                    const container = document.getElementById('vehiclesContainer');
+                    reindexItems(container, 'Item.Vehicles.VehicleInfo');
+                }
+
+                // Registrants
+                function addRegistrant() {
+                    const container = document.getElementById('registrantsContainer');
+                    const nextIndex = container.querySelectorAll('.registrant-item').length;
+                    const node = renderTemplate('registrant-template', nextIndex);
+                    container.appendChild(node);
+                    reindexItems(container, 'Item.Registrants.Registrant');
+                }
+
+                function removeRegistrant(buttonOrElem) {
+                    const item = buttonOrElem.closest ? buttonOrElem.closest('.registrant-item') : null;
+                    if (item) item.remove();
+                    const container = document.getElementById('registrantsContainer');
+                    reindexItems(container, 'Item.Registrants.Registrant');
+                }
+
+                // Policies
+                function addPolicy() {
+                    const container = document.getElementById('policiesContainer');
+                    const nextIndex = container.querySelectorAll('.policy-item').length;
+                    const node = renderTemplate('policy-template', nextIndex);
+                    container.appendChild(node);
+                    reindexItems(container, 'Item.Policies.Policy');
+                }
+
+                function removePolicy(buttonOrElem) {
+                    const item = buttonOrElem.closest ? buttonOrElem.closest('.policy-item') : null;
+                    if (item) item.remove();
+                    const container = document.getElementById('policiesContainer');
+                    reindexItems(container, 'Item.Policies.Policy');
+                }
+
+                // Additional Interests add/remove
+                function addAdditionalInterest() {
+                    const container = document.getElementById('additionalinterestsContainer');
+                    const nextIndex = container.querySelectorAll('.additionalinterest-item').length;
+                    const node = renderTemplate('additionalinterest-template', nextIndex);
+                    container.appendChild(node);
+                    reindexItems(container, 'Item.AdditionalInterests.AdditionalInterest');
+                }
+
+                function removeAdditionalInterest(buttonOrElem) {
+                    const item = buttonOrElem.closest ? buttonOrElem.closest('.additionalinterest-item') : null;
+                    if (item) item.remove();
+                    const container = document.getElementById('additionalinterestsContainer');
+                    reindexItems(container, 'Item.AdditionalInterests.AdditionalInterest');
+                }
+
+                // Coverage inside a policy
+                function addCoverage(buttonOrElem) {
+                    const policyEl = buttonOrElem.closest('.policy-item');
+                    if (!policyEl) return;
+                    const policyIdx = Array.from(document.getElementById('policiesContainer').querySelectorAll('.policy-item')).indexOf(policyEl);
+                    const container = policyEl.querySelector('.coverage-container');
+                    const nextIndex = container.querySelectorAll('.coverage-item').length;
+                    const tpl = policyEl.querySelector('.coverage-template');
+                    const node = renderTemplateMulti(tpl, { '__pindex__': policyIdx, '__index__': nextIndex });
+                    container.appendChild(node);
+                    reindexCoverage(policyEl, policyIdx);
+                }
+
+                function removeCoverage(buttonOrElem) {
+                    const item = buttonOrElem.closest ? buttonOrElem.closest('.coverage-item') : null;
+                    if (item) item.remove();
+                    const policyEl = buttonOrElem.closest('.policy-item');
+                    if (!policyEl) return;
+                    const policyIdx = Array.from(document.getElementById('policiesContainer').querySelectorAll('.policy-item')).indexOf(policyEl);
+                    reindexCoverage(policyEl, policyIdx);
+                }
+
+                function reindexCoverage(policyEl, policyIdx) {
+                    const container = policyEl.querySelector('.coverage-container');
+                    const items = container.querySelectorAll('.coverage-item');
+                    items.forEach((el, cIdx) => {
+                        // update name attributes for inputs in coverage
+                        const inputs = el.querySelectorAll('input, select, textarea');
+                        inputs.forEach(input => {
+                            if (!input.name) return;
+                            input.name = input.name.replace(/Item\.Policies\.Policy\[[0-9]+\]/, `Item.Policies.Policy[${policyIdx}]`);
+                            input.name = input.name.replace(/Coverage\[[0-9]+\]/, `Coverage[${cIdx}]`);
+                        });
+                        // update validation spans if any
+                        const spans = el.querySelectorAll('span[data-valmsg-for]');
+                        spans.forEach(span => {
+                            const attr = span.getAttribute('data-valmsg-for') || '';
+                            let updated = attr.replace(/Item\.Policies\.Policy\[[0-9]+\]/, `Item.Policies.Policy[${policyIdx}]`);
+                            updated = updated.replace(/Coverage\[[0-9]+\]/, `Coverage[${cIdx}]`);
+                            span.setAttribute('data-valmsg-for', updated);
+                        });
+
+                        // reindex nested exposures and states
+                        reindexExposures(el, policyIdx, cIdx);
+                        reindexStates(el, policyIdx, cIdx);
+                    });
+                }
+
+                // Exposures (Vehicle list) inside a coverage
+                function addExposure(buttonOrElem) {
+                    const coverageEl = buttonOrElem.closest('.coverage-item');
+                    if (!coverageEl) return;
+                    const policyEl = coverageEl.closest('.policy-item');
+                    const policyIdx = Array.from(document.getElementById('policiesContainer').querySelectorAll('.policy-item')).indexOf(policyEl);
+                    const coverageItems = Array.from(policyEl.querySelectorAll('.coverage-item'));
+                    const cIdx = coverageItems.indexOf(coverageEl);
+                    const container = coverageEl.querySelector('.exposures-container');
+                    const nextIndex = container.querySelectorAll('.exposure-item').length;
+                    const tpl = coverageEl.querySelector('.exposure-template');
+                    const node = renderTemplateMulti(tpl, { '__pindex__': policyIdx, '__cindex__': cIdx, '__vindex__': nextIndex });
+                    container.appendChild(node);
+                    reindexExposures(coverageEl, policyIdx, cIdx);
+                }
+
+                function removeExposure(buttonOrElem) {
+                    const item = buttonOrElem.closest ? buttonOrElem.closest('.exposure-item') : null;
+                    if (item) item.remove();
+                    const coverageEl = buttonOrElem.closest('.coverage-item');
+                    if (!coverageEl) return;
+                    const policyEl = coverageEl.closest('.policy-item');
+                    const policyIdx = Array.from(document.getElementById('policiesContainer').querySelectorAll('.policy-item')).indexOf(policyEl);
+                    const coverageItems = Array.from(policyEl.querySelectorAll('.coverage-item'));
+                    const cIdx = coverageItems.indexOf(coverageEl);
+                    reindexExposures(coverageEl, policyIdx, cIdx);
+                }
+
+                function reindexExposures(coverageEl, policyIdx, cIdx) {
+                    const container = coverageEl.querySelector('.exposures-container');
+                    if (!container) return;
+                    const items = container.querySelectorAll('.exposure-item');
+                    items.forEach((el, vIdx) => {
+                        const inputs = el.querySelectorAll('input, select, textarea');
+                        inputs.forEach(input => {
+                            if (!input.name) return;
+                            input.name = input.name.replace(/Item\.Policies\.Policy\[[0-9]+\]/, `Item.Policies.Policy[${policyIdx}]`);
+                            input.name = input.name.replace(/Coverage\[[0-9]+\]/, `Coverage[${cIdx}]`);
+                            input.name = input.name.replace(/Exposures\.Vehicle\[[0-9]+\]/, `Exposures.Vehicle[${vIdx}]`);
+                            input.name = input.name.replace(/Vehicle\[[0-9]+\]/, `Vehicle[${vIdx}]`);
+                            input.name = input.name.replace(/\[__vindex__\]/g, `[${vIdx}]`);
+                            // fallback replace any numeric index in Vehicle[...] occurrences
+                            input.name = input.name.replace(/Vehicle\[[0-9]+\]/, `Vehicle[${vIdx}]`);
+                        });
+                        const spans = el.querySelectorAll('span[data-valmsg-for]');
+                        spans.forEach(span => {
+                            const attr = span.getAttribute('data-valmsg-for') || '';
+                            let updated = attr.replace(/Item\.Policies\.Policy\[[0-9]+\]/, `Item.Policies.Policy[${policyIdx}]`);
+                            updated = updated.replace(/Coverage\[[0-9]+\]/, `Coverage[${cIdx}]`);
+                            updated = updated.replace(/Exposures\.Vehicle\[[0-9]+\]/, `Exposures.Vehicle[${vIdx}]`);
+                            span.setAttribute('data-valmsg-for', updated);
+                        });
+                    });
+                }
+
+                // WorkComp StateExposures inside a coverage
+                function addState(buttonOrElem) {
+                    const coverageEl = buttonOrElem.closest('.coverage-item');
+                    if (!coverageEl) return;
+                    const policyEl = coverageEl.closest('.policy-item');
+                    const policyIdx = Array.from(document.getElementById('policiesContainer').querySelectorAll('.policy-item')).indexOf(policyEl);
+                    const coverageItems = Array.from(policyEl.querySelectorAll('.coverage-item'));
+                    const cIdx = coverageItems.indexOf(coverageEl);
+                    const container = coverageEl.querySelector('.stateexposures-container');
+                    const nextIndex = container.querySelectorAll('.state-item').length;
+                    const tpl = coverageEl.querySelector('.state-template');
+                    const node = renderTemplateMulti(tpl, { '__pindex__': policyIdx, '__cindex__': cIdx, '__sindex__': nextIndex });
+                    container.appendChild(node);
+                    reindexStates(coverageEl, policyIdx, cIdx);
+                }
+
+                function removeState(buttonOrElem) {
+                    const item = buttonOrElem.closest ? buttonOrElem.closest('.state-item') : null;
+                    if (item) item.remove();
+                    const coverageEl = buttonOrElem.closest('.coverage-item');
+                    if (!coverageEl) return;
+                    const policyEl = coverageEl.closest('.policy-item');
+                    const policyIdx = Array.from(document.getElementById('policiesContainer').querySelectorAll('.policy-item')).indexOf(policyEl);
+                    const coverageItems = Array.from(policyEl.querySelectorAll('.coverage-item'));
+                    const cIdx = coverageItems.indexOf(coverageEl);
+                    reindexStates(coverageEl, policyIdx, cIdx);
+                }
+
+                function reindexStates(coverageEl, policyIdx, cIdx) {
+                    const container = coverageEl.querySelector('.stateexposures-container');
+                    if (!container) return;
+                    const items = container.querySelectorAll('.state-item');
+                    items.forEach((el, sIdx) => {
+                        const inputs = el.querySelectorAll('input, select, textarea');
+                        inputs.forEach(input => {
+                            if (!input.name) return;
+                            input.name = input.name.replace(/Item\.Policies\.Policy\[[0-9]+\]/, `Item.Policies.Policy[${policyIdx}]`);
+                            input.name = input.name.replace(/Coverage\[[0-9]+\]/, `Coverage[${cIdx}]`);
+                            input.name = input.name.replace(/WorkComp\.StateExposures\.State\[[0-9]+\]/, `WorkComp.StateExposures.State[${sIdx}]`);
+                            input.name = input.name.replace(/State\[[0-9]+\]/, `State[${sIdx}]`);
+                        });
+                        const spans = el.querySelectorAll('span[data-valmsg-for]');
+                        spans.forEach(span => {
+                            const attr = span.getAttribute('data-valmsg-for') || '';
+                            let updated = attr.replace(/Item\.Policies\.Policy\[[0-9]+\]/, `Item.Policies.Policy[${policyIdx}]`);
+                            updated = updated.replace(/Coverage\[[0-9]+\]/, `Coverage[${cIdx}]`);
+                            updated = updated.replace(/WorkComp\.StateExposures\.State\[[0-9]+\]/, `WorkComp.StateExposures.State[${sIdx}]`);
+                            span.setAttribute('data-valmsg-for', updated);
+                        });
+                    });
+                }
+
+                // Keep name indexes contiguous so model binding works
+                function reindexItems(container, prefix) {
+                    // mapping prefix -> item CSS class
+                    const mapping = {
+                        'Item.Vehicles.VehicleInfo': 'vehicle-item',
+                        'Item.Registrants.Registrant': 'registrant-item',
+                        'Item.Policies.Policy': 'policy-item',
+                        'Item.AdditionalInsureds.AdditionalInsured': 'additionalinsured-item',
+                        'Item.Terminals.TerminalInfo': 'terminal-item',
+                        'Item.AdditionalInterests.AdditionalInterest': 'additionalinterest-item'
+                    };
+                    const cssClass = mapping[prefix] || 'item';
+                    const items = container.querySelectorAll('.' + cssClass);
+                    items.forEach((el, idx) => {
+                        el.setAttribute('data-index', idx);
+                        // update heading text
+                        const h = el.querySelector('h6');
+                        if (h) h.textContent = h.textContent.replace(/\d+$/, '') + idx;
+
+                        // update name attributes
+                        const inputs = el.querySelectorAll('input, select, textarea');
+                        inputs.forEach(input => {
+                            if (input.name) {
+                                input.name = input.name.replace(/\[[0-9]+\]/, '[' + idx + ']');
+                            }
+                        });
+
+                        // update validation message spans
+                        const msgSpans = el.querySelectorAll('span[data-valmsg-for]');
+                        msgSpans.forEach(span => {
+                            const attr = span.getAttribute('data-valmsg-for') || '';
+                            span.setAttribute('data-valmsg-for', attr.replace(/\[[0-9]+\]/, '[' + idx + ']'));
+                        });
+
+                        // If this is a policy item, also reindex its coverages
+                        if (prefix === 'Item.Policies.Policy') {
+                            reindexCoverage(el, idx);
+                        }
+                    });
+                }
+
+                // Normalize indices on load (server-rendered items may be out of sync)
+                document.addEventListener('DOMContentLoaded', function () {
+                    reindexItems(document.getElementById('vehiclesContainer'), 'Item.Vehicles.VehicleInfo');
+                    reindexItems(document.getElementById('registrantsContainer'), 'Item.Registrants.Registrant');
+                    reindexItems(document.getElementById('policiesContainer'), 'Item.Policies.Policy');
+                    reindexItems(document.getElementById('additionalinsuredsContainer'), 'Item.AdditionalInsureds.AdditionalInsured');
+                    reindexItems(document.getElementById('terminalsContainer'), 'Item.Terminals.TerminalInfo');
+                    reindexItems(document.getElementById('additionalinterestsContainer'), 'Item.AdditionalInterests.AdditionalInterest');
+
+                    // Collapse all sections on load so toggles appear contracted
+                    try {
+                        // Remove Bootstrap 'show' class from all collapse elements
+                        document.querySelectorAll('.collapse').forEach(function (el) {
+                            el.classList.remove('show');
+                        });
+                        // Set all collapse toggle buttons to aria-expanded="false"
+                        document.querySelectorAll('[data-bs-toggle="collapse"]').forEach(function (btn) {
+                            btn.setAttribute('aria-expanded', 'false');
+                        });
+                    } catch (e) {
+                        // silent fallback if DOM API unavailable
+                        console.warn('Could not collapse sections on load', e);
                     }
                 });
+            </script>
 
-                // update validation message spans
-                const msgSpans = el.querySelectorAll('span[data-valmsg-for]');
-                msgSpans.forEach(span => {
-                    const attr = span.getAttribute('data-valmsg-for') || '';
-                    span.setAttribute('data-valmsg-for', attr.replace(/\[[0-9]+\]/, '[' + idx + ']'));
-                });
-
-                // If this is a policy item, also reindex its coverages
-                if (prefix === 'Item.Policies.Policy') {
-                    reindexCoverage(el, idx);
+            <style>
+                /* transition and rotated state for chevrons */
+                .collapse-toggle svg {
+                    transition: transform 0.2s ease;
                 }
-            });
+
+                    .collapse-toggle svg.rotated {
+                        transform: rotate(180deg);
+                    }
+            </style>
+
+            <script>
+                // attach rotation handlers for bootstrap collapse events
+                document.addEventListener('DOMContentLoaded', function () {
+                    // ensure initial visual state
+                    document.querySelectorAll('.collapse-toggle svg').forEach(s => s.classList.remove('rotated'));
+
+                    document.querySelectorAll('.collapse').forEach(function (el) {
+                        el.addEventListener('shown.bs.collapse', function () {
+                            try {
+                                const btn = document.querySelector(`[data-bs-target="#${el.id}"]`);
+                                if (btn) {
+                                    const svg = btn.querySelector('svg');
+                                    if (svg) svg.classList.add('rotated');
+                                    btn.setAttribute('aria-expanded', 'true');
+                                }
+                            } catch (e) { /* ignore */ }
+                        });
+
+                        el.addEventListener('hidden.bs.collapse', function () {
+                            try {
+                                const btn = document.querySelector(`[data-bs-target="#${el.id}"]`);
+                                if (btn) {
+                                    const svg = btn.querySelector('svg');
+                                    if (svg) svg.classList.remove('rotated');
+                                    btn.setAttribute('aria-expanded', 'false');
+                                }
+                            } catch (e) { /* ignore */ }
+                        });
+                    });
+                });
+            </script>
         }
-
-        // Normalize indices on load (server-rendered items may be out of sync)
-        document.addEventListener('DOMContentLoaded', function () {
-            reindexItems(document.getElementById('vehiclesContainer'), 'Item.Vehicles.VehicleInfo');
-            reindexItems(document.getElementById('registrantsContainer'), 'Item.Registrants.Registrant');
-            reindexItems(document.getElementById('policiesContainer'), 'Item.Policies.Policy');
-            reindexItems(document.getElementById('additionalinsuredsContainer'), 'Item.AdditionalInsureds.AdditionalInsured');
-            reindexItems(document.getElementById('terminalsContainer'), 'Item.Terminals.TerminalInfo');
-            reindexItems(document.getElementById('additionalinterestsContainer'), 'Item.AdditionalInterests.AdditionalInterest');
-
-            // Collapse all sections on load so toggles appear contracted
-            try {
-                // Remove Bootstrap 'show' class from all collapse elements
-                document.querySelectorAll('.collapse').forEach(function (el) {
-                    el.classList.remove('show');
-                });
-                // Set all collapse toggle buttons to aria-expanded="false"
-                document.querySelectorAll('[data-bs-toggle="collapse"]').forEach(function (btn) {
-                    btn.setAttribute('aria-expanded', 'false');
-                });
-            } catch (e) {
-                // silent fallback if DOM API unavailable
-                console.warn('Could not collapse sections on load', e);
-            }
-        });
-    </script>
-
-    <style>
-        /* transition and rotated state for chevrons */
-        .collapse-toggle svg { transition: transform 0.2s ease; }
-        .collapse-toggle svg.rotated { transform: rotate(180deg); }
-    </style>
-
-    <script>
-        // attach rotation handlers for bootstrap collapse events
-        document.addEventListener('DOMContentLoaded', function () {
-            // ensure initial visual state
-            document.querySelectorAll('.collapse-toggle svg').forEach(s => s.classList.remove('rotated'));
-
-            document.querySelectorAll('.collapse').forEach(function (el) {
-                el.addEventListener('shown.bs.collapse', function () {
-                    try {
-                        const btn = document.querySelector(`[data-bs-target="#${el.id}"]`);
-                        if (btn) {
-                            const svg = btn.querySelector('svg');
-                            if (svg) svg.classList.add('rotated');
-                            btn.setAttribute('aria-expanded', 'true');
-                        }
-                    } catch (e) { /* ignore */ }
-                });
-
-                el.addEventListener('hidden.bs.collapse', function () {
-                    try {
-                        const btn = document.querySelector(`[data-bs-target="#${el.id}"]`);
-                        if (btn) {
-                            const svg = btn.querySelector('svg');
-                            if (svg) svg.classList.remove('rotated');
-                            btn.setAttribute('aria-expanded', 'false');
-                        }
-                    } catch (e) { /* ignore */ }
-                });
-            });
-        });
-    </script>
-}
