@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FulfillmentExternalRequests xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <FulfillmentExternalRequest>
+    <ClientID>4036</ClientID>
+    <FedExID>V0500090</FedExID>
+    <TransactionDate>2023-06-01</TransactionDate>
+    <IsAddTransaction>true</IsAddTransaction>
+    <FileName>MM_policy_20240601000051</FileName>
+    <PrimaryInfo>
+      <ISPInformation>
+        <CustomerSeqNumber>2743762</CustomerSeqNumber>
+        <BusinessName>AL ISP</BusinessName>
+        <BusNameChgEffDte>2024-06-01</BusNameChgEffDte>
+        <Address>
+          <AddressLine1>198 Planters Circle</AddressLine1>
+          <City>Montgomery</City>
+          <State>AL</State>
+          <PostalCode>38468</PostalCode>
+          <Country>US</Country>
+          <AddressChgEffDte>2024-06-01</AddressChgEffDte>
+        </Address>
+        <TaxIDNo>27-3380001</TaxIDNo>
+        <TaxIDChangeEffDate>2024-06-01</TaxIDChangeEffDate>
+        <PrincipleOfficer>ISP Test</PrincipleOfficer>
+        <PrincipleOfficerTitle>President</PrincipleOfficerTitle>
+        <PrincipleOfficerDateofBirth>1973-06-28</PrincipleOfficerDateofBirth>
+        <OwnershipPercentage>70</OwnershipPercentage>
+        <BusinessType>Corporation</BusinessType>
+        <BusinessTypeChgEffDate>2024-06-01</BusinessTypeChgEffDate>
+        <PrimaryPhone>765-918-3400</PrimaryPhone>
+        <SecondaryPhone>765-918-3400</SecondaryPhone>
+        <Risk_BureauID>410853655</Risk_BureauID>
+        <Email>ispstates@baldwinandlyons.com</Email>
+      </ISPInformation>
+    </PrimaryInfo>
+    <Registrants>
+      <Registrant>
+        <BusinessInfo>
+          <CustomerSeqNumber>3078104</CustomerSeqNumber>
+          <BusinessName>Penske Truck Leasing</BusinessName>
+          <BusNameChgEffDate>2024-06-01</BusNameChgEffDate>
+          <Address>
+            <AddressLine1>11 Tamarac Road</AddressLine1>
+            <City>Wilkes Barre</City>
+            <State>PA</State>
+            <PostalCode>18702</PostalCode>
+            <Country>US</Country>
+            <AddressChgEffDte>2024-06-01</AddressChgEffDte>
+          </Address>
+          <TaxID>27-3244680</TaxID>
+          <TaxIdChgEffDate>2024-06-01</TaxIdChgEffDate>
+        </BusinessInfo>
+      </Registrant>
+      <Registrant>
+        <BusinessInfo>
+          <CustomerSeqNumber>3151523</CustomerSeqNumber>
+          <BusinessName>Ryder Rental Trucks</BusinessName>
+          <BusNameChgEffDate>2024-06-01</BusNameChgEffDate>
+          <Address>
+            <AddressLine1>111 Second St</AddressLine1>
+            <City>Wilkisberre</City>
+            <State>PA</State>
+            <PostalCode>18702</PostalCode>
+            <Country>US</Country>
+            <AddressChgEffDte>2024-06-01</AddressChgEffDte>
+          </Address>
+          <TaxID>99-9999999</TaxID>
+          <TaxIdChgEffDate>2024-06-01</TaxIdChgEffDate>
+        </BusinessInfo>
+      </Registrant>
+    </Registrants>
+    <AdditionalInsureds>
+      <AdditionalInsured>
+        <AdditionalInsured_SequenceNo>1</AdditionalInsured_SequenceNo>
+        <BusinessName>FedEx Ground Package System, Inc.</BusinessName>
+        <Address>
+          <AddressLine1>1000 FedEx Dr</AddressLine1>
+          <City>Moon Township</City>
+          <State>PA</State>
+          <PostalCode>15108</PostalCode>
+          <Country>US</Country>
+          <AddressChgEffDte>2024-06-01</AddressChgEffDte>
+        </Address>
+      </AdditionalInsured>
+    </AdditionalInsureds>
+    <Vehicles>
+      <VehicleInfo>
+        <Vehicle_SequenceNo>6332870</Vehicle_SequenceNo>
+        <VIN>1FUJGLDRXCSBE2429</VIN>
+        <Year>2012</Year>
+        <Make>Freightliner</Make>
+        <Model>Cascadia 125</Model>
+        <Type>PPV</Type>
+        <StatedValue>87175</StatedValue>
+        <ValueChgEffDte>2024-06-01</ValueChgEffDte>
+        <StateVehiclePlated>AL</StateVehiclePlated>
+        <PlateStateChgEffDte>2024-06-01</PlateStateChgEffDte>
+        <Company>Ground</Company>
+        <ContractID>C7839449</ContractID>
+        <ActiveStatus>y</ActiveStatus>
+        <IsEnrolledSupplemental>n</IsEnrolledSupplemental>
+      </VehicleInfo>
+      <VehicleInfo>
+        <Vehicle_SequenceNo>6332890</Vehicle_SequenceNo>
+        <VIN>1FUJGLDR8CSBE2431</VIN>
+        <Year>2012</Year>
+        <Make>Freightliner</Make>
+        <Model>Cascadia 125</Model>
+        <Type>PPV</Type>
+        <StatedValue>87175</StatedValue>
+        <ValueChgEffDte>2024-06-01</ValueChgEffDte>
+        <StateVehiclePlated>AL</StateVehiclePlated>
+        <PlateStateChgEffDte>2024-06-01</PlateStateChgEffDte>
+        <Company>Ground</Company>
+        <ContractID>C7839449</ContractID>
+        <ActiveStatus>y</ActiveStatus>
+        <IsEnrolledSupplemental>n</IsEnrolledSupplemental>
+      </VehicleInfo>
+      <VehicleInfo>
+        <Vehicle_SequenceNo>7653426</Vehicle_SequenceNo>
+        <VIN>3AKJGLDR0GSHL6195</VIN>
+        <Year>2016</Year>
+        <Make>FREIGHTLINER</Make>
+        <Model>CASCADIA 125</Model>
+        <Type>PPV</Type>
+        <StatedValue>140000</StatedValue>
+        <ValueChgEffDte>2024-06-01</ValueChgEffDte>
+        <StateVehiclePlated>AL</StateVehiclePlated>
+        <PlateStateChgEffDte>2024-06-01</PlateStateChgEffDte>
+        <Company>Ground</Company>
+        <ContractID>C7839449</ContractID>
+        <ActiveStatus>y</ActiveStatus>
+        <IsEnrolledSupplemental>n</IsEnrolledSupplemental>
+      </VehicleInfo>
+    </Vehicles>
+    <Terminals>
+      <TerminalInfo>
+        <TerminalNumber>850</TerminalNumber>
+        <TerminalAddress>
+          <AddressLine1>3410 South 51st Avenue</AddressLine1>
+          <City>Montgomery</City>
+          <State>AL</State>
+          <PostalCode>46204</PostalCode>
+          <Country>US</Country>
+          <AddressChgEffDte>2024-06-01</AddressChgEffDte>
+        </TerminalAddress>
+      </TerminalInfo>
+    </Terminals>
+    <AdditionalInterests>
+      <AdditionalInterest>
+        <AdditionalInterest_SequenceNo>2743801</AdditionalInterest_SequenceNo>
+        <Name>MBFS USA LLC</Name>
+        <NameChgEffDte>2024-06-01</NameChgEffDte>
+        <AdditionalInterestType>B</AdditionalInterestType>
+        <AdditionalInterestTypeChgDate>2024-06-01</AdditionalInterestTypeChgDate>
+        <Address>
+          <AddressLine1>9385 Haven Ave</AddressLine1>
+          <City>Montgomery</City>
+          <State>AL</State>
+          <PostalCode>46204</PostalCode>
+          <Country>US</Country>
+          <AddressChgEffDte>2024-06-01</AddressChgEffDte>
+        </Address>
+      </AdditionalInterest>
+    </AdditionalInterests>
+    <Policies>
+      <Policy>
+        <PolicyNum>IW050000</PolicyNum>
+        <PolEffective>2024-06-01</PolEffective>
+        <PolExpire>2025-06-01</PolExpire>
+        <AdditionalInsured_SequenceNo>1</AdditionalInsured_SequenceNo>
+        <UWCompany>Protective Insurance Company</UWCompany>
+        <EmployerLiabilityLimit>1,000,000/1,000,000/1,000,000</EmployerLiabilityLimit>
+        <Coverage>
+          <CoverageCode>43017</CoverageCode>
+          <CoverageDescription>Workers Compensation</CoverageDescription>
+          <CommissionPercent>9</CommissionPercent>
+          <EPLI>
+            <EdgewaterCommissionPercent xsi:nil="true" />
+            <AggregateLimitAmount xsi:nil="true" />
+            <ClaimLimitAmount xsi:nil="true" />
+            <ThirdPartyLimitAmount xsi:nil="true" />
+            <WageandHourLimitAmount xsi:nil="true" />
+            <IRCALimitAmount xsi:nil="true" />
+            <DeductibleAmount xsi:nil="true" />
+            <WageandHourDeductibleAmount xsi:nil="true" />
+            <IRCADeductibleAmount xsi:nil="true" />
+            <ThirdPartyDeductibleAmount xsi:nil="true" />
+            <DeductibleDiscountPercent xsi:nil="true" />
+            <CoverageQuestions>
+              <RatingInfo>
+                <RateFactor xsi:nil="true" />
+              </RatingInfo>
+              <NumberOfEmployees xsi:nil="true" />
+              <Premium xsi:nil="true" />
+            </CoverageQuestions>
+          </EPLI>
+          <NTL>
+            <CoverageQuestions>
+              <Limits xsi:nil="true" />
+              <PackagePolicyDiscountPercent xsi:nil="true" />
+            </CoverageQuestions>
+          </NTL>
+          <PhysicalDamage>
+            <CoverageQuestions>
+              <Deductible xsi:nil="true" />
+            </CoverageQuestions>
+          </PhysicalDamage>
+          <NTLExcess>
+            <CoverageQuestions>
+              <Limits xsi:nil="true" />
+              <PackagePolicyDiscountPercent xsi:nil="true" />
+            </CoverageQuestions>
+          </NTLExcess>
+          <WorkComp>
+            <RatingInfo>
+              <RateFactor xsi:nil="true" />
+              <RatingGUID>8be2ec1e-efb2-4376-8497-c7e9ded06062</RatingGUID>
+              <RatingGUIDEffDte>2024-06-01</RatingGUIDEffDte>
+              <SchemaVersion>2.0.0</SchemaVersion>
+            </RatingInfo>
+            <CoverageQuestions>
+              <ExperienceInformation>
+                <ExperienceModifier>0.91</ExperienceModifier>
+                <ExpModEffDte>2024-06-01</ExpModEffDte>
+              </ExperienceInformation>
+            </CoverageQuestions>
+          </WorkComp>
+        </Coverage>
+        <InsurePay>
+          <BillMethod>I</BillMethod>
+          <BillMethodEffectiveDate>2024-06-01</BillMethodEffectiveDate>
+          <PayGoStatus>Interested</PayGoStatus>
+          <PayGoRegisterByDate>2024-06-01</PayGoRegisterByDate>
+        </InsurePay>
+      </Policy>
+    </Policies>
+  </FulfillmentExternalRequest>
+</FulfillmentExternalRequests>

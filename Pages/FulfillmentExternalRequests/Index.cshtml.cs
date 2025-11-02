@@ -16,15 +16,12 @@ namespace FulfillmentTestXmlGenerator.Pages.FulfillmentExternalRequests
     public class IndexModel : PageModel
     {
         private readonly FulfillmentXmlRepository _repo;
-        //private readonly string _dataFolder;
-        //private readonly string _filepath;
-        public bool isFirstload = true;
+
+        private const string SessionKeyHasVisited = "HasVisitedIndex";
 
         public IndexModel(IWebHostEnvironment env)
         {
             _repo = new FulfillmentXmlRepository(env);
-            //var _dataFolder = Path.Combine(env.ContentRootPath, "TestData");
-            //_filepath = Path.Combine(_dataFolder, "tmp");
         }
 
         public List<FulfillmentExternalRequest> Requests { get; private set; } = new();
@@ -34,8 +31,21 @@ namespace FulfillmentTestXmlGenerator.Pages.FulfillmentExternalRequests
 
         public void OnGet()
         {
-            var root = isFirstload ? _repo.LoadBase() : _repo.Load();
-            isFirstload = false;
+            // Determine first visit using session flag
+            var hasVisited = HttpContext.Session.GetString(SessionKeyHasVisited);
+            Models.FulfillmentExternalRequests root;
+            if (string.IsNullOrEmpty(hasVisited))
+            {
+                // first time in this session
+                root = _repo.LoadBase();
+                HttpContext.Session.SetString(SessionKeyHasVisited, "true");
+                _repo.SaveAs(root, "tmp");
+            }
+            else
+            {
+                root = _repo.Load();
+            }
+
             Requests = root?.FulfillmentExternalRequest ?? new List<FulfillmentExternalRequest>();
         }
 
@@ -127,7 +137,7 @@ namespace FulfillmentTestXmlGenerator.Pages.FulfillmentExternalRequests
             var bytes = ms.ToArray();
             return File(bytes, "application/xml", "FulfillmentExternalRequests.xml");
         }
-
+      
         // Load uploaded XML file and replace/save repository data
         public async Task<IActionResult> OnPostUploadAsync(IFormFile? xmlFile)
         {

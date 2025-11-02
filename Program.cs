@@ -1,3 +1,7 @@
+using System;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
+
 namespace FulfillmentTestXmlGenerator
 {
     public class Program
@@ -8,6 +12,15 @@ namespace FulfillmentTestXmlGenerator
 
             // Add services to the container.
             builder.Services.AddRazorPages();
+
+            // Add session support
+            builder.Services.AddDistributedMemoryCache();
+            builder.Services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(30);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
 
             var app = builder.Build();
 
@@ -23,6 +36,9 @@ namespace FulfillmentTestXmlGenerator
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            // enable session middleware
+            app.UseSession();
 
             app.UseAuthorization();
 

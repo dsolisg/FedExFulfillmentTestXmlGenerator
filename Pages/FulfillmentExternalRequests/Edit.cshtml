@@ -44,6 +44,11 @@
             <input asp-for="Item.FileName" class="form-control" />
             <span asp-validation-for="Item.FileName" class="text-danger"></span>
         </div>
+        <div class="mb-2">
+            <label asp-for="Item.InsuredType" class="form-label"></label>
+            <input asp-for="Item.InsuredType" class="form-control" />
+            <span asp-validation-for="Item.InsuredType" class="text-danger"></span>
+        </div>
     </fieldset>
 
     <fieldset class="mb-3">
@@ -734,68 +739,27 @@
                 </div>
         </fieldset>
 
-            <fieldset class="mb-3">
-                <legend>
-                    Additional Insureds
-                    <button class="btn btn-outline-secondary btn-sm rounded-circle collapse-toggle ms-2 d-inline-flex align-items-center justify-content-center" style="width:30px;height:30px;padding:0;" type="button" data-bs-toggle="collapse" data-bs-target="#additionalinsureds-section-collapse" aria-expanded="true" aria-controls="additionalinsureds-section-collapse">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="6 9 12 15 18 9" /></svg>
-                    </button>
-                </legend>
+    <fieldset class="mb-3">
+        <legend>
+            Additional Insureds
+            <button class="btn btn-outline-secondary btn-sm rounded-circle collapse-toggle ms-2 d-inline-flex align-items-center justify-content-center" style="width:30px;height:30px;padding:0;" type="button" data-bs-toggle="collapse" data-bs-target="#additionalinsureds-section-collapse" aria-expanded="true" aria-controls="additionalinsureds-section-collapse">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="6 9 12 15 18 9" /></svg>
+            </button>
+        </legend>
 
-                <div class="collapse show" id="additionalinsureds-section-collapse">
-                    <div class="mb-2">
-                        <button type="button" class="btn btn-sm btn-outline-primary" onclick="addAdditionalInsured()">Add Additional Insured</button>
-                    </div>
+        <div class="collapse show" id="additionalinsureds-section-collapse">
+            <div class="mb-2">
+                <button type="button" class="btn btn-sm btn-outline-primary" onclick="addAdditionalInsured()">Add Additional Insured</button>
+            </div>
 
-                    <div id="additionalinsuredsContainer">
-                        @if (Model.Item?.AdditionalInsureds?.AdditionalInsured != null && Model.Item.AdditionalInsureds.AdditionalInsured.Count > 0)
-                        {
-                            for (int i = 0; i < Model.Item.AdditionalInsureds.AdditionalInsured.Count; i++)
-                            {
-                                <div class="border rounded p-2 mb-2 additionalinsured-item" data-index="@i">
-                                    <div class="d-flex justify-content-between align-items-start mb-2">
-                                        <h6 class="mb-0">AdditionalInsured @i</h6>
-                                        <div>
-                                            <button type="button" class="btn btn-sm btn-danger" onclick="removeAdditionalInsured(this)">Remove</button>
-                                        </div>
-                                    </div>
-
-                                    <div>
-                                        <div class="row mb-2">
-                                            <div class="col-md-4">
-                                                <label class="form-label">AdditionalInsured_SequenceNo</label>
-                                                <input name="Item.AdditionalInsureds.AdditionalInsured[@i].AdditionalInsured_SequenceNo" value="@Model.Item.AdditionalInsureds.AdditionalInsured[i].AdditionalInsured_SequenceNo" class="form-control" />
-                                            </div>
-                                            <div class="col-md-8">
-                                                <label class="form-label">BusinessName</label>
-                                                <input name="Item.AdditionalInsureds.AdditionalInsured[@i].BusinessName" value="@Model.Item.AdditionalInsureds.AdditionalInsured[i].BusinessName" class="form-control" />
-                                            </div>
-                                        </div>
-
-                                        <div class="mb-2">
-                                            <label class="form-label">Address</label>
-                                            <input name="Item.AdditionalInsureds.AdditionalInsured[@i].Address.AddressLine1" value="@Model.Item.AdditionalInsureds.AdditionalInsured[i].Address?.AddressLine1" placeholder="AddressLine1" class="form-control mb-1" />
-                                            <input name="Item.AdditionalInsureds.AdditionalInsured[@i].Address.City" value="@Model.Item.AdditionalInsureds.AdditionalInsured[i].Address?.City" placeholder="City" class="form-control mb-1" />
-                                            <input name="Item.AdditionalInsureds.AdditionalInsured[@i].Address.State" value="@Model.Item.AdditionalInsureds.AdditionalInsured[i].Address?.State" placeholder="State" class="form-control mb-1" />
-                                            <input name="Item.AdditionalInsureds.AdditionalInsured[@i].Address.PostalCode" value="@Model.Item.AdditionalInsureds.AdditionalInsured[i].Address?.PostalCode" placeholder="PostalCode" class="form-control mb-1" />
-                                            <input name="Item.AdditionalInsureds.AdditionalInsured[@i].Address.Country" value="@Model.Item.AdditionalInsureds.AdditionalInsured[i].Address?.Country" placeholder="Country" class="form-control" />
-                                            <label class="form-label mt-2">AddressChgEffDte</label>
-                                            <input name="Item.AdditionalInsureds.AdditionalInsured[@i].Address.AddressChgEffDte" value="@Model.Item.AdditionalInsureds.AdditionalInsured[i].Address?.AddressChgEffDte" class="form-control" />
-                                        </div>
-                                    </div>
-                                </div>
-                            }
-                        }
-                        else
-                        {
-                            <div class="text-muted">No additional insureds present.</div>
-                        }
-                    </div>
-
-                    <template id="additionalinsured-template">
-                        <div class="border rounded p-2 mb-2 additionalinsured-item" data-index="__index__">
+            <div id="additionalinsuredsContainer">
+                @if (Model.Item?.AdditionalInsureds?.AdditionalInsured != null && Model.Item.AdditionalInsureds.AdditionalInsured.Count > 0)
+                {
+                    for (int i = 0; i < Model.Item.AdditionalInsureds.AdditionalInsured.Count; i++)
+                    {
+                        <div class="border rounded p-2 mb-2 additionalinsured-item" data-index="@i">
                             <div class="d-flex justify-content-between align-items-start mb-2">
-                                <h6 class="mb-0">AdditionalInsured __index__</h6>
+                                <h6 class="mb-0">AdditionalInsured @i</h6>
                                 <div>
                                     <button type="button" class="btn btn-sm btn-danger" onclick="removeAdditionalInsured(this)">Remove</button>
                                 </div>
@@ -805,85 +769,91 @@
                                 <div class="row mb-2">
                                     <div class="col-md-4">
                                         <label class="form-label">AdditionalInsured_SequenceNo</label>
-                                        <input name="Item.AdditionalInsureds.AdditionalInsured[__index__].AdditionalInsured_SequenceNo" value="" class="form-control" />
+                                        <input name="Item.AdditionalInsureds.AdditionalInsured[@i].AdditionalInsured_SequenceNo" value="@Model.Item.AdditionalInsureds.AdditionalInsured[i].AdditionalInsured_SequenceNo" class="form-control" />
                                     </div>
                                     <div class="col-md-8">
                                         <label class="form-label">BusinessName</label>
-                                        <input name="Item.AdditionalInsureds.AdditionalInsured[__index__].BusinessName" value="" class="form-control" />
+                                        <input name="Item.AdditionalInsureds.AdditionalInsured[@i].BusinessName" value="@Model.Item.AdditionalInsureds.AdditionalInsured[i].BusinessName" class="form-control" />
                                     </div>
                                 </div>
 
                                 <div class="mb-2">
                                     <label class="form-label">Address</label>
-                                    <input name="Item.AdditionalInsureds.AdditionalInsured[__index__].Address.AddressLine1" value="" placeholder="AddressLine1" class="form-control mb-1" />
-                                    <input name="Item.AdditionalInsureds.AdditionalInsured[__index__].Address.City" value="" placeholder="City" class="form-control mb-1" />
-                                    <input name="Item.AdditionalInsureds.AdditionalInsured[__index__].Address.State" value="" placeholder="State" class="form-control mb-1" />
-                                    <input name="Item.AdditionalInsureds.AdditionalInsured[__index__].Address.PostalCode" value="" placeholder="PostalCode" class="form-control mb-1" />
-                                    <input name="Item.AdditionalInsureds.AdditionalInsured[__index__].Address.Country" value="" placeholder="Country" class="form-control" />
+                                    <input name="Item.AdditionalInsureds.AdditionalInsured[@i].Address.AddressLine1" value="@Model.Item.AdditionalInsureds.AdditionalInsured[i].Address?.AddressLine1" placeholder="AddressLine1" class="form-control mb-1" />
+                                    <input name="Item.AdditionalInsureds.AdditionalInsured[@i].Address.City" value="@Model.Item.AdditionalInsureds.AdditionalInsured[i].Address?.City" placeholder="City" class="form-control mb-1" />
+                                    <input name="Item.AdditionalInsureds.AdditionalInsured[@i].Address.State" value="@Model.Item.AdditionalInsureds.AdditionalInsured[i].Address?.State" placeholder="State" class="form-control mb-1" />
+                                    <input name="Item.AdditionalInsureds.AdditionalInsured[@i].Address.PostalCode" value="@Model.Item.AdditionalInsureds.AdditionalInsured[i].Address?.PostalCode" placeholder="PostalCode" class="form-control mb-1" />
+                                    <input name="Item.AdditionalInsureds.AdditionalInsured[@i].Address.Country" value="@Model.Item.AdditionalInsureds.AdditionalInsured[i].Address?.Country" placeholder="Country" class="form-control" />
+                                    <label class="form-label mt-2">AddressChgEffDte</label>
+                                    <input name="Item.AdditionalInsureds.AdditionalInsured[@i].Address.AddressChgEffDte" value="@Model.Item.AdditionalInsureds.AdditionalInsured[i].Address?.AddressChgEffDte" class="form-control" />
                                 </div>
-
                             </div>
                         </div>
-                    </template>
+                    }
+                }
+                else
+                {
+                    <div class="text-muted">No additional insureds present.</div>
+                }
+            </div>
+
+            <template id="additionalinsured-template">
+                <div class="border rounded p-2 mb-2 additionalinsured-item" data-index="__index__">
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                        <h6 class="mb-0">AdditionalInsured __index__</h6>
+                        <div>
+                            <button type="button" class="btn btn-sm btn-danger" onclick="removeAdditionalInsured(this)">Remove</button>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="row mb-2">
+                            <div class="col-md-4">
+                                <label class="form-label">AdditionalInsured_SequenceNo</label>
+                                <input name="Item.AdditionalInsureds.AdditionalInsured[__index__].AdditionalInsured_SequenceNo" value="" class="form-control" />
+                            </div>
+                            <div class="col-md-8">
+                                <label class="form-label">BusinessName</label>
+                                <input name="Item.AdditionalInsureds.AdditionalInsured[__index__].BusinessName" value="" class="form-control" />
+                            </div>
+                        </div>
+
+                        <div class="mb-2">
+                            <label class="form-label">Address</label>
+                            <input name="Item.AdditionalInsureds.AdditionalInsured[__index__].Address.AddressLine1" value="" placeholder="AddressLine1" class="form-control mb-1" />
+                            <input name="Item.AdditionalInsureds.AdditionalInsured[__index__].Address.City" value="" placeholder="City" class="form-control mb-1" />
+                            <input name="Item.AdditionalInsureds.AdditionalInsured[__index__].Address.State" value="" placeholder="State" class="form-control mb-1" />
+                            <input name="Item.AdditionalInsureds.AdditionalInsured[__index__].Address.PostalCode" value="" placeholder="PostalCode" class="form-control mb-1" />
+                            <input name="Item.AdditionalInsureds.AdditionalInsured[__index__].Address.Country" value="" placeholder="Country" class="form-control" />
+                        </div>
+
+                    </div>
                 </div>
-            </fieldset>
+            </template>
+        </div>
+    </fieldset>
 
-            <fieldset class="mb-3">
-                <legend>
-                    Terminals
-                    <button class="btn btn-outline-secondary btn-sm rounded-circle collapse-toggle ms-2 d-inline-flex align-items-center justify-content-center" style="width:30px;height:30px;padding:0;" type="button" data-bs-toggle="collapse" data-bs-target="#terminals-section-collapse" aria-expanded="true" aria-controls="#terminals-section-collapse">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="6 9 12 15 18 9" /></svg>
-                    </button>
-                </legend>
+    <fieldset class="mb-3">
+        <legend>
+            Terminals
+            <button class="btn btn-outline-secondary btn-sm rounded-circle collapse-toggle ms-2 d-inline-flex align-items-center justify-content-center" style="width:30px;height:30px;padding:0;" type="button" data-bs-toggle="collapse" data-bs-target="#terminals-section-collapse" aria-expanded="true" aria-controls="#terminals-section-collapse">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="6 9 12 15 18 9" /></svg>
+            </button>
+        </legend>
 
-                <div class="collapse show" id="terminals-section-collapse">
-                    <div class="mb-2">
-                        <button type="button" class="btn btn-sm btn-outline-primary" onclick="addTerminal()">Add Terminal</button>
-                    </div>
+        <div class="collapse show" id="terminals-section-collapse">
+            <div class="mb-2">
+                <button type="button" class="btn btn-sm btn-outline-primary" onclick="addTerminal()">Add Terminal</button>
+            </div>
 
-                    <div id="terminalsContainer">
-                        @if (Model.Item?.Terminals?.TerminalInfo != null && Model.Item.Terminals.TerminalInfo.Count > 0)
-                        {
-                            for (int i = 0; i < Model.Item.Terminals.TerminalInfo.Count; i++)
-                            {
-                                <div class="border rounded p-2 mb-2 terminal-item" data-index="@i">
-                                    <div class="d-flex justify-content-between align-items-start mb-2">
-                                        <h6 class="mb-0">Terminal @i</h6>
-                                        <div>
-                                            <button type="button" class="btn btn-sm btn-danger" onclick="removeTerminal(this)">Remove</button>
-                                        </div>
-                                    </div>
-
-                                    <div>
-                                        <div class="mb-2">
-                                            <label class="form-label">TerminalNumber</label>
-                                            <input name="Item.Terminals.TerminalInfo[@i].TerminalNumber" value="@Model.Item.Terminals.TerminalInfo[i].TerminalNumber" class="form-control" />
-                                        </div>
-
-                                        <div class="mb-2">
-                                            <label class="form-label">Address</label>
-                                            <input name="Item.Terminals.TerminalInfo[@i].TerminalAddress.AddressLine1" value="@Model.Item.Terminals.TerminalInfo[i].TerminalAddress?.AddressLine1" placeholder="AddressLine1" class="form-control mb-1" />
-                                            <input name="Item.Terminals.TerminalInfo[@i].TerminalAddress.City" value="@Model.Item.Terminals.TerminalInfo[i].TerminalAddress?.City" placeholder="City" class="form-control mb-1" />
-                                            <input name="Item.Terminals.TerminalInfo[@i].TerminalAddress.State" value="@Model.Item.Terminals.TerminalInfo[i].TerminalAddress?.State" placeholder="State" class="form-control mb-1" />
-                                            <input name="Item.Terminals.TerminalInfo[@i].TerminalAddress.PostalCode" value="@Model.Item.Terminals.TerminalInfo[i].TerminalAddress?.PostalCode" placeholder="PostalCode" class="form-control mb-1" />
-                                            <input name="Item.Terminals.TerminalInfo[@i].TerminalAddress.Country" value="@Model.Item.Terminals.TerminalInfo[i].TerminalAddress?.Country" placeholder="Country" class="form-control" />
-                                            <label class="form-label mt-2">AddressChgEffDte</label>
-                                            <input name="Item.Terminals.TerminalInfo[@i].TerminalAddress.AddressChgEffDte" value="@Model.Item.Terminals.TerminalInfo[i].TerminalAddress?.AddressChgEffDte" class="form-control" />
-                                        </div>
-                                    </div>
-                                </div>
-                            }
-                        }
-                        else
-                        {
-                            <div class="text-muted">No terminals present.</div>
-                        }
-                    </div>
-
-                    <template id="terminal-template">
-                        <div class="border rounded p-2 mb-2 terminal-item" data-index="__index__">
+            <div id="terminalsContainer">
+                @if (Model.Item?.Terminals?.TerminalInfo != null && Model.Item.Terminals.TerminalInfo.Count > 0)
+                {
+                    for (int i = 0; i < Model.Item.Terminals.TerminalInfo.Count; i++)
+                    {
+                        <div class="border rounded p-2 mb-2 terminal-item" data-index="@i">
                             <div class="d-flex justify-content-between align-items-start mb-2">
-                                <h6 class="mb-0">Terminal __index__</h6>
+                                <h6 class="mb-0">Terminal @i</h6>
                                 <div>
                                     <button type="button" class="btn btn-sm btn-danger" onclick="removeTerminal(this)">Remove</button>
                                 </div>
@@ -892,520 +862,171 @@
                             <div>
                                 <div class="mb-2">
                                     <label class="form-label">TerminalNumber</label>
-                                    <input name="Item.Terminals.TerminalInfo[__index__].TerminalNumber" value="" class="form-control" />
+                                    <input name="Item.Terminals.TerminalInfo[@i].TerminalNumber" value="@Model.Item.Terminals.TerminalInfo[i].TerminalNumber" class="form-control" />
                                 </div>
 
                                 <div class="mb-2">
                                     <label class="form-label">Address</label>
-                                    <input name="Item.Terminals.TerminalInfo[__index__].TerminalAddress.AddressLine1" value="" placeholder="AddressLine1" class="form-control mb-1" />
-                                    <input name="Item.Terminals.TerminalInfo[__index__].TerminalAddress.City" value="" placeholder="City" class="form-control mb-1" />
-                                    <input name="Item.Terminals.TerminalInfo[__index__].TerminalAddress.State" value="" placeholder="State" class="form-control mb-1" />
-                                    <input name="Item.Terminals.TerminalInfo[__index__].TerminalAddress.PostalCode" value="" placeholder="PostalCode" class="form-control mb-1" />
-                                    <input name="Item.Terminals.TerminalInfo[__index__].TerminalAddress.Country" value="" placeholder="Country" class="form-control" />
+                                    <input name="Item.Terminals.TerminalInfo[@i].TerminalAddress.AddressLine1" value="@Model.Item.Terminals.TerminalInfo[i].TerminalAddress?.AddressLine1" placeholder="AddressLine1" class="form-control mb-1" />
+                                    <input name="Item.Terminals.TerminalInfo[@i].TerminalAddress.City" value="@Model.Item.Terminals.TerminalInfo[i].TerminalAddress?.City" placeholder="City" class="form-control mb-1" />
+                                    <input name="Item.Terminals.TerminalInfo[@i].TerminalAddress.State" value="@Model.Item.Terminals.TerminalInfo[i].TerminalAddress?.State" placeholder="State" class="form-control mb-1" />
+                                    <input name="Item.Terminals.TerminalInfo[@i].TerminalAddress.PostalCode" value="@Model.Item.Terminals.TerminalInfo[i].TerminalAddress?.PostalCode" placeholder="PostalCode" class="form-control mb-1" />
+                                    <input name="Item.Terminals.TerminalInfo[@i].TerminalAddress.Country" value="@Model.Item.Terminals.TerminalInfo[i].TerminalAddress?.Country" placeholder="Country" class="form-control" />
                                     <label class="form-label mt-2">AddressChgEffDte</label>
-                                    <input name="Item.Terminals.TerminalInfo[__index__].TerminalAddress.AddressChgEffDte" value="" class="form-control" />
+                                    <input name="Item.Terminals.TerminalInfo[@i].TerminalAddress.AddressChgEffDte" value="@Model.Item.Terminals.TerminalInfo[i].TerminalAddress?.AddressChgEffDte" class="form-control" />
                                 </div>
                             </div>
                         </div>
-                    </template>
+                    }
+                }
+                else
+                {
+                    <div class="text-muted">No terminals present.</div>
+                }
+            </div>
+
+            <template id="terminal-template">
+                <div class="border rounded p-2 mb-2 terminal-item" data-index="__index__">
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                        <h6 class="mb-0">Terminal __index__</h6>
+                        <div>
+                            <button type="button" class="btn btn-sm btn-danger" onclick="removeTerminal(this)">Remove</button>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="mb-2">
+                            <label class="form-label">TerminalNumber</label>
+                            <input name="Item.Terminals.TerminalInfo[__index__].TerminalNumber" value="" class="form-control" />
+                        </div>
+
+                        <div class="mb-2">
+                            <label class="form-label">Address</label>
+                            <input name="Item.Terminals.TerminalInfo[__index__].TerminalAddress.AddressLine1" value="" placeholder="AddressLine1" class="form-control mb-1" />
+                            <input name="Item.Terminals.TerminalInfo[__index__].TerminalAddress.City" value="" placeholder="City" class="form-control mb-1" />
+                            <input name="Item.Terminals.TerminalInfo[__index__].TerminalAddress.State" value="" placeholder="State" class="form-control mb-1" />
+                            <input name="Item.Terminals.TerminalInfo[__index__].TerminalAddress.PostalCode" value="" placeholder="PostalCode" class="form-control mb-1" />
+                            <input name="Item.Terminals.TerminalInfo[__index__].TerminalAddress.Country" value="" placeholder="Country" class="form-control" />
+                            <label class="form-label mt-2">AddressChgEffDte</label>
+                            <input name="Item.Terminals.TerminalInfo[__index__].TerminalAddress.AddressChgEffDte" value="" class="form-control" />
+                        </div>
+                    </div>
                 </div>
-            </fieldset>
+            </template>
+        </div>
+    </fieldset>
 
-            <fieldset class="mb-3">
-                <legend>
-                    Additional Interests
-                    <button class="btn btn-outline-secondary btn-sm rounded-circle collapse-toggle ms-2 d-inline-flex align-items-center justify-content-center" style="width:30px;height:30px;padding:0;" type="button" data-bs-toggle="collapse" data-bs-target="#additionalinterests-section-collapse" aria-expanded="true" aria-controls="#additionalinterests-section-collapse">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="6 9 12 15 18 9" /></svg>
-                    </button>
-                </legend>
+    <fieldset class="mb-3">
+        <legend>
+            Additional Interests
+            <button class="btn btn-outline-secondary btn-sm rounded-circle collapse-toggle ms-2 d-inline-flex align-items-center justify-content-center" style="width:30px;height:30px;padding:0;" type="button" data-bs-toggle="collapse" data-bs-target="#additionalinterests-section-collapse" aria-expanded="true" aria-controls="#additionalinterests-section-collapse">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="6 9 12 15 18 9" /></svg>
+            </button>
+        </legend>
 
-                <div class="collapse show" id="additionalinterests-section-collapse">
-                    <div class="mb-2">
-                        <button type="button" class="btn btn-sm btn-outline-primary" onclick="addAdditionalInterest()">Add Additional Interest</button>
-                    </div>
+        <div class="collapse show" id="additionalinterests-section-collapse">
+            <div class="mb-2">
+                <button type="button" class="btn btn-sm btn-outline-primary" onclick="addAdditionalInterest()">Add Additional Interest</button>
+            </div>
 
-                    <div id="additionalinterestsContainer">
-                        @if (Model.Item?.AdditionalInterests?.AdditionalInterest != null && Model.Item.AdditionalInterests.AdditionalInterest.Count > 0)
-                        {
-                            for (int j = 0; j < Model.Item.AdditionalInterests.AdditionalInterest.Count; j++)
-                            {
-                                <div class="border rounded p-2 mb-2 additionalinterest-item" data-index="@j">
-                                    <div class="d-flex justify-content-between align-items-start mb-2">
-                                        <h6 class="mb-0">AdditionalInterest @j</h6>
-                                        <div>
-                                            <button type="button" class="btn btn-sm btn-danger" onclick="removeAdditionalInterest(this)">Remove</button>
-                                        </div>
-                                    </div>
-
-                                    <div>
-
-                                        <div class="mb-2 row">
-                                            <div class="col-md-4">
-                                                <label class="form-label">AdditionalInterest_SequenceNo</label>
-                                                <input name="Item.AdditionalInterests.AdditionalInterest[@j].AdditionalInterest_SequenceNo" value="@Model.Item.AdditionalInterests.AdditionalInterest[j].AdditionalInterest_SequenceNo" class="form-control" />
-                                            </div>
-                                            <div class="col-md-8">
-                                                <label class="form-label">Name</label>
-                                                <input name="Item.AdditionalInterests.AdditionalInterest[@j].Name" value="@Model.Item.AdditionalInterests.AdditionalInterest[j].Name" class="form-control" />
-                                            </div>
-                                        </div>
-
-                                        <div class="row mb-2">
-                                            <div class="col-md-4">
-                                                <label class="form-label">NameChgEffDte</label>
-                                                <input name="Item.AdditionalInterests.AdditionalInterest[@j].NameChgEffDte" value="@Model.Item.AdditionalInterests.AdditionalInterest[j].NameChgEffDte" class="form-control" />
-                                            </div>
-                                            <div class="col-md-4">
-                                                <label class="form-label">AdditionalInterestType</label>
-                                                <input name="Item.AdditionalInterests.AdditionalInterest[@j].AdditionalInterestType" value="@Model.Item.AdditionalInterests.AdditionalInterest[j].AdditionalInterestType" class="form-control" />
-                                            </div>
-                                            <div class="col-md-4">
-                                                <label class="form-label">AdditionalInterestTypeChgDate</label>
-                                                <input name="Item.AdditionalInterests.AdditionalInterest[@j].AdditionalInterestTypeChgDate" value="@Model.Item.AdditionalInterests.AdditionalInterest[j].AdditionalInterestTypeChgDate" class="form-control" />
-                                            </div>
-                                        </div>
-
-                                        <div class="mb-2">
-                                            <label class="form-label">Address</label>
-                                            <input name="Item.AdditionalInterests.AdditionalInterest[@j].Address.AddressLine1" value="@Model.Item.AdditionalInterests.AdditionalInterest[j].Address?.AddressLine1" placeholder="AddressLine1" class="form-control mb-1" />
-                                            <input name="Item.AdditionalInterests.AdditionalInterest[@j].Address.City" value="@Model.Item.AdditionalInterests.AdditionalInterest[j].Address?.City" placeholder="City" class="form-control mb-1" />
-                                            <input name="Item.AdditionalInterests.AdditionalInterest[@j].Address.State" value="@Model.Item.AdditionalInterests.AdditionalInterest[j].Address?.State" placeholder="State" class="form-control mb-1" />
-                                            <input name="Item.AdditionalInterests.AdditionalInterest[@j].Address.PostalCode" value="@Model.Item.AdditionalInterests.AdditionalInterest[j].Address?.PostalCode" placeholder="PostalCode" class="form-control mb-1" />
-                                            <input name="Item.AdditionalInterests.AdditionalInterest[@j].Address.Country" value="@Model.Item.AdditionalInterests.AdditionalInterest[j].Address?.Country" placeholder="Country" class="form-control" />
-                                            <label class="form-label mt-2">AddressChgEffDte</label>
-                                            <input name="Item.AdditionalInterests.AdditionalInterest[@j].Address.AddressChgEffDte" value="@Model.Item.AdditionalInterests.AdditionalInterest[j].Address?.AddressChgEffDte" class="form-control" />
-                                        </div>
-                                    </div>
-                                </div>
-                            }
-                        }
-                        else
-                        {
-                            <div class="text-muted">No additional interests present.</div>
-                        }
-                    </div>
-
-                    <template id="additionalinterest-template">
-                        <div class="border rounded p-2 mb-2 additionalinterest-item" data-index="__index__">
+            <div id="additionalinterestsContainer">
+                @if (Model.Item?.AdditionalInterests?.AdditionalInterest != null && Model.Item.AdditionalInterests.AdditionalInterest.Count > 0)
+                {
+                    for (int j = 0; j < Model.Item.AdditionalInterests.AdditionalInterest.Count; j++)
+                    {
+                        <div class="border rounded p-2 mb-2 additionalinterest-item" data-index="@j">
                             <div class="d-flex justify-content-between align-items-start mb-2">
-                                <h6 class="mb-0">AdditionalInterest __index__</h6>
+                                <h6 class="mb-0">AdditionalInterest @j</h6>
                                 <div>
                                     <button type="button" class="btn btn-sm btn-danger" onclick="removeAdditionalInterest(this)">Remove</button>
                                 </div>
                             </div>
 
                             <div>
-                                <div class="row mb-2">
+
+                                <div class="mb-2 row">
                                     <div class="col-md-4">
                                         <label class="form-label">AdditionalInterest_SequenceNo</label>
-                                        <input name="Item.AdditionalInterests.AdditionalInterest[__index__].AdditionalInterest_SequenceNo" value="" class="form-control" />
+                                        <input name="Item.AdditionalInterests.AdditionalInterest[@j].AdditionalInterest_SequenceNo" value="@Model.Item.AdditionalInterests.AdditionalInterest[j].AdditionalInterest_SequenceNo" class="form-control" />
                                     </div>
                                     <div class="col-md-8">
                                         <label class="form-label">Name</label>
-                                        <input name="Item.AdditionalInterests.AdditionalInterest[__index__].Name" value="" class="form-control" />
+                                        <input name="Item.AdditionalInterests.AdditionalInterest[@j].Name" value="@Model.Item.AdditionalInterests.AdditionalInterest[j].Name" class="form-control" />
+                                    </div>
+                                </div>
+
+                                <div class="row mb-2">
+                                    <div class="col-md-4">
+                                        <label class="form-label">NameChgEffDte</label>
+                                        <input name="Item.AdditionalInterests.AdditionalInterest[@j].NameChgEffDte" value="@Model.Item.AdditionalInterests.AdditionalInterest[j].NameChgEffDte" class="form-control" />
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="form-label">AdditionalInterestType</label>
+                                        <input name="Item.AdditionalInterests.AdditionalInterest[@j].AdditionalInterestType" value="@Model.Item.AdditionalInterests.AdditionalInterest[j].AdditionalInterestType" class="form-control" />
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="form-label">AdditionalInterestTypeChgDate</label>
+                                        <input name="Item.AdditionalInterests.AdditionalInterest[@j].AdditionalInterestTypeChgDate" value="@Model.Item.AdditionalInterests.AdditionalInterest[j].AdditionalInterestTypeChgDate" class="form-control" />
                                     </div>
                                 </div>
 
                                 <div class="mb-2">
                                     <label class="form-label">Address</label>
-                                    <input name="Item.AdditionalInterests.AdditionalInterest[__index__].Address.AddressLine1" value="" placeholder="AddressLine1" class="form-control mb-1" />
-                                    <input name="Item.AdditionalInterests.AdditionalInterest[__index__].Address.City" value="" placeholder="City" class="form-control mb-1" />
-                                    <input name="Item.AdditionalInterests.AdditionalInterest[__index__].Address.State" value="" placeholder="State" class="form-control mb-1" />
-                                    <input name="Item.AdditionalInterests.AdditionalInterest[__index__].Address.PostalCode" value="" placeholder="PostalCode" class="form-control mb-1" />
-                                    <input name="Item.AdditionalInterests.AdditionalInterest[__index__].Address.Country" value="" placeholder="Country" class="form-control" />
-                                </div>
-
-                            </div>
-                        </div>
-                    </template>
-                </div>
-            </fieldset>
-
-            <fieldset class="mb-3">
-                <legend>
-                    Terminals
-                    <button class="btn btn-outline-secondary btn-sm rounded-circle collapse-toggle ms-2 d-inline-flex align-items-center justify-content-center" style="width:30px;height:30px;padding:0;" type="button" data-bs-toggle="collapse" data-bs-target="#terminals-section-collapse" aria-expanded="true" aria-controls="#terminals-section-collapse">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="6 9 12 15 18 9" /></svg>
-                    </button>
-                </legend>
-
-                <div class="collapse show" id="terminals-section-collapse">
-                    <div class="mb-2">
-                        <button type="button" class="btn btn-sm btn-outline-primary" onclick="addTerminal()">Add Terminal</button>
-                    </div>
-
-                    <div id="terminalsContainer">
-                        @if (Model.Item?.Terminals?.TerminalInfo != null && Model.Item.Terminals.TerminalInfo.Count > 0)
-                        {
-                            for (int i = 0; i < Model.Item.Terminals.TerminalInfo.Count; i++)
-                            {
-                                <div class="border rounded p-2 mb-2 terminal-item" data-index="@i">
-                                    <div class="d-flex justify-content-between align-items-start mb-2">
-                                        <h6 class="mb-0">Terminal @i</h6>
-                                        <div>
-                                            <button type="button" class="btn btn-sm btn-danger" onclick="removeTerminal(this)">Remove</button>
-                                        </div>
-                                    </div>
-
-                                    <div>
-                                        <div class="mb-2">
-                                            <label class="form-label">TerminalNumber</label>
-                                            <input name="Item.Terminals.TerminalInfo[@i].TerminalNumber" value="@Model.Item.Terminals.TerminalInfo[i].TerminalNumber" class="form-control" />
-                                        </div>
-
-                                        <div class="mb-2">
-                                            <label class="form-label">Address</label>
-                                            <input name="Item.Terminals.TerminalInfo[@i].TerminalAddress.AddressLine1" value="@Model.Item.Terminals.TerminalInfo[i].TerminalAddress?.AddressLine1" placeholder="AddressLine1" class="form-control mb-1" />
-                                            <input name="Item.Terminals.TerminalInfo[@i].TerminalAddress.City" value="@Model.Item.Terminals.TerminalInfo[i].TerminalAddress?.City" placeholder="City" class="form-control mb-1" />
-                                            <input name="Item.Terminals.TerminalInfo[@i].TerminalAddress.State" value="@Model.Item.Terminals.TerminalInfo[i].TerminalAddress?.State" placeholder="State" class="form-control mb-1" />
-                                            <input name="Item.Terminals.TerminalInfo[@i].TerminalAddress.PostalCode" value="@Model.Item.Terminals.TerminalInfo[i].TerminalAddress?.PostalCode" placeholder="PostalCode" class="form-control mb-1" />
-                                            <input name="Item.Terminals.TerminalInfo[@i].TerminalAddress.Country" value="@Model.Item.Terminals.TerminalInfo[i].TerminalAddress?.Country" placeholder="Country" class="form-control" />
-                                            <label class="form-label mt-2">AddressChgEffDte</label>
-                                            <input name="Item.Terminals.TerminalInfo[@i].TerminalAddress.AddressChgEffDte" value="@Model.Item.Terminals.TerminalInfo[i].TerminalAddress?.AddressChgEffDte" class="form-control" />
-                                        </div>
-                                    </div>
-                                </div>
-                            }
-                        }
-                        else
-                        {
-                            <div class="text-muted">No terminals present.</div>
-                        }
-                    </div>
-
-                    <template id="terminal-template">
-                        <div class="border rounded p-2 mb-2 terminal-item" data-index="__index__">
-                            <div class="d-flex justify-content-between align-items-start mb-2">
-                                <h6 class="mb-0">Terminal __index__</h6>
-                                <div>
-                                    <button type="button" class="btn btn-sm btn-danger" onclick="removeTerminal(this)">Remove</button>
-                                </div>
-                            </div>
-
-                            <div>
-                                <div class="mb-2">
-                                    <label class="form-label">TerminalNumber</label>
-                                    <input name="Item.Terminals.TerminalInfo[__index__].TerminalNumber" value="" class="form-control" />
-                                </div>
-
-                                <div class="mb-2">
-                                    <label class="form-label">Address</label>
-                                    <input name="Item.Terminals.TerminalInfo[__index__].TerminalAddress.AddressLine1" value="" placeholder="AddressLine1" class="form-control mb-1" />
-                                    <input name="Item.Terminals.TerminalInfo[__index__].TerminalAddress.City" value="" placeholder="City" class="form-control mb-1" />
-                                    <input name="Item.Terminals.TerminalInfo[__index__].TerminalAddress.State" value="" placeholder="State" class="form-control mb-1" />
-                                    <input name="Item.Terminals.TerminalInfo[__index__].TerminalAddress.PostalCode" value="" placeholder="PostalCode" class="form-control mb-1" />
-                                    <input name="Item.Terminals.TerminalInfo[__index__].TerminalAddress.Country" value="" placeholder="Country" class="form-control" />
+                                    <input name="Item.AdditionalInterests.AdditionalInterest[@j].Address.AddressLine1" value="@Model.Item.AdditionalInterests.AdditionalInterest[j].Address?.AddressLine1" placeholder="AddressLine1" class="form-control mb-1" />
+                                    <input name="Item.AdditionalInterests.AdditionalInterest[@j].Address.City" value="@Model.Item.AdditionalInterests.AdditionalInterest[j].Address?.City" placeholder="City" class="form-control mb-1" />
+                                    <input name="Item.AdditionalInterests.AdditionalInterest[@j].Address.State" value="@Model.Item.AdditionalInterests.AdditionalInterest[j].Address?.State" placeholder="State" class="form-control mb-1" />
+                                    <input name="Item.AdditionalInterests.AdditionalInterest[@j].Address.PostalCode" value="@Model.Item.AdditionalInterests.AdditionalInterest[j].Address?.PostalCode" placeholder="PostalCode" class="form-control mb-1" />
+                                    <input name="Item.AdditionalInterests.AdditionalInterest[@j].Address.Country" value="@Model.Item.AdditionalInterests.AdditionalInterest[j].Address?.Country" placeholder="Country" class="form-control" />
                                     <label class="form-label mt-2">AddressChgEffDte</label>
-                                    <input name="Item.Terminals.TerminalInfo[__index__].TerminalAddress.AddressChgEffDte" value="" class="form-control" />
+                                    <input name="Item.AdditionalInterests.AdditionalInterest[@j].Address.AddressChgEffDte" value="@Model.Item.AdditionalInterests.AdditionalInterest[j].Address?.AddressChgEffDte" class="form-control" />
                                 </div>
                             </div>
                         </div>
-                    </template>
-                </div>
-            </fieldset>
+                    }
+                }
+                else
+                {
+                    <div class="text-muted">No additional interests present.</div>
+                }
+            </div>
 
-            <fieldset class="mb-3">
-                <legend>
-                    Additional Interests
-                    <button class="btn btn-outline-secondary btn-sm rounded-circle collapse-toggle ms-2 d-inline-flex align-items-center justify-content-center" style="width:30px;height:30px;padding:0;" type="button" data-bs-toggle="collapse" data-bs-target="#additionalinterests-section-collapse" aria-expanded="true" aria-controls="#additionalinterests-section-collapse">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="6 9 12 15 18 9" /></svg>
-                    </button>
-                </legend>
-
-                <div class="collapse show" id="additionalinterests-section-collapse">
-                    <div class="mb-2">
-                        <button type="button" class="btn btn-sm btn-outline-primary" onclick="addAdditionalInterest()">Add Additional Interest</button>
+            <template id="additionalinterest-template">
+                <div class="border rounded p-2 mb-2 additionalinterest-item" data-index="__index__">
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                        <h6 class="mb-0">AdditionalInterest __index__</h6>
+                        <div>
+                            <button type="button" class="btn btn-sm btn-danger" onclick="removeAdditionalInterest(this)">Remove</button>
+                        </div>
                     </div>
 
-                    <div id="additionalinterestsContainer">
-                        @if (Model.Item?.AdditionalInterests?.AdditionalInterest != null && Model.Item.AdditionalInterests.AdditionalInterest.Count > 0)
-                        {
-                            for (int j = 0; j < Model.Item.AdditionalInterests.AdditionalInterest.Count; j++)
-                            {
-                                <div class="border rounded p-2 mb-2 additionalinterest-item" data-index="@j">
-                                    <div class="d-flex justify-content-between align-items-start mb-2">
-                                        <h6 class="mb-0">AdditionalInterest @j</h6>
-                                        <div>
-                                            <button type="button" class="btn btn-sm btn-danger" onclick="removeAdditionalInterest(this)">Remove</button>
-                                        </div>
-                                    </div>
-
-                                    <div>
-
-                                        <div class="mb-2 row">
-                                            <div class="col-md-4">
-                                                <label class="form-label">AdditionalInterest_SequenceNo</label>
-                                                <input name="Item.AdditionalInterests.AdditionalInterest[@j].AdditionalInterest_SequenceNo" value="@Model.Item.AdditionalInterests.AdditionalInterest[j].AdditionalInterest_SequenceNo" class="form-control" />
-                                            </div>
-                                            <div class="col-md-8">
-                                                <label class="form-label">Name</label>
-                                                <input name="Item.AdditionalInterests.AdditionalInterest[@j].Name" value="@Model.Item.AdditionalInterests.AdditionalInterest[j].Name" class="form-control" />
-                                            </div>
-                                        </div>
-
-                                        <div class="row mb-2">
-                                            <div class="col-md-4">
-                                                <label class="form-label">NameChgEffDte</label>
-                                                <input name="Item.AdditionalInterests.AdditionalInterest[@j].NameChgEffDte" value="@Model.Item.AdditionalInterests.AdditionalInterest[j].NameChgEffDte" class="form-control" />
-                                            </div>
-                                            <div class="col-md-4">
-                                                <label class="form-label">AdditionalInterestType</label>
-                                                <input name="Item.AdditionalInterests.AdditionalInterest[@j].AdditionalInterestType" value="@Model.Item.AdditionalInterests.AdditionalInterest[j].AdditionalInterestType" class="form-control" />
-                                            </div>
-                                            <div class="col-md-4">
-                                                <label class="form-label">AdditionalInterestTypeChgDate</label>
-                                                <input name="Item.AdditionalInterests.AdditionalInterest[@j].AdditionalInterestTypeChgDate" value="@Model.Item.AdditionalInterests.AdditionalInterest[j].AdditionalInterestTypeChgDate" class="form-control" />
-                                            </div>
-                                        </div>
-
-                                        <div class="mb-2">
-                                            <label class="form-label">Address</label>
-                                            <input name="Item.AdditionalInterests.AdditionalInterest[@j].Address.AddressLine1" value="@Model.Item.AdditionalInterests.AdditionalInterest[j].Address?.AddressLine1" placeholder="AddressLine1" class="form-control mb-1" />
-                                            <input name="Item.AdditionalInterests.AdditionalInterest[@j].Address.City" value="@Model.Item.AdditionalInterests.AdditionalInterest[j].Address?.City" placeholder="City" class="form-control mb-1" />
-                                            <input name="Item.AdditionalInterests.AdditionalInterest[@j].Address.State" value="@Model.Item.AdditionalInterests.AdditionalInterest[j].Address?.State" placeholder="State" class="form-control mb-1" />
-                                            <input name="Item.AdditionalInterests.AdditionalInterest[@j].Address.PostalCode" value="@Model.Item.AdditionalInterests.AdditionalInterest[j].Address?.PostalCode" placeholder="PostalCode" class="form-control mb-1" />
-                                            <input name="Item.AdditionalInterests.AdditionalInterest[@j].Address.Country" value="@Model.Item.AdditionalInterests.AdditionalInterest[j].Address?.Country" placeholder="Country" class="form-control" />
-                                            <label class="form-label mt-2">AddressChgEffDte</label>
-                                            <input name="Item.AdditionalInterests.AdditionalInterest[@j].Address.AddressChgEffDte" value="@Model.Item.AdditionalInterests.AdditionalInterest[j].Address?.AddressChgEffDte" class="form-control" />
-                                        </div>
-                                    </div>
-                                </div>
-                            }
-                        }
-                        else
-                        {
-                            <div class="text-muted">No additional interests present.</div>
-                        }
-                    </div>
-
-                    <template id="additionalinterest-template">
-                        <div class="border rounded p-2 mb-2 additionalinterest-item" data-index="__index__">
-                            <div class="d-flex justify-content-between align-items-start mb-2">
-                                <h6 class="mb-0">AdditionalInterest __index__</h6>
-                                <div>
-                                    <button type="button" class="btn btn-sm btn-danger" onclick="removeAdditionalInterest(this)">Remove</button>
-                                </div>
+                    <div>
+                        <div class="row mb-2">
+                            <div class="col-md-4">
+                                <label class="form-label">AdditionalInterest_SequenceNo</label>
+                                <input name="Item.AdditionalInterests.AdditionalInterest[__index__].AdditionalInterest_SequenceNo" value="" class="form-control" />
                             </div>
-
-                            <div>
-                                <div class="row mb-2">
-                                    <div class="col-md-4">
-                                        <label class="form-label">AdditionalInterest_SequenceNo</label>
-                                        <input name="Item.AdditionalInterests.AdditionalInterest[__index__].AdditionalInterest_SequenceNo" value="" class="form-control" />
-                                    </div>
-                                    <div class="col-md-8">
-                                        <label class="form-label">Name</label>
-                                        <input name="Item.AdditionalInterests.AdditionalInterest[__index__].Name" value="" class="form-control" />
-                                    </div>
-                                </div>
-
-                                <div class="mb-2">
-                                    <label class="form-label">Address</label>
-                                    <input name="Item.AdditionalInterests.AdditionalInterest[__index__].Address.AddressLine1" value="" placeholder="AddressLine1" class="form-control mb-1" />
-                                    <input name="Item.AdditionalInterests.AdditionalInterest[__index__].Address.City" value="" placeholder="City" class="form-control mb-1" />
-                                    <input name="Item.AdditionalInterests.AdditionalInterest[__index__].Address.State" value="" placeholder="State" class="form-control mb-1" />
-                                    <input name="Item.AdditionalInterests.AdditionalInterest[__index__].Address.PostalCode" value="" placeholder="PostalCode" class="form-control mb-1" />
-                                    <input name="Item.AdditionalInterests.AdditionalInterest[__index__].Address.Country" value="" placeholder="Country" class="form-control" />
-                                </div>
-
+                            <div class="col-md-8">
+                                <label class="form-label">Name</label>
+                                <input name="Item.AdditionalInterests.AdditionalInterest[__index__].Name" value="" class="form-control" />
                             </div>
                         </div>
-                    </template>
-                </div>
-            </fieldset>
 
-            <fieldset class="mb-3">
-                <legend>
-                    Terminals
-                    <button class="btn btn-outline-secondary btn-sm rounded-circle collapse-toggle ms-2 d-inline-flex align-items-center justify-content-center" style="width:30px;height:30px;padding:0;" type="button" data-bs-toggle="collapse" data-bs-target="#terminals-section-collapse" aria-expanded="true" aria-controls="#terminals-section-collapse">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="6 9 12 15 18 9" /></svg>
-                    </button>
-                </legend>
-
-                <div class="collapse show" id="terminals-section-collapse">
-                    <div class="mb-2">
-                        <button type="button" class="btn btn-sm btn-outline-primary" onclick="addTerminal()">Add Terminal</button>
-                    </div>
-
-                    <div id="terminalsContainer">
-                        @if (Model.Item?.Terminals?.TerminalInfo != null && Model.Item.Terminals.TerminalInfo.Count > 0)
-                        {
-                            for (int i = 0; i < Model.Item.Terminals.TerminalInfo.Count; i++)
-                            {
-                                <div class="border rounded p-2 mb-2 terminal-item" data-index="@i">
-                                    <div class="d-flex justify-content-between align-items-start mb-2">
-                                        <h6 class="mb-0">Terminal @i</h6>
-                                        <div>
-                                            <button type="button" class="btn btn-sm btn-danger" onclick="removeTerminal(this)">Remove</button>
-                                        </div>
-                                    </div>
-
-                                    <div>
-                                        <div class="mb-2">
-                                            <label class="form-label">TerminalNumber</label>
-                                            <input name="Item.Terminals.TerminalInfo[@i].TerminalNumber" value="@Model.Item.Terminals.TerminalInfo[i].TerminalNumber" class="form-control" />
-                                        </div>
-
-                                        <div class="mb-2">
-                                            <label class="form-label">Address</label>
-                                            <input name="Item.Terminals.TerminalInfo[@i].TerminalAddress.AddressLine1" value="@Model.Item.Terminals.TerminalInfo[i].TerminalAddress?.AddressLine1" placeholder="AddressLine1" class="form-control mb-1" />
-                                            <input name="Item.Terminals.TerminalInfo[@i].TerminalAddress.City" value="@Model.Item.Terminals.TerminalInfo[i].TerminalAddress?.City" placeholder="City" class="form-control mb-1" />
-                                            <input name="Item.Terminals.TerminalInfo[@i].TerminalAddress.State" value="@Model.Item.Terminals.TerminalInfo[i].TerminalAddress?.State" placeholder="State" class="form-control mb-1" />
-                                            <input name="Item.Terminals.TerminalInfo[@i].TerminalAddress.PostalCode" value="@Model.Item.Terminals.TerminalInfo[i].TerminalAddress?.PostalCode" placeholder="PostalCode" class="form-control mb-1" />
-                                            <input name="Item.Terminals.TerminalInfo[@i].TerminalAddress.Country" value="@Model.Item.Terminals.TerminalInfo[i].TerminalAddress?.Country" placeholder="Country" class="form-control" />
-                                            <label class="form-label mt-2">AddressChgEffDte</label>
-                                            <input name="Item.Terminals.TerminalInfo[@i].TerminalAddress.AddressChgEffDte" value="@Model.Item.Terminals.TerminalInfo[i].TerminalAddress?.AddressChgEffDte" class="form-control" />
-                                        </div>
-                                    </div>
-                                </div>
-                            }
-                        }
-                        else
-                        {
-                            <div class="text-muted">No terminals present.</div>
-                        }
-                    </div>
-
-                    <template id="terminal-template">
-                        <div class="border rounded p-2 mb-2 terminal-item" data-index="__index__">
-                            <div class="d-flex justify-content-between align-items-start mb-2">
-                                <h6 class="mb-0">Terminal __index__</h6>
-                                <div>
-                                    <button type="button" class="btn btn-sm btn-danger" onclick="removeTerminal(this)">Remove</button>
-                                </div>
-                            </div>
-
-                            <div>
-                                <div class="mb-2">
-                                    <label class="form-label">TerminalNumber</label>
-                                    <input name="Item.Terminals.TerminalInfo[__index__].TerminalNumber" value="" class="form-control" />
-                                </div>
-
-                                <div class="mb-2">
-                                    <label class="form-label">Address</label>
-                                    <input name="Item.Terminals.TerminalInfo[__index__].TerminalAddress.AddressLine1" value="" placeholder="AddressLine1" class="form-control mb-1" />
-                                    <input name="Item.Terminals.TerminalInfo[__index__].TerminalAddress.City" value="" placeholder="City" class="form-control mb-1" />
-                                    <input name="Item.Terminals.TerminalInfo[__index__].TerminalAddress.State" value="" placeholder="State" class="form-control mb-1" />
-                                    <input name="Item.Terminals.TerminalInfo[__index__].TerminalAddress.PostalCode" value="" placeholder="PostalCode" class="form-control mb-1" />
-                                    <input name="Item.Terminals.TerminalInfo[__index__].TerminalAddress.Country" value="" placeholder="Country" class="form-control" />
-                                    <label class="form-label mt-2">AddressChgEffDte</label>
-                                    <input name="Item.Terminals.TerminalInfo[__index__].TerminalAddress.AddressChgEffDte" value="" class="form-control" />
-                                </div>
-                            </div>
+                        <div class="mb-2">
+                            <label class="form-label">Address</label>
+                            <input name="Item.AdditionalInterests.AdditionalInterest[__index__].Address.AddressLine1" value="" placeholder="AddressLine1" class="form-control mb-1" />
+                            <input name="Item.AdditionalInterests.AdditionalInterest[__index__].Address.City" value="" placeholder="City" class="form-control mb-1" />
+                            <input name="Item.AdditionalInterests.AdditionalInterest[__index__].Address.State" value="" placeholder="State" class="form-control mb-1" />
+                            <input name="Item.AdditionalInterests.AdditionalInterest[__index__].Address.PostalCode" value="" placeholder="PostalCode" class="form-control mb-1" />
+                            <input name="Item.AdditionalInterests.AdditionalInterest[__index__].Address.Country" value="" placeholder="Country" class="form-control" />
                         </div>
-                    </template>
-                </div>
-            </fieldset>
 
-            <fieldset class="mb-3">
-                <legend>
-                    Additional Interests
-                    <button class="btn btn-outline-secondary btn-sm rounded-circle collapse-toggle ms-2 d-inline-flex align-items-center justify-content-center" style="width:30px;height:30px;padding:0;" type="button" data-bs-toggle="collapse" data-bs-target="#additionalinterests-section-collapse" aria-expanded="true" aria-controls="#additionalinterests-section-collapse">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="6 9 12 15 18 9" /></svg>
-                    </button>
-                </legend>
-
-                <div class="collapse show" id="additionalinterests-section-collapse">
-                    <div class="mb-2">
-                        <button type="button" class="btn btn-sm btn-outline-primary" onclick="addAdditionalInterest()">Add Additional Interest</button>
                     </div>
-
-                    <div id="additionalinterestsContainer">
-                        @if (Model.Item?.AdditionalInterests?.AdditionalInterest != null && Model.Item.AdditionalInterests.AdditionalInterest.Count > 0)
-                        {
-                            for (int j = 0; j < Model.Item.AdditionalInterests.AdditionalInterest.Count; j++)
-                            {
-                                <div class="border rounded p-2 mb-2 additionalinterest-item" data-index="@j">
-                                    <div class="d-flex justify-content-between align-items-start mb-2">
-                                        <h6 class="mb-0">AdditionalInterest @j</h6>
-                                        <div>
-                                            <button type="button" class="btn btn-sm btn-danger" onclick="removeAdditionalInterest(this)">Remove</button>
-                                        </div>
-                                    </div>
-
-                                    <div>
-
-                                        <div class="mb-2 row">
-                                            <div class="col-md-4">
-                                                <label class="form-label">AdditionalInterest_SequenceNo</label>
-                                                <input name="Item.AdditionalInterests.AdditionalInterest[@j].AdditionalInterest_SequenceNo" value="@Model.Item.AdditionalInterests.AdditionalInterest[j].AdditionalInterest_SequenceNo" class="form-control" />
-                                            </div>
-                                            <div class="col-md-8">
-                                                <label class="form-label">Name</label>
-                                                <input name="Item.AdditionalInterests.AdditionalInterest[@j].Name" value="@Model.Item.AdditionalInterests.AdditionalInterest[j].Name" class="form-control" />
-                                            </div>
-                                        </div>
-
-                                        <div class="row mb-2">
-                                            <div class="col-md-4">
-                                                <label class="form-label">NameChgEffDte</label>
-                                                <input name="Item.AdditionalInterests.AdditionalInterest[@j].NameChgEffDte" value="@Model.Item.AdditionalInterests.AdditionalInterest[j].NameChgEffDte" class="form-control" />
-                                            </div>
-                                            <div class="col-md-4">
-                                                <label class="form-label">AdditionalInterestType</label>
-                                                <input name="Item.AdditionalInterests.AdditionalInterest[@j].AdditionalInterestType" value="@Model.Item.AdditionalInterests.AdditionalInterest[j].AdditionalInterestType" class="form-control" />
-                                            </div>
-                                            <div class="col-md-4">
-                                                <label class="form-label">AdditionalInterestTypeChgDate</label>
-                                                <input name="Item.AdditionalInterests.AdditionalInterest[@j].AdditionalInterestTypeChgDate" value="@Model.Item.AdditionalInterests.AdditionalInterest[j].AdditionalInterestTypeChgDate" class="form-control" />
-                                            </div>
-                                        </div>
-
-                                        <div class="mb-2">
-                                            <label class="form-label">Address</label>
-                                            <input name="Item.AdditionalInterests.AdditionalInterest[@j].Address.AddressLine1" value="@Model.Item.AdditionalInterests.AdditionalInterest[j].Address?.AddressLine1" placeholder="AddressLine1" class="form-control mb-1" />
-                                            <input name="Item.AdditionalInterests.AdditionalInterest[@j].Address.City" value="@Model.Item.AdditionalInterests.AdditionalInterest[j].Address?.City" placeholder="City" class="form-control mb-1" />
-                                            <input name="Item.AdditionalInterests.AdditionalInterest[@j].Address.State" value="@Model.Item.AdditionalInterests.AdditionalInterest[j].Address?.State" placeholder="State" class="form-control mb-1" />
-                                            <input name="Item.AdditionalInterests.AdditionalInterest[@j].Address.PostalCode" value="@Model.Item.AdditionalInterests.AdditionalInterest[j].Address?.PostalCode" placeholder="PostalCode" class="form-control mb-1" />
-                                            <input name="Item.AdditionalInterests.AdditionalInterest[@j].Address.Country" value="@Model.Item.AdditionalInterests.AdditionalInterest[j].Address?.Country" placeholder="Country" class="form-control" />
-                                            <label class="form-label mt-2">AddressChgEffDte</label>
-                                            <input name="Item.AdditionalInterests.AdditionalInterest[@j].Address.AddressChgEffDte" value="@Model.Item.AdditionalInterests.AdditionalInterest[j].Address?.AddressChgEffDte" class="form-control" />
-                                        </div>
-                                    </div>
-                                </div>
-                            }
-                        }
-                        else
-                        {
-                            <div class="text-muted">No additional interests present.</div>
-                        }
-                    </div>
-
-                    <template id="additionalinterest-template">
-                        <div class="border rounded p-2 mb-2 additionalinterest-item" data-index="__index__">
-                            <div class="d-flex justify-content-between align-items-start mb-2">
-                                <h6 class="mb-0">AdditionalInterest __index__</h6>
-                                <div>
-                                    <button type="button" class="btn btn-sm btn-danger" onclick="removeAdditionalInterest(this)">Remove</button>
-                                </div>
-                            </div>
-
-                            <div>
-                                <div class="row mb-2">
-                                    <div class="col-md-4">
-                                        <label class="form-label">AdditionalInterest_SequenceNo</label>
-                                        <input name="Item.AdditionalInterests.AdditionalInterest[__index__].AdditionalInterest_SequenceNo" value="" class="form-control" />
-                                    </div>
-                                    <div class="col-md-8">
-                                        <label class="form-label">Name</label>
-                                        <input name="Item.AdditionalInterests.AdditionalInterest[__index__].Name" value="" class="form-control" />
-                                    </div>
-                                </div>
-
-                                <div class="mb-2">
-                                    <label class="form-label">Address</label>
-                                    <input name="Item.AdditionalInterests.AdditionalInterest[__index__].Address.AddressLine1" value="" placeholder="AddressLine1" class="form-control mb-1" />
-                                    <input name="Item.AdditionalInterests.AdditionalInterest[__index__].Address.City" value="" placeholder="City" class="form-control mb-1" />
-                                    <input name="Item.AdditionalInterests.AdditionalInterest[__index__].Address.State" value="" placeholder="State" class="form-control mb-1" />
-                                    <input name="Item.AdditionalInterests.AdditionalInterest[__index__].Address.PostalCode" value="" placeholder="PostalCode" class="form-control mb-1" />
-                                    <input name="Item.AdditionalInterests.AdditionalInterest[__index__].Address.Country" value="" placeholder="Country" class="form-control" />
-                                </div>
-
-                            </div>
-                        </div>
-                    </template>
                 </div>
-            </fieldset>
+            </template>
+        </div>
+    </fieldset>
+
+           
 
             <div class="d-flex gap-2">
                 <button type="submit" class="btn btn-primary">Save</button>

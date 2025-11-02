@@ -10,13 +10,16 @@
 
 <div class="mb-3 d-flex gap-2 align-items-center">
     <form method="post" asp-page-handler="CreateNew" class="d-inline">
-        <button type="submit" class="btn btn-outline-secondary">Create New FulfillmentExternalRequests</button>
+        <button type="submit" class="btn btn-outline-secondary">Create New </button>
     </form>
 
     <form method="post" asp-page-handler="Export" class="d-inline">
-        <button type="submit" class="btn btn-outline-primary">Export Saved XML</button>
+        <button type="submit" class="btn btn-outline-primary">Export XML</button>
     </form>
 
+    
+</div>
+<div class="mb-3 d-flex gap-2 align-items-center">
     <form method="post" asp-page-handler="Upload" enctype="multipart/form-data" class="d-inline">
         <input type="file" name="xmlFile" accept=".xml" class="form-control form-control-sm d-inline-block" style="width:auto;" />
         <button type="submit" class="btn btn-outline-success btn-sm">Load from XML File</button>
@@ -43,7 +46,7 @@
     <p>No requests found.</p>
 }
 else
-{
+{   
     <table class="table">
         <thead>
             <tr>
@@ -77,4 +80,7 @@ else
         }
         </tbody>
     </table>
+    <form method="post" asp-page-handler="Add" class="d-inline">
+        <button type="submit" class="btn btn-sm btn-outline-secondary">Add Request</button>
+    </form>
 }

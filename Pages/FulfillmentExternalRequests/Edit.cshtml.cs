@@ -54,15 +54,15 @@ namespace FulfillmentTestXmlGenerator.Pages.FulfillmentExternalRequests
             }
 
             // Validate basic model state (you can add more validation attributes if needed)
-            if (!ModelState.IsValid)
-                return Page();
+            //if (!ModelState.IsValid)
+            //    return Page();
 
             var root = _repo.Load();
             if (root?.FulfillmentExternalRequest == null || Id < 0 || Id >= root.FulfillmentExternalRequest.Count)
                 return NotFound();
 
             root.FulfillmentExternalRequest[Id] = Item;
-            //_repo.Save(root);
+            _repo.SaveAs(root,"tmp");
 
             return RedirectToPage("./Index");
         }
