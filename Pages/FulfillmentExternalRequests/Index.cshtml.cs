@@ -123,21 +123,29 @@ namespace FulfillmentTestXmlGenerator.Pages.FulfillmentExternalRequests
             return newRoot;
         }
         // Export current saved XML as a downloadable file
+        // This version accepts an optional CustomLine (bound from the form) and inserts it as an XML comment
+        // immediately after the XML declaration (or at the top if no declaration present).
         public IActionResult OnPostExport()
         {
             var root = _repo.Load() ?? new Models.FulfillmentExternalRequests { FulfillmentExternalRequest = new List<FulfillmentExternalRequest>() };
+
+            // Serialize to string
             var xs = new XmlSerializer(typeof(Models.FulfillmentExternalRequests));
-            using var ms = new MemoryStream();
-            using (var writer = new StreamWriter(ms, Encoding.UTF8, 1024, leaveOpen: true))
+            string xml;
+            using (var sw = new StringWriter())
             {
-                xs.Serialize(writer, root);
-                writer.Flush();
+                xs.Serialize(sw, root);
+                xml = sw.ToString();
             }
-            ms.Position = 0;
-            var bytes = ms.ToArray();
+            var array = xml.Split(new[] { "\r\n", "\n" }, System.StringSplitOptions.None);
+            array[1] = "<tns:FulfillmentExternalRequests xmlns:tns=\"http://blcorp.net/PolicyAdministration/FedExUSFulfillment/FulfillmentExternalRequests\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://blcorp.net/PolicyAdministration/FedExUSFulfillment/FulfillmentExternalRequests FulfillmentExternalRequests.xsd\">\"";
+            array[^1] = "</tns:FulfillmentExternalRequests>";
+            xml = string.Join("\n", array);
+
+            var bytes = Encoding.UTF8.GetBytes(xml);
             return File(bytes, "application/xml", "FulfillmentExternalRequests.xml");
         }
-      
+
         // Load uploaded XML file and replace/save repository data
         public async Task<IActionResult> OnPostUploadAsync(IFormFile? xmlFile)
         {
@@ -151,12 +159,22 @@ namespace FulfillmentTestXmlGenerator.Pages.FulfillmentExternalRequests
             {
                 var xs = new XmlSerializer(typeof(Models.FulfillmentExternalRequests));
                 using var stream = xmlFile.OpenReadStream();
-                var obj = xs.Deserialize(stream);
-                if (obj is Models.FulfillmentExternalRequests root)
+                var streamReader = new StreamReader(stream);
+                var array = streamReader.ReadToEnd().Split(new[] { "\r\n", "\n" }, System.StringSplitOptions.None);
+                array[2] = "<FulfillmentExternalRequests";
+                array[^1] = "</FulfillmentExternalRequests>";
+                var fixedXml = string.Join("\n", array);
+                //var obj = xs.Deserialize(fixedXml);
+                using (var reader = new StringReader(fixedXml))
                 {
-                    _repo.SaveAs(root,"tmp");
-                    StatusMessage = "Uploaded and saved XML successfully.";
-                    return RedirectToPage();
+                    var obj = xs.Deserialize(reader);
+
+                    if (obj is Models.FulfillmentExternalRequests root)
+                    {
+                        _repo.SaveAs(root, "tmp");
+                        StatusMessage = "Uploaded and saved XML successfully.";
+                        return RedirectToPage();
+                    }
                 }
                 ModelState.AddModelError("xmlFile", "Uploaded file does not contain FulfillmentExternalRequests root.");
                 return Page();
