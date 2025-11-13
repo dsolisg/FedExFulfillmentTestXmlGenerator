@@ -1,0 +1,12 @@
+version: '3.8'
+services:
+  web:
+    build: .
+    image: fulfillment-app:local
+    ports:
+      - "8080:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    # map your TestData so container can read/write the XML files
+    volumes:
+      - ./TestData:/app/TestData

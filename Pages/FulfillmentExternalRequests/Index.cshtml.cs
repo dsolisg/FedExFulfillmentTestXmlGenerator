@@ -161,8 +161,8 @@ namespace FulfillmentTestXmlGenerator.Pages.FulfillmentExternalRequests
                 using var stream = xmlFile.OpenReadStream();
                 var streamReader = new StreamReader(stream);
                 var array = streamReader.ReadToEnd().Split(new[] { "\r\n", "\n" }, System.StringSplitOptions.None);
-                array[2] = "<FulfillmentExternalRequests";
-                array[^1] = "</FulfillmentExternalRequests>";
+                array[2] = "<FulfillmentExternalRequests>";
+                array[^2] = "</FulfillmentExternalRequests>";
                 var fixedXml = string.Join("\n", array);
                 //var obj = xs.Deserialize(fixedXml);
                 using (var reader = new StringReader(fixedXml))
